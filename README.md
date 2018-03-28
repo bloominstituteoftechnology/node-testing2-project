@@ -19,8 +19,8 @@ For this project you will be building a simple restful API for a database with c
 
 ## Requirements
 
-Your API must have routes that use the following HTTP verbs: GET, PUT, POST, and DELETE.  
-You must have documentation for each route.  Write your documentation in a file called `api.md`.  
-You must have at least one test written for each route.  Write your tests BEFORE you write the actual routes.  
-Your models should have some methods/statics that are tested.  
-You will need to have tests for your routes and for your models.  
+1. Your API must have routes that use the following HTTP verbs: GET, PUT, POST, and DELETE.
+2. You must have documentation for each route.  Write your documentation in a file called `documentation.md`.
+3. You must have at least one test written for each route.  Write your tests BEFORE you write the actual routes.
+4. Your models should have some methods/statics that are tested.
+5. You will need to have tests for your routes and for your models.
