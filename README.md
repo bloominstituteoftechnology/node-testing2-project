@@ -2,25 +2,33 @@
 
 ## Topics
 
-* TDD
-* `sinon`
-* `chai`
-* `mocha`
-* `chai-http`
-* `done()`
-* statics vs methods
-* documentation
+* unit testing.
+* integration testing.
+* TDD/BDD
+* jest testing framework.
+* supertest module.
 
-## Project
+## Assignment
 
-For this project you will be creating an API using a test driven development approach as well as writing documentation.  As an example of good documentation you can reference GitHub's API docs: https://developer.github.com/v3/git/commits/
+For this project you will use `Test Driven Development` to create a RESTful API using Node.js, Express and Mongoose that stores data in a MongoDB database.
 
-For this project you will be building a simple restful API for a database with collections of your choosing.
+We will also add integration tests that will use a test database to make sure that the API is persisting and removing the correct data.
+
+## Download Project and Run the Tests
+
+1.  fork and clone this repository.
+1.  **CD into the folder** where you downloaded the repository.
+1.  run `yarn` or `npm i` to download all dependencies.
 
 ## Requirements
 
-1. Your API must have routes that use the following HTTP verbs: GET, PUT, POST, and DELETE.
-2. You must have documentation for each route.  Write your documentation in a file called `documentation.md`.
-3. You must have at least one test written for each route.  Write your tests BEFORE you write the actual routes.
-4. Your models should have some methods/statics that are tested.
-5. You will need to have tests for your routes and for your models.
+1.  use `jest` and `supertest` to write the tests.
+1.  add a `test` script to `package.json` to run the tests using `yarn test` or `npm test`.
+1.  Your API must have be able to **create** and **delete** a resource of your choosing.
+1.  Add logic on the route handlers to validate request data and return the correct HTTP status code.
+1.  write a minimum of two test for each route.
+1.  Add tests to verify validation works as intended.
+1.  Add tests to verify that the endpoint returns the correct HTTP status code.
+1.  Write the **tests BEFORE** writing the route handlers.
+1.  The `integration tests` can be written after the model is created.
+1.  Your `mongoose model` should have at least a `method` or `static` that is tested.
