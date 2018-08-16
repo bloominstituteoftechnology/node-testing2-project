@@ -4,7 +4,7 @@
   "description": "Server Testing Project",
   "main": "server.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --watch --verbose"
+    "test": "jest --watch --verbose"
   },
   "jest": {
     "testEnvironment": "node"
@@ -21,12 +21,10 @@
   },
   "homepage": "https://github.com/LambdaSchool/Server-Testing#readme",
   "devDependencies": {
-    "cross-env": "^5.1.6",
     "jest": "^22.4.4",
     "supertest": "^3.1.0"
   },
   "dependencies": {
-    "express": "^4.16.3",
-    "mongoose": "^5.1.2"
+    "express": "^4.16.3"
   }
 }
