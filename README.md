@@ -10,7 +10,7 @@
 
 ## Assignment
 
-For this project you will use `Test Driven Development` to create a RESTful API using Node.js and Express and Mongoose that publishes a set of endpoints to manage a resource of our choosing. Data can be store in memory.
+For this project you will use `Test Driven Development` to create a RESTful API using Node.js and Express that publishes a set of endpoints to manage a resource of our choosing. Data can be store in memory.
 
 ## Download Project and Install Dependencies
 
