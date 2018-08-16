@@ -27,8 +27,5 @@ We will also add integration tests to verify that the API is persisting and remo
 1.  Your API must be able to **create** and **delete** a `resource` of your choosing.
 1.  Write a minimum of two tests per route handler.
 1.  Add logic on the route handlers to validate request data and return the correct HTTP status code.
-1.  Add tests to verify that validation works as intended.
 1.  Add tests to verify that the endpoints return the correct HTTP status codes.
 1.  Write the **tests BEFORE** writing the route handlers.
-1.  The `integration tests` can be written after the model is created.
-1.  Your `mongoose model` should have at least a `method` or `static` that is tested.
