@@ -15,8 +15,8 @@ describe("Endpoint GET /cpu", () => {
       .expect(200)
       .expect('Content-Type', /json/)
       .then(res => {
-        expect(req.body).toBeInstanceOf(Array)
-        expect(req.body).toBeGreaterThan(0)
+        expect(res.body).toBeInstanceOf(Array)
+        expect(res.body).toBeGreaterThan(0)
       })
   })
 
@@ -31,9 +31,9 @@ describe("Endpoint GET /cpu", () => {
       Price: 165
     })
     .then(res => {
-      expect(req.body).toBeInstanceOf(Array)
-      expect(req.body).toHaveLength(1)
-      expect(req.body[0]).toBeInstanceOf(Number)
+      expect(res.body).toBeInstanceOf(Array)
+      expect(res.body).toHaveLength(1)
+      expect(res.body[0]).toBeInstanceOf(Number)
     })
   })
 
@@ -48,9 +48,9 @@ describe("Endpoint GET /cpu", () => {
       Price: 165
     })
     .then(res => {
-      expect(req.body).toBeInstanceOf(Array)
-      expect(req.body).toHaveLength(1)
-      expect(req.body[0]).toBeInstanceOf(Number)
+      expect(res.body).toBeInstanceOf(Array)
+      expect(res.body).toHaveLength(1)
+      expect(res.body[0]).toBeInstanceOf(Number)
     })
   })
 })
