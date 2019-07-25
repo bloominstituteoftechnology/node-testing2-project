@@ -1,6 +1,6 @@
 
 exports.seed = function(knex) {
-  return knex('CPU').del()
+  return knex('CPU').truncate()
     .then(function () {
       return knex('CPU').insert([
         {

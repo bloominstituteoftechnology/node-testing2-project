@@ -1,6 +1,6 @@
 exports.seed = function(knex) {
   return knex("GPU")
-    .del()
+    .truncate()
     .then(function() {
       return knex("GPU").insert([
         {
