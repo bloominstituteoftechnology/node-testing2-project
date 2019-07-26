@@ -7,6 +7,23 @@ function getCars(){
     return db('cars');
 }
 
+function getCarsBy(id){
+    return db('cars')
+
+        .first()
+        .where({id}).then(car =>{
+                if(car){
+                    return car;
+                }else{
+                    return null
+            }
+        })
+}
+
+function addCars(car){
+    return db('cars').insert(car);
+}
+
 function deleteCar(id){
     return db('cars')
         .where({id})
@@ -17,5 +34,7 @@ function deleteCar(id){
 
 module.exports = {
     getCars,
-    deleteCar
+    deleteCar,
+    addCars,
+    getCarsBy
 }

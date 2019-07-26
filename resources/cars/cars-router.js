@@ -18,8 +18,33 @@ router.get('/', async (req, res) =>{
     }
 });
 
-router.post('/', (req, res) =>{
-    
+router.get('/:id', async (req, res) =>{
+    const {id} = req.params
+    if(id){
+
+        try{
+            const car = await Cars.getCarsBy(id);
+            res.status(200).json(car)
+        }catch(error){  
+            res.status(401).json({message:`${error} car doesnt exist`})
+        }
+    }else{
+        
+        res.status(500).json({message:"no car reference"})  
+    }
+
+});
+
+router.post('/', async (req, res) =>{
+    const {make, model, year} = req.body;
+
+    if(!make || !model || !year){
+        res.status(400).json({message:"Please add a make, model, and year"})
+    }else{
+        const [id] = car = await Cars.addCars(req.body);
+        const newCar = await Cars.getCarsBy(id);
+        res.status(200).json(newCar)
+    }
 });
 
 router.delete('/:id', async (req, res) =>{
