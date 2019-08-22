@@ -37,6 +37,24 @@ server.post("/add", (req, res) => {
   }
 });
 
-server.delete("/remove", (req, res) => {});
+server.delete("/remove/:id", (req, res) => {
+  const { id } = req.params;
+
+  Superheroes.remove(id)
+    .then(hero => {
+      if (hero) {
+        res.status(200).json(hero);
+      } else {
+        res
+          .status(404)
+          .json({
+            message: "The superhero with the specified ID does not exist."
+          });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: "The superhero could not be removed." });
+    });
+});
 
 module.exports = server;
