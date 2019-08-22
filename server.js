@@ -45,11 +45,9 @@ server.delete("/remove/:id", (req, res) => {
       if (hero) {
         res.status(200).json(hero);
       } else {
-        res
-          .status(404)
-          .json({
-            message: "The superhero with the specified ID does not exist."
-          });
+        res.status(404).json({
+          message: "The superhero with the specified ID does not exist."
+        });
       }
     })
     .catch(error => {
