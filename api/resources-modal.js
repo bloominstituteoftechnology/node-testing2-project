@@ -8,11 +8,11 @@ module.exports = {
 	destroy,
 };
 
-async function add(resource) {
-	const [ id ] = await db('resource').add(resource, 'id');
+// async function add(resource) {
+// 	const [ id ] = await db('resource').add(resource, 'id');
 
-	return db('resources').where({ id }).first();
-}
+// 	return db('resources').where({ id }).first();
+// }
 
 function find() {
 	return db('resources').select('id', 'resource');
