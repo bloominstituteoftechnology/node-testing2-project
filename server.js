@@ -17,7 +17,25 @@ server.get("/superheroes", (req, res) => {
     });
 });
 
-server.post("/add", (req, res) => {});
+server.post("/add", (req, res) => {
+  const superhero = req.body;
+
+  if (!superhero.name || !superhero.superpower) {
+    res.status(400).json({
+      message: "Please provide the superhero's name and superpower."
+    });
+  } else {
+    Superheroes.add(superhero)
+      .then(hero => {
+        res.status(201).json(hero);
+      })
+      .catch(error => {
+        res
+          .status(500)
+          .json({ message: "There was an error adding the superhero." });
+      });
+  }
+});
 
 server.delete("/remove", (req, res) => {});
 
