@@ -30,4 +30,26 @@ describe("superheroes server", () => {
       expect(Array.isArray(response.body)).toBe(true);
     });
   });
+
+  describe("POST /superheroes", () => {
+    // it("returns status code 201", async () => {
+    //   let response = request(server)
+    //     .post("/superheroes")
+    //     .send(superhero);
+    // });
+
+    it("returns status code 201", async () => {
+      let response = await request(server)
+        .post("/superheroes")
+        .send({ name: "spiderman", superpower: "shoot webs" });
+      expect(response.status).toBe(201);
+    });
+
+    it("returns status code 422", async () => {
+      let response = await request(server)
+        .post("/superheroes")
+        .send({ name: "joe" });
+      expect(response.status).toBe(422);
+    });
+  });
 });

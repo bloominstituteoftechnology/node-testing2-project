@@ -21,7 +21,7 @@ server.post("/superheroes", (req, res) => {
   const superhero = req.body;
 
   if (!superhero.name || !superhero.superpower) {
-    res.status(400).json({
+    res.status(422).json({
       message: "Please provide the superhero's name and superpower."
     });
   } else {
