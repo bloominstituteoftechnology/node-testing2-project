@@ -5,7 +5,7 @@ const Users = require("./users-model");
 const restricted = require("../auth/restricted-middleware");
 
 // Write CRUD operations
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Users.find()
     .then(users => {
       console.log(users);
