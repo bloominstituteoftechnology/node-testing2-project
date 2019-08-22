@@ -17,7 +17,7 @@ server.get("/superheroes", (req, res) => {
     });
 });
 
-server.post("/add", (req, res) => {
+server.post("/superheroes", (req, res) => {
   const superhero = req.body;
 
   if (!superhero.name || !superhero.superpower) {
@@ -37,7 +37,7 @@ server.post("/add", (req, res) => {
   }
 });
 
-server.delete("/remove/:id", (req, res) => {
+server.delete("/superheroes/:id", (req, res) => {
   const { id } = req.params;
 
   Superheroes.remove(id)
