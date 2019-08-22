@@ -14,40 +14,28 @@ describe('resources model', () => {
 	});
 
 	const resource = {
-		id : 5,
+		id       : 5,
 		resource : 'ResourceA',
 	};
 
 	describe('add', () => {
-		it('resource not be empty', () => {
+		it('resource is not empty', () => {
 			expect(resource).toMatchObject({
 				resource : expect.any(String),
 			});
 		});
-		it('resource not to be null', () =>{
+		it('resource is not null', () => {
 			expect(resource).not.toBeNull();
-	  });
-
-
-		// it('should add the provided resources into the db', async () => {
-		// 	await Resources.add({ resource });
-		// 	const resources = await db('resources');
-		// 	expect(resources).toHaveLength(1);
-		// });
+		});
 	});
 	describe('destroy', () => {
 		const id = 5;
 
-		it('id should be a number', () => {
+		it('id is a number', () => {
 			expect(id).not.toBeNaN();
 		});
-		it('id not to be null', () =>{
+		it('id is not null', () => {
 			expect(id).not.toBeNull();
-	  });
-		// it('resource should be in db', async () => {
-		// 	await Resources.add({ resource });
-		// 	const resource = await Resources.findById(id);
-		// 	expect(resource).toBeTruthy();
-		// });
+		});
 	});
 });
