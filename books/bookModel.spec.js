@@ -7,7 +7,7 @@ describe("book model", () => {
       await Books.insert({ title: "the hobbit", author: "jrr tolkien" });
 
       const books = await db("books");
-      expect(books).not.toBeLessThan(3);
+      expect(books.length).not.toBeLessThan(3);
     });
   });
 

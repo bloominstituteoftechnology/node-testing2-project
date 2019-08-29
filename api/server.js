@@ -2,7 +2,7 @@ const express = require("express");
 
 const Books = require("../books/bookModel.js");
 
-const server = express;
+const server = express();
 
 server.use(express.json());
 
@@ -16,14 +16,20 @@ server.get("/", (req, res) => {
     });
 });
 
-server.remove("/:id", (req, res) => {
-  Books.delete(id)
-    .then(books => {
-      res.status(201).json({ message: "deleted" });
-    })
-    .catch(error => {
-      res.status(500);
-    });
+server.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deleted = await Books.remove(id);
+
+    if (deleted) {
+      res.status(201).json({ message: "deleted!" });
+    } else {
+      res.status(404);
+    }
+  } catch (error) {
+    res.status(500);
+  }
 });
 
 module.exports = server;
