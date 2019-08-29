@@ -24,12 +24,12 @@ describe("server.js", () => {
 
   describe("DELETE /", () => {
     it("should return status code 201", async () => {
-      const res = await request(server).delete("/1");
+      const res = await request(server).delete("/4");
       expect(res.status).toBe(201);
     });
 
     it("should return a json message", async () => {
-      const res = await request(server).delete("/1");
+      const res = await request(server).delete("/6");
       expect(res.type).toBe("application/json");
     });
   });

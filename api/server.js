@@ -16,20 +16,20 @@ server.get("/", (req, res) => {
     });
 });
 
-server.delete("/:id", async (req, res) => {
+server.delete("/:id", (req, res) => {
   const { id } = req.params;
 
-  try {
-    const deleted = await Books.remove(id);
-
-    if (deleted) {
-      res.status(201).json({ message: "deleted!" });
-    } else {
-      res.status(404);
-    }
-  } catch (error) {
-    res.status(500);
-  }
+  Books.remove(id)
+    .then(book => {
+      if (book) {
+        res.status(201).json({ message: "deleted!" });
+      } else {
+        res.status(404);
+      }
+    })
+    .catch(error => {
+      res.status(500);
+    });
 });
 
 module.exports = server;
