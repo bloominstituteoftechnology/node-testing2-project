@@ -16,7 +16,7 @@ server.get("/", (req, res) => {
     });
 });
 
-server.delete("/:id", (req, res) => {
+server.remove("/:id", (req, res) => {
   Books.delete(id)
     .then(books => {
       res.status(201).json({ message: "deleted" });

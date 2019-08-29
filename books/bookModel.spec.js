@@ -11,13 +11,13 @@ describe("book model", () => {
     });
   });
 
-  describe("delete()", () => {
+  describe("remove()", () => {
     it("should delete book", async () => {
-      await Books.delete({ id: 1 });
+      await Books.remove({ id: 1 });
       const books = await db("books");
       expect(books).not.toContain({
         title: "leviathan",
-        author: "thomas hobbes "
+        author: "thomas hobbes"
       });
     });
   });
