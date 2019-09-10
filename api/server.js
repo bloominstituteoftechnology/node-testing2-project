@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Dogs = require('../dogs/dogsModel.js');
+const Dogs = require('../dogs/dogsModel.js')
 
 const server = express();
 
