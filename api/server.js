@@ -34,4 +34,22 @@ server.post('/dogs', (req, res) => {
 })
 
 
+server.delete('/dogs/:id/', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const dog = await Dogs.findById(id)
+
+    if(dog) {
+      const dog = await Dogs.remove(id)
+      res.status(201).json(dog)
+    } else {
+      res.status(404).json({ message: 'Could not find a dog with the given id.' })
+    }
+  } catch(err) {
+    res.status(500).json({ message: 'Failed to delete dog'})
+  }
+})
+
+
 module.exports = server;

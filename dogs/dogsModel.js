@@ -17,7 +17,7 @@ async function update(id, changes) {
 }
 
 function remove(id) {
-  return null;
+  return db('dogs').where('id', id).del()
 }
 
 function getAll() {
@@ -25,5 +25,5 @@ function getAll() {
 }
 
 function findById(id) {
-  return null;
+  return db('dogs').where({ id }).first()
 }

@@ -38,7 +38,7 @@ describe('GET /', () => {
 })
 
 
-
+// GET TO /DOGS TEST
 describe('GET /dogs', () => {
   it('should return an object', () => {
    return request(server)
@@ -52,6 +52,7 @@ describe('GET /dogs', () => {
  })
 
 
+// POST TEST
  describe('POST /dogs', () => {
   it('should insert a dog into the db', async () => {
     // insert one
@@ -69,6 +70,7 @@ describe('GET /dogs', () => {
     //})
   })
 
+
   it('should insert 2 dogs into the db', async () => {
       await request(server)
       .post('/dogs')
@@ -85,5 +87,7 @@ describe('GET /dogs', () => {
       expect(dogs).toHaveLength(2)
   })
 })
+
+
 
 })
