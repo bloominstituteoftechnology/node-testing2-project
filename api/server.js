@@ -24,9 +24,11 @@ server.get('/dogs', (req, res) => {
 
   
 server.post('/dogs', (req, res) => {
-  Dogs.insert(req.body).then(result => {
-    res.status(201).json(res)
-  }).catch(error => {
+  Dogs.insert(req.body)
+   .then(result => {
+    res.status(201).json(result)
+  })
+  .catch(error => {
     res.status(500).json(error)
   })
 })
