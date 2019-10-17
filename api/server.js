@@ -11,6 +11,12 @@ server.get('/', (req, res) => {
     res.status(200).json({ api: "Up" });
 });
 
+server.get('/dogs', (req, res) => {
+    Dogs.find()
+        .then(dogs => res.status(200).json(dogs))
+        .catch(err => res.status(500).json({ message: err }))
+});
+
 server.get('/:id', (req, res) => {
     const { id } = req.params;
     Dogs.findById(id)
@@ -19,11 +25,11 @@ server.get('/:id', (req, res) => {
             else res.status(404).json({ message: 'No such dog' })
         })
         .catch(err => res.status(500).json({ message: err }))
-})
+});
 
 server.post('/', (req, res) => {
     const dogData = req.body;
-    Dogs.add(dogData)
+    Dogs.insert(dogData)
         .then(dog => res.status(201).json(dog))
         .catch(err => res.status(500).json({ message: err }))
 });

@@ -2,7 +2,8 @@ const db = require('../data/dbConfig');
 
 module.exports = {
     insert,
-    remove,
+    remove, 
+    find,
     findById
 }
 
@@ -14,6 +15,10 @@ async function insert(dog) {
 function remove(id) {
     return db('dogs').where('id', Number(id)).delete();
 };
+
+function find() {
+    return db('dogs');
+}
 
 function findById(id) {
     return db('dogs').where({ id }).first()
