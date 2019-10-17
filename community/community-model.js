@@ -1,23 +1,32 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  add,
   find,
   findById,
+  add,
+  remove
 };
 
 function find() {
-  return db('companyInfo');
-}
-
-async function add(user) {
-  const [id] = await db('companyInfo').insert(user);
-  console.log(`added user`, user)
-  return findById(id);
+  return db('community');
 }
 
 function findById(id) {
-  return db('companyInfo')
-    .where({ id })
-    .first();
+  return db('community')
+  .where({id})
+  .first();
+}
+
+function add(newMember) {
+  return db('community')
+    .insert(newMember, 'id')
+    .then(([id]) => {
+      return findById(id);
+    });
+}
+
+function remove(id) {
+  return db('community')
+  .where({id})
+  .del()
 }
