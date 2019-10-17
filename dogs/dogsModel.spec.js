@@ -25,3 +25,18 @@ describe('Dogs model', () => {
         })
     })
 })
+
+describe('Remove method', () => {
+    it('Should delete dog from database', async () => {
+        await Dogs.remove(1);
+        const dogs = await db('dogs');
+        expect(dogs).toHaveLength(0);
+    })
+
+    it('Should only remove dog when ID is provided', async () => {
+        Dogs.insert({ breed: 'Dachshund' });
+        await Dogs.remove();
+        const doggos = await db('dogs')
+        expect(doggos).toHaveLength(1);
+    })
+})
