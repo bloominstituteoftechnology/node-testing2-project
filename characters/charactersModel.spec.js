@@ -20,6 +20,18 @@ describe("Characters model", function(){
             const inserted = await db("characters")
             expect(inserted).toHaveLength(1);
         })
+        it("check the name of inserted character", async function(){
+            const characters = await db("characters");
+            expect(characters).toHaveLength(0);
+            console.log(characters)
+            await insert({
+                name: "Pickle Rick",
+                specie: "Pickle",
+                quote: "Im Pickle RICK!"
+            })
+            const inserted = await db("characters")
+            expect(inserted[0].name).toBe("Pickle Rick");
+        })
     
     })
     
@@ -29,7 +41,7 @@ describe('remove()', () => {
     it('remove', async () => {
         await remove(1);
         const character = await db("characters");
-        expected(character).toHaveLength(0);
+        expect(character).toHaveLength(0);
     })
     it('remove a character given the ID', async () => {
         insert({
@@ -37,7 +49,7 @@ describe('remove()', () => {
             specie: "Rickle",
             quote: "Im Rickle PICK!"
         })
-        await remove();
+        await remove(0);
         const characters = await db("characters")
         expect(characters).toHaveLength(1);
     })
