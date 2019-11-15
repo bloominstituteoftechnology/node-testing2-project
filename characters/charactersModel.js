@@ -1,21 +1,27 @@
-const db = require("../data/db-config.js");
+const db = require('../data/db-config');
 
 module.exports = {
     insert,
-    getAll
+    remove,
+    getAll,
+    findById
 }
 
-
- async function insert(character) {
-     try{
-         const [id] = await db("characters").insert(character)
-         return db("characters").where({ id }).first()
-     }
-     catch(error){
-         console.log('insert failed')
-     }
+function getAll() {
+    return db("characters");
   }
 
-function getAll(){
-    return db("characters");
+async function insert(characters) {
+    const [id] = await db("characters").insert(characters, "id");
+    return db("characters").where({id}).first();
 }
+
+function remove(id){
+    return db("characters")
+    .where({ id })
+    .del()
+} 
+
+function findById(id) {
+    return db("characters").where({ id }).first();
+};

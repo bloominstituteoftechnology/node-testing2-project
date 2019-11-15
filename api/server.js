@@ -20,6 +20,22 @@ server.get("/characters", (req, res) => {
     })
 })
 
+server.get("/:id/characters", (req, res) => {
+    const { id } = req.params;
+
+    Characters.findById(id)
+    .then(char => {
+      if (char) {
+        res.json(char);
+      } else {
+        res.status(404).json({ message: 'Could not find character' })
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Failed' });
+    });
+})
+
 server.post("/characters", (req, res) => {
     const character = req.body;
     Characters.insert(character)
@@ -31,5 +47,22 @@ server.post("/characters", (req, res) => {
         res.status(500).json({error: `error`})
     })
 })
+
+server.delete('/:id/characters', (req, res) => {
+    const { id } = req.params;
+
+    Characters.remove(id)
+    .then(deleted => {
+      if (deleted) {
+        res.json({ removed: deleted });
+      } else {
+        res.status(404).json({ message: 'Could not find character with given id' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Failed to delete' });
+    });
+});
+
 
 module.exports = server;
