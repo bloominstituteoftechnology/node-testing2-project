@@ -1,8 +1,12 @@
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('festivals', tbl => {
+    tbl.increments();
 
-exports.up = function(knex) {
-  
+    tbl.string('name', 255).notNullable();
+  });
 };
 
-exports.down = function(knex) {
-  
+exports.down = function(knex, Promise) {
+  // undo the operation in up
+  return knex.schema.dropTableIfExists('festivals');
 };
