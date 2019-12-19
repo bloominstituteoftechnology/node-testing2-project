@@ -41,4 +41,18 @@ describe('server.js', function () {
 
     });
 
+    describe('when festivals get deleted', () => {
+        it('status code should be 200', async () => {
+
+            const res = await request(server).delete('/festivals/1')
+            expect(res.status).toBe(200);
+        });
+
+        it('response should be JSON', async () => {
+
+            const res = await request(server).delete('/festivals/1')
+            expect(res.type).toMatch(/json/i);
+        });
+    });
+
 });

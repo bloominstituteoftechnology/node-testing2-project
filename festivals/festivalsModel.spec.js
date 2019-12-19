@@ -13,9 +13,11 @@ describe('festivals model', function () {
 
             await Festivals.insert({ name: 'Burning Man' });
             await Festivals.insert({ name: 'Woodstock' });
+            await Festivals.insert({ name: 'Coachella' });
+            await Festivals.insert({ name: 'All Good Music Festival' });
 
             const festivals = await db('festivals');
-            expect(festivals).toHaveLength(2);
+            expect(festivals).toHaveLength(4);
         });
     });
 });

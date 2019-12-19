@@ -19,7 +19,9 @@ async function update(id, changes) {
 }
 
 function remove(id) {
-  return null;
+  return db('festivals')
+    .delete()
+    .where({ id });
 }
 
 function getAll() {
