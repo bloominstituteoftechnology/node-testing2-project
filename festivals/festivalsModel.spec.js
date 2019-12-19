@@ -1,5 +1,5 @@
-const Festivals = require('./festivalsModel');
-const db = require('../data/dbConfig');
+const Festivals = require('./festivalsModel.js');
+const db = require('../data/dbConfig.js');
 
 describe('festivals model', function () {
 
@@ -10,11 +10,10 @@ describe('festivals model', function () {
     describe('insert()', function () {
 
         it('should add the festival to the database', async function () {
-            // call insert, passing a festival object
+
             await Festivals.insert({ name: 'Burning Man' });
             await Festivals.insert({ name: 'Woodstock' });
 
-            // check the database directly
             const festivals = await db('festivals');
             expect(festivals).toHaveLength(2);
         });
