@@ -1,3 +1,5 @@
+const db = require('../data/dbConfig.js');
+
 module.exports = {
   insert,
   update,
@@ -7,7 +9,9 @@ module.exports = {
 };
 
 async function insert(festival) {
-  return null;
+  return db('festivals')
+    .insert(festival)
+    .returning('id');
 }
 
 async function update(id, changes) {
@@ -19,7 +23,7 @@ function remove(id) {
 }
 
 function getAll() {
-  return null;
+  return db('festivals');
 }
 
 function findById(id) {

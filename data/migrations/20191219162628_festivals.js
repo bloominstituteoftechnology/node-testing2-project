@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
   return knex.schema.createTable('festivals', tbl => {
     tbl.increments();
 
@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
   });
 };
 
-exports.down = function(knex, Promise) {
-  // undo the operation in up
+exports.down = function (knex, Promise) {
+
   return knex.schema.dropTableIfExists('festivals');
 };
