@@ -11,7 +11,7 @@ function makeToken(user) {
 	};
 
 	const options = {
-		expiresIn: 30
+		expiresIn: 60 * 60
 	};
 
 	const token = jwt.sign(
