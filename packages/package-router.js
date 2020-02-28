@@ -1,26 +1,31 @@
 const router = require("express").Router();
+const db = require("./package-model.js");
 
 router.get("/", async (req, res) => {
   try {
-    res.send("hello from packages router");
+    const packages = await db.find();
+    res.status(200).json(packages);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "server error" });
   }
 });
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
+    const newItem = await db.insert(req.body);
+    res.status(201).json(newItem);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "server error" });
   }
 });
 
-router.get("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
   try {
+    const itemToDelete = await db.findBy({ id });
+    await db.remove(id);
+    res.status(200).json({ msg: `successfully deleted ${itemToDelete.name}` });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "server error" });
   }
 });
