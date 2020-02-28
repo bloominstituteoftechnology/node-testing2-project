@@ -23,7 +23,7 @@ module.exports = {
   testing: {
     client: "pg",
     connection: {
-      database: "packages",
+      database: "packages_testing",
       port: 5555,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD
