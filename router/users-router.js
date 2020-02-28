@@ -11,6 +11,7 @@ router.post("/", (req, res) => {
                 res.status(201).json(user)
             })
             .catch(err => {
+                console.log(err)
                 res.status(500).json({errorMessage: "User cannot be aded"})
             })
     } else {
@@ -26,6 +27,9 @@ router.delete("/:id", (req, res) => {
             res.status(200).json({ message: "User deleted!" });
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json({ errorMessage: err.message });
         })
 }) ;
+
+module.exports = router;

@@ -2,7 +2,7 @@ const knex = require("knex");
 
 const config = require("../knexfile.js");
 
-const environment = process.env.NODE.ENV || "development";
+const environment = process.env.DB_ENV || "development";
 
 const db = knex(config[environment]);
 
