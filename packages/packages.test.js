@@ -54,3 +54,17 @@ describe("packages router - GET", () => {
     );
   });
 });
+
+describe("packages router - DELETE", () => {
+  it("should return 200 OK on DELETE /api/packages", async () => {
+    const res = await request(server).delete("/api/packages/1");
+    expect(res.status).toBe(200);
+  });
+
+  it("should return a success message on deletion", async () => {
+    const res = await request(server).delete("/api/packages/1");
+    expect(res.body.msg).toEqual(
+      expect.stringContaining("successfully deleted")
+    );
+  });
+});
