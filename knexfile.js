@@ -1,9 +1,16 @@
+require("dotenv").config();
+
 // Update with your config settings.
 
 module.exports = {
   development: {
     client: "pg",
-    connection: "postgres://localhost/packages",
+    connection: {
+      database: "packages",
+      port: 5555,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD
+    },
     migrations: {
       directory: "./db/migrations"
     },
@@ -15,7 +22,12 @@ module.exports = {
 
   testing: {
     client: "pg",
-    connection: "postgres://localhost/packages_testing",
+    connection: {
+      database: "packages",
+      port: 5555,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD
+    },
     migrations: {
       directory: "./db/migrations"
     },
