@@ -14,6 +14,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const friend = await Friends.getFriendById(req.params.id);
+    res.status(200).json(friend);
+  } catch (err) {
+    console.log("get friends error", err);
+    res
+      .status(500)
+      .json({
+        message: "there was an error retrieving friend by id",
+        error: err
+      });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const newFriend = {

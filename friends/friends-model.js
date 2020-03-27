@@ -13,7 +13,9 @@ function getFriends() {
 }
 
 function getFriendById(id) {
-  return db("friends").where({ id });
+  return db("friends")
+    .where({ id })
+    .first();
 }
 
 function addFriend(friend) {
