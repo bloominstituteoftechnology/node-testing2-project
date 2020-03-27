@@ -12,9 +12,9 @@ For this project you will use `Test Driven Development` to create a RESTful API 
 
 ## Download Project and Install Dependencies
 
-- fork and clone this repository.
-- **CD into the folder** where you downloaded the repository.
-- run `npm i` to download all dependencies.
+- [x] fork and clone this repository.
+- [x] **CD into the folder** where you downloaded the repository.
+- [x] run `npm i` to download all dependencies.
 - type `npm test` to run the tests.
 
 ## Requirements
