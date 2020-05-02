@@ -7,7 +7,7 @@ describe('server tests', () => {
     });
 });
 
-describe('GET /', () => {
+describe('GET / on server file', () => {
     it('should return status 200', async () => {
         const res = await request(server).get('/');
         expect(res.status).toBe(200);
