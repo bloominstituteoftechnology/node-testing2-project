@@ -4,7 +4,8 @@
   "description": "Node Server Testing Challenge",
   "main": "server.js",
   "scripts": {
-    "test": "jest --watch",
+    "test:watch": "jest --watch",
+    "test": "jest",
     "server": "node index.js"
   },
   "jest": {
