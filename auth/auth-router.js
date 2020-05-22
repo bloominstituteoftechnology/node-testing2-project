@@ -40,7 +40,7 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, role } = req.body;
 
   if (isValid(req.body)) {
     Users.findBy({ "u.username": username })

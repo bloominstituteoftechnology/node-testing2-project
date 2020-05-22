@@ -7,7 +7,7 @@ const { isValid } = require("./users-service");
 
 // router.use(restricted);
 
-router.get("/", restricted, (req, res) => {
+router.get("/", (req, res) => {
   Users.find()
     .then((users) => {
       res.status(200).json({ users, jwt: req.jwt });
