@@ -6,6 +6,14 @@ const router = require("express").Router();
 const Users = require("../users/users-model");
 const { isValid } = require("../users/users-service");
 
+router.get("/", (req, res) => {
+  Users.find()
+    .then((users) => {
+      res.status(200).json({ users, jwt: req.jwt });
+    })
+    .catch((err) => res.send(err));
+});
+
 router.post("/register", (req, res) => {
   const credentials = req.body;
 
@@ -40,7 +48,7 @@ router.post("/login", (req, res) => {
         if (user && bcryptjs.compareSync(password, user.password)) {
           const token = createToken(user);
 
-          res.status(200).json({ message: "Welcome to our API", token });
+          res.status(200).json({ message: `Welcome ${user.username}`, token });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }

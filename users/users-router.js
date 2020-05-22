@@ -5,9 +5,9 @@ const restricted = require("../auth/restricted-middleware");
 
 const { isValid } = require("./users-service");
 
-router.use(restricted);
+// router.use(restricted);
 
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Users.find()
     .then((users) => {
       res.status(200).json({ users, jwt: req.jwt });
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
     .catch((err) => res.send(err));
 });
 
-router.post("/", checkRoles(["admin"]), (req, res) => {
+router.post("/", checkRoles(["admin"]), restricted, (req, res) => {
   const user = req.body;
 
   if (isValid(user)) {

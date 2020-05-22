@@ -14,6 +14,7 @@ exports.up = function (knex) {
 
       table
         .integer("role")
+        .notNullable()
         .unsigned()
         .references("roles.id")
         .onDelete("RESTRICT")
