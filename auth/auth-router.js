@@ -26,6 +26,7 @@ router.post("/register", (req, res) => {
 
     Users.add(credentials)
       .then((user) => {
+        const something = () => {};
         res.status(201).json({ data: user });
       })
       .catch((error) => {

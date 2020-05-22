@@ -1,6 +1,9 @@
 # Mac cruft
 .DS_Store
 
+#env
+.env
+
 # Logs
 logs
 *.log

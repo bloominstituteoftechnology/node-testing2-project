@@ -3,6 +3,14 @@ const server = require("./server");
 const model = require("../users/users-model");
 const db = require("../database/connection");
 const { isValid } = require("../users/users-service");
+
+beforeEach(() => {
+  return db.migrate
+    .rollback()
+    .then(() => db.migrate.latest())
+    .then(() => db.seed.run());
+});
+
 describe("server", () => {
   it("can run", () => {
     expect(true).toBeTruthy();
@@ -51,7 +59,25 @@ describe("POST /api/users/register", () => {
   it("return 201 created", function (done) {
     return supertest(server)
       .post("/api/auth/register")
-      .send({ username: "Joowoon", password: "123123", role: 2 })
+      .send({ username: "Joo", password: "123123", role: 2 })
+      .expect(201)
+      .end(function (err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
+  it("should correct length of user list", async () => {
+    await model.add({ username: "Sherlock", password: "123abc", role: 1 });
+
+    // read data from the table
+    const users = await db("users");
+    let amount = users.length;
+    expect(users).toHaveLength(amount);
+  });
+  it("test if the same user can created twice, not giving error", function (done) {
+    return supertest(server)
+      .post("/api/auth/register")
+      .send({ username: "Joo", password: "123123", role: 2 })
       .expect(201)
       .end(function (err, res) {
         if (err) return done(err);
@@ -66,6 +92,14 @@ describe("Delete /api/users/register", () => {
       return supertest(server)
         .delete("/api/users/:id")
         .send({ id: 3 })
+        .expect(200);
+    });
+  });
+  describe("can delete an team", () => {
+    it("receives a 200", () => {
+      return supertest(server)
+        .delete("/api/users/:id")
+        .send({ id: 1 })
         .expect(200);
     });
   });
