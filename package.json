@@ -1,30 +1,38 @@
 {
-  "name": "node-server-testing",
+  "name": "node-server-testing-challenge",
   "version": "1.0.0",
-  "description": "Node Server Testing Challenge",
-  "main": "server.js",
+  "description": "## Topics",
+  "main": "index.js",
   "scripts": {
+    "server": "nodemon",
+    "start": "node index.js",
     "test": "jest --watch"
-  },
-  "jest": {
-    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/node-server-testing.git"
+    "url": "git+https://github.com/joowoonk/node-server-testing-challenge.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LambdaSchool/node-server-testing/issues"
+    "url": "https://github.com/joowoonk/node-server-testing-challenge/issues"
   },
-  "homepage": "https://github.com/LambdaSchool/node-server-testing#readme",
-  "devDependencies": {
-    "jest": "^24.9.0",
+  "homepage": "https://github.com/joowoonk/node-server-testing-challenge#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "jest": "^26.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.1",
+    "knex-cleaner": "^1.3.0",
+    "sqlite3": "^4.2.0",
     "supertest": "^4.0.2"
   },
-  "dependencies": {
-    "express": "^4.17.1"
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
