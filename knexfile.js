@@ -1,7 +1,6 @@
 // Update with your config settings.
-
+const pgConnection = process.env.DATABASE_URL || 'postgresql url'
 module.exports = {
-
   development: {
     client: 'sqlite3',
     connection: {
@@ -15,7 +14,6 @@ module.exports = {
       directory: "./data/seeds"
     }
   },
-
   testing: {
     client: 'sqlite3',
     connection: {
@@ -29,14 +27,9 @@ module.exports = {
       directory: "./data/seeds"
     }
   },
-
   production: {
     client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
+    connection: pgConnection,
     pool: {
       min: 2,
       max: 10
