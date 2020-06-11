@@ -1,5 +1,10 @@
-const request = require('supertest'); 
-// supertest simulates test to server, much like postman, but automated.
+const request = require('supertest');
+const db = require('../data/dbConfig')
+const Dogs = require('./dogs-model')
+
+const testDog = { name: 'dummy', breed: 'pitbull', age: 27 }
+
+// supertest simulates requests to server, much like postman, but automated.
 
 const server = require('./server.js'); 
 

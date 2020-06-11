@@ -10,9 +10,9 @@ server.get('/', (req, res) => {
 })
 
 server.get('/api/dogs', async (req, res) => {
-    const dogs = await db.get()
     try {
-        if (dogs) { return res.status(200).json(dogs) }
+        const dogs = await db.get()
+        if (dogs.length > 0) { return res.status(200).json(dogs) }
         res.status(404).json({ message: 'no dogs' })    
     } catch(e) {
         res.status(500).json({ message: 'db error', })
