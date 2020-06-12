@@ -30,5 +30,30 @@ describe('server.js', () => {
             const res = await request(server).get('/')
             expect(res.body).toEqual({ api: 'up' })
         })
+        it('should return a JSON object from the index route', async () => {
+            const response = await request(server).get('/');
+      
+            expect(response.type).toEqual('application/json');
+          });
+    })
+    describe('GET /api/dogs', () => {
+        it('should return status code 200', async () => {
+            const res = await request(server).get('/api/dogs')
+            expect(res.status).toBe(200)
+        })
+        it('should return status code 404', async () => {
+            await Dogs.remove(1)
+            const res = await request(server).get('/api/dogs')
+            expect(res.status).toBe(404)
+        })
+        it('should return an expected JSON object', async () => {
+            const res = await request(server).get('/api/dogs')
+            delete res.body[0].id
+            expect(res.body[0]).toEqual(testDog)
+        })
+    })
+    beforeEach(async () => {
+        await db('dogs').truncate()
+        await db('dogs').insert(testDog)
     })
 });
