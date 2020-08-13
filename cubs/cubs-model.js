@@ -2,7 +2,7 @@ const db = require('../data/db-config');
 
 module.exports = {
   find,
-  addCub,
+  add,
   remove
 };
 
@@ -10,7 +10,7 @@ function find() {
   return db('cubs');
 }
 
-function addCub(newCub) {
+function add(newCub) {
   return db('cubs')
     .insert(newCub)
     .then((id) => {

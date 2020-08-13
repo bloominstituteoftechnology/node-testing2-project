@@ -23,7 +23,7 @@ server.get('/cubs', (req, res) => {
 server.post('/cubs', (req, res) => {
   const newCub = req.body;
 
-  Cubs.addCub(newCub)
+  Cubs.add(newCub)
     .then((cub) => {
       res.status(201).json(cub);
     })

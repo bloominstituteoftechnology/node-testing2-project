@@ -26,5 +26,36 @@ describe('server.js', () => {
     });
   });
 
-  describe('POST /cubs', () => {});
+  describe('POST /cubs', () => {
+    let res = {};
+
+    beforeEach(async () => {
+      res = await request(server).post('/cubs').send({
+        name: 'Kris Bryant',
+        position: '3B',
+        number: 17
+      });
+    });
+
+    it('should return 201 ok', () => {
+      expect(res.status).toBe(201);
+    });
+
+    it('should return a JSON object', () => {
+      expect(res.type).toBe('application/json');
+    });
+
+    it('should return {name: "Kris Bryant", position: "3B", number: 17}', () => {
+      expect(res.body).toEqual({
+        name: 'Kris Bryant',
+        position: '3B',
+        number: 17
+      });
+    });
+  });
+
+  // describe('DELETE /cubs/:id', () => {
+  //   let res = {};
+  //   beforeEach();
+  // });
 });
