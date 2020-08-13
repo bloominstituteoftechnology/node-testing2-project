@@ -87,11 +87,15 @@ describe('server.js', () => {
     });
 
     it('should delete the Cub with the specified id', async () => {
-      let res = await request(server).get('/cubs');
-
-      res = await request(server).delete('/cubs/1');
+      const res = await request(server).delete('/cubs/1');
 
       expect(res.status).toBe(200);
+    });
+
+    it('should return 404 if the specified id does not exist', async () => {
+      const res = await request(server).delete('/cubs/240');
+
+      expect(res.status).toBe(404);
     });
   });
 });
