@@ -2,6 +2,10 @@ const request = require('supertest');
 const server = require('./server');
 
 describe('server.js', () => {
+  it('should set up testing environment', () => {
+    expect(process.env.DB_ENV).toBe('testing');
+  });
+
   describe('GET /', () => {
     let res = {};
 
@@ -21,4 +25,6 @@ describe('server.js', () => {
       expect(res.body).toEqual({ api: 'up' });
     });
   });
+
+  describe('POST /cubs', () => {});
 });
