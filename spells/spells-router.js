@@ -20,28 +20,23 @@ router.get('/:id', async (req, res, next) => {
         if(spell){
             res.status(200).json(spell);
         }
+
+        res.status(404).json({message: 'Spell not found'});
     } catch(err) {
-        res.status(404).json({message: 'Spell not found'});
         next(err);
     }
 });
 
-router.post('/', validate, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
-        const spell = await spells.findBy({name}).first();
-
-        if (spell){
-            return res.status(409).json({message: 'Name is already taken.'})
-        } else {
-            return res.status(201).json(req.body)
-        }
+        const newSpell = await spells.add(req.body);
+        res.status(201).json(newSpell);
     } catch (err){
-        res.status(404).json({message: 'Spell not found'});
         next(err);
     }
 });
 
-router.put('/:id', validate, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     try {
         const update = await spells.edit(req.params.id, req.body);
 

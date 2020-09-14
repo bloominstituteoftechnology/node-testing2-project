@@ -1,27 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require('helmet');
 const spellsRouter = require("../spells/spells-router");
-const usersRouter = require('../users/users-router');
-const authenticate = require('../middleware/authenticate');
 const server = express();
-const db = require('./config');
-const secret = process.env.SECRET || "secret";
-const session = require('express-session');
-const KnexSessionStore = require('connect-session-knex')(session);
 
+
+server.use(helmet());
 server.use(cors());
 server.use(express.json());
-server.use(session({
-    resave: false,
-    saveUninitialized: false,
-    secret: secret,
-    store: new KnexSessionStore({
-        knex: db,
-        createtable: true
-    })
-}));
-server.use("/api/spells", authenticate, spellsRouter);
-server.use('/api/auth', usersRouter);
+
+server.use("/api/spells", spellsRouter);
 
 server.get("/", (req, res) => {
 	res.json({

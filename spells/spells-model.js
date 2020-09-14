@@ -1,7 +1,7 @@
 const db = require('../api/config');
 
 function find() {
-    return db('spells');
+    return db('spells').select('*');
 };
 
 function findById(id){
