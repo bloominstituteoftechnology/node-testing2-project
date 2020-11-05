@@ -22,6 +22,8 @@
   "homepage": "https://github.com/LambdaSchool/node-server-testing#readme",
   "devDependencies": {
     "jest": "^24.9.0",
+    "knex": "^0.21.12",
+    "sqlite3": "^5.0.0",
     "supertest": "^4.0.2"
   },
   "dependencies": {
