@@ -15,35 +15,35 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe("hobbits integration tests", () => {
-  it("gets a list of hobbits", async () => {
-    const res = await supertest(server).get("/hobbits");
+describe("cakes integration tests", () => {
+  it("gets a list of cakes", async () => {
+    const res = await supertest(server).get("/cakes");
     expect(res.statusCode).toBe(200);
     expect(res.type).toBe("application/json");
     expect(res.body.length).toBeGreaterThanOrEqual(4);
-    expect(res.body[0].name).toBe("sam");
+    expect(res.body[0].name).toBe("Mint Chocolate Chip");
   });
 
-  it("gets a single hobbit by ID", async () => {
-    const res = await supertest(server).get("/hobbits/2");
+  it("gets a single cake by ID", async () => {
+    const res = await supertest(server).get("/cakes/2");
     expect(res.statusCode).toBe(200);
     expect(res.type).toBe("application/json");
     expect(res.body.id).toBe(2);
-    expect(res.body.name).toBe("frodo");
+    expect(res.body.name).toBe("Triple Chocolate");
   });
 
-  it("returns error for a hobbit that doesn't exist", async () => {
-    const res = await supertest(server).get("/hobbits/50");
+  it("returns error for a cake that doesn't exist", async () => {
+    const res = await supertest(server).get("/cakes/50");
     expect(res.statusCode).toBe(404);
   });
 
-  it("creates a new hobbit", async () => {
+  it("creates a new cake", async () => {
     const res = await supertest(server)
-      .post("/hobbits")
-      .send({ name: "bilbo" });
+      .post("/cakes")
+      .send({ name: "Original", base_flavor: "yellow" });
     expect(res.statusCode).toBe(201);
     expect(res.type).toBe("application/json");
-    expect(res.body.name).toBe("bilbo");
+    expect(res.body.name).toBe("Original");
     // we don't know exactly what the new ID will be,
     // just make sure something was generated
     expect(res.body.id).toBeDefined();
