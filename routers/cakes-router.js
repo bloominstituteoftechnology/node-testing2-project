@@ -1,11 +1,11 @@
 const express = require("express");
-const Hobbits = require("./hobbits-model");
+const Cakes = require("./cakes-model");
 
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    res.json(await Hobbits.find());
+    res.json(await Cakes.find());
   } catch (err) {
     next(err);
   }
@@ -13,14 +13,14 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const hobbit = await Hobbits.findById(req.params.id);
-    if (!hobbit) {
+    const cake = await Cakes.findById(req.params.id);
+    if (!cake) {
       return res.status(404).json({
-        message: "Hobbit not found",
+        message: "Cake not found",
       });
     }
 
-    res.json(hobbit);
+    res.json(cake);
   } catch (err) {
     next(err);
   }
@@ -28,8 +28,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const hobbit = await Hobbits.create(req.body);
-    res.status(201).json(hobbit);
+    const cake = await Cakes.create(req.body);
+    res.status(201).json(cake);
   } catch (err) {
     next(err);
   }

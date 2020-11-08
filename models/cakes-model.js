@@ -1,25 +1,25 @@
 const db = require("../data/config");
 
 function find() {
-  return db("hobbits");
+  return db("cakes");
 }
 
 function findById(id) {
-  return db("hobbits").where({ id }).first();
+  return db("cakes").where({ id }).first();
 }
 
 async function create(data) {
-  const [id] = await db("hobbits").insert(data);
+  const [id] = await db("cakes").insert(data);
   return findById(id);
 }
 
 async function update(id, data) {
-  await db("hobbits").where({ id }).update(data);
+  await db("cakes").where({ id }).update(data);
   return findById(id);
 }
 
 function remove(id) {
-  return db("hobbits").where({ id }).del();
+  return db("cakes").where({ id }).del();
 }
 
 module.exports = {

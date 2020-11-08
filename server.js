@@ -1,13 +1,13 @@
 const express = require("express");
 const cors = require("cors");
-// const hobbitsRouter = require("./hobbits/hobbits-router")
+const cakesRouter = require("./hobbits/cakes-router");
 
 const server = express();
 
 server.use(cors());
 server.use(express.json());
 
-// server.use("/hobbits", hobbitsRouter);
+server.use("/cakes", cakesRouter);
 server.get("/", (req, res) => {
   res.json({
     message: "Welcome to our API",
