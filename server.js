@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const cakesRouter = require("./hobbits/cakes-router");
+const cakesRouter = require("./routers/cakes-router");
 
 const server = express();
 
