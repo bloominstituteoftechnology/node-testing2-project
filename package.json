@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch"
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --watch --verbose"
   },
   "jest": {
     "testEnvironment": "node"
@@ -13,12 +14,17 @@
     "url": "git+https://github.com/LambdaSchool/node-server-testing.git"
   },
   "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.12",
+    "sqlite3": "^5.0.0"
+  },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "eslint": "^7.13.0",
     "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
     "supertest": "^6.0.1"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
   }
 }
