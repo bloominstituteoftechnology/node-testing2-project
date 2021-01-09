@@ -1,10 +1,9 @@
-const db = require('../database/db-config.js');
+const db = require('../db-config.js');
 
 
 module.exports = {
     findUsers,
     findUserById,
-    findUserByName,
     register,
     remove,
 }
@@ -18,7 +17,6 @@ async function findUsers() {
     }
 }
 
-
 async function findUserById(userID) {
     try {
         return await db('users').where({id: userID}).first();
@@ -27,19 +25,10 @@ async function findUserById(userID) {
     }
 }
 
-async function findUserByName(username) {
-    try {
-        return await db('users').where({username}).first();
-    } catch (err) {
-        throw err;
-    }
-}
-
-
 async function register(newUser) {
     try {
-        const registered_user = await db('users').insert(newUser);
-        return registered_user;
+        const ids = await db('users').insert(newUser);
+        return findUserById(ids[0]);
     } catch (error) {
         throw error
     }
