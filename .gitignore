@@ -108,3 +108,5 @@ dist
 
 # VSCode debugger config
 .vscode/launch.json
+
+.idea
