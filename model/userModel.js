@@ -12,7 +12,9 @@ async function get (filter){
 }
 
 async function insert(user){
-    return await db.insert(user).into('users');
+    const {username} = user
+         await db.insert(user).into('users');
+    return await db.select('*').from('users').where({username})
 };
 
 async function getBy(filter){
