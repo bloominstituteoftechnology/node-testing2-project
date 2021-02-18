@@ -18,16 +18,16 @@ For this project you will use `Test Driven Development` to create a RESTful API 
 
 ## Requirements
 
-- use `jest` and `supertest` to write the tests.
-- Your API must be able to **create** and **delete** a _resource_ of your choosing.
-- Write a minimum of two tests per route handler.
+[x] use `jest` and `supertest` to write the tests.
+[x] Your API must be able to **create** and **delete** a _resource_ of your choosing.
+[x] Write a minimum of two tests per route handler.
 
 ### Task 3: Stretch Goals
 
 The following goals are designed to stretch your knowledge and may require additional research beyond what was learned in class today.
 
 - [ ] Add endpoints for viewing the details of the resource. Write tests for it.
-- [ ] Add a testing database to the project and configure the testing script inside `package.json` to use the testing database. Hint: use `cross-env` npm package.
+- [x] Add a testing database to the project and configure the testing script inside `package.json` to use the testing database. Hint: use `cross-env` npm package.
 - [ ] Complete the rest of the CRUD operations and write tests for them.
 - [ ] Add tests for your data access files (models).
 

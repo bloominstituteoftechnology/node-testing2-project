@@ -28,11 +28,19 @@ describe('users model', ()=>{
         })
     })
 
-    // describe('remove()', ()=>{
-    //     test('removes the provided user.', async()=>{
-    //         const newUser = await Users.insert({username: 'testuser', password: 'testpassword', department: 'Hosting'})
-    //         await Users.remove(newUser)
-    //     })
-    // })
+    describe('remove()', ()=>{
+        test('removes the provided user.', async()=>{
+            let user = {username: 'ass', password: 'ass', department: 'ass'}
+            let usersLength;
+            usersLength = await db('users');
+            expect(usersLength).toHaveLength(0);
+            await Users.insert(user)
+            usersLength = await db('users');
+            expect(usersLength).toHaveLength(1);
+            await Users.remove(user)
+            usersLength = await db('users')
+            expect(usersLength).toHaveLength(0)
+        })
+    })
 })
 
