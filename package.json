@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "jest": {
     "testEnvironment": "node"
@@ -19,6 +21,9 @@
     "supertest": "^6.0.1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.17",
+    "nodemon": "^2.0.7",
+    "sqlite3": "^5.0.0"
   }
 }
