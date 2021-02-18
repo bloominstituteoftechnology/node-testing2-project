@@ -8,6 +8,14 @@ module.exports = {
       filename: './data/users.db3'
     },
     useNullAsDefault: true
+  },  
+  //npx knex migrate:latest --env testing
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './data/test.db3'
+    },
+    useNullAsDefault: true
   },
 
   
