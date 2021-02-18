@@ -1,24 +1,42 @@
 {
-  "name": "node-server-testing",
+  "name": "node-auth2-project",
   "version": "1.0.0",
-  "description": "Node Server Testing Challenge",
+  "description": "## Introduction",
+  "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "test": " cross-env DB_ENV=testing jest --watchAll",
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/node-server-testing.git"
+    "url": "git+https://github.com/e-licea/node-auth2-project.git"
   },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^7.13.0",
-    "jest": "^26.6.3",
-    "supertest": "^6.0.1"
+  "bugs": {
+    "url": "https://github.com/e-licea/node-auth2-project/issues"
   },
+  "homepage": "https://github.com/e-licea/node-auth2-project#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcrypt": "^5.0.0",
+    "connect-session-knex": "^2.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^4.4.1",
+    "jest": "^26.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.17",
+    "knex-cleaner": "^1.3.1",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
   }
 }
