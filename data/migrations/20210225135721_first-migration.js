@@ -4,7 +4,6 @@ exports.up = function(knex) {
   .createTable('pokemon', tbl =>{
       tbl.increments()
       tbl.string('name', 250).notNullable().unique()
-      tbl.integer('pokedex number').notNullable().unique()
   })
 };
 

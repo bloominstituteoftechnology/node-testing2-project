@@ -1,8 +1,13 @@
 const db = require('../../data/dbConfig')
 
 module.exports = {
+    get,
     insert,
     remove
+}
+
+async function get(){
+    return db('pokemon')
 }
 
 async function insert(pokemon){

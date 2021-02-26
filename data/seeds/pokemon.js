@@ -5,9 +5,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('pokemon').insert([
-        {id: 1, name: 'Bulbasaur', pokedex_number:1},
-        {id: 2, name: 'Ivysaur', pokedex_number:2},
-        {id: 3, name: 'Venasaur', pokedex_number:3}
+        {id: 1, name: 'Bulbasaur'},
+        {id: 2, name: 'Ivysaur'},
+        {id: 3, name: 'Venasaur'}
       ]);
     });
 };
