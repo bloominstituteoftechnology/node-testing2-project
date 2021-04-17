@@ -12,7 +12,7 @@ module.exports = {
       directory: './data/seeds'
     },
     connection: {
-      filename: './dev.sqlite3'
+      filename: './data/tokens.db3'
     }
   },
 
@@ -26,8 +26,9 @@ module.exports = {
       directory: './data/seeds'
     },
     connection: {
-      filename: '..'
-    }
+      filename: './data/test.db3'
+    },
+    
   },
 
   staging: {
@@ -38,6 +39,9 @@ module.exports = {
       password: 'password'
     },
     pool: {
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done)
+      },
       min: 2,
       max: 10
     },
