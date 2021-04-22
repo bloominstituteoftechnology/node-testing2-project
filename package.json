@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watchAll --verbose --runInBand"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "jest --watchAll --verbose --runInBand",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "jest": {
     "testEnvironment": "node"
