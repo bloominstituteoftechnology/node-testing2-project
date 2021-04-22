@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {insert} = require('../model/memento-model');
+const mw = require('../middleWare/middleware')
+const { insert, deleteBy } = require('../model/memento-model');
 
 // [POST] - /api/mori/
 router.post('/', (req,res,next) => {
@@ -15,8 +16,13 @@ router.post('/', (req,res,next) => {
 })
 
 // [delete] - /api/mori/:id
-router.delete('/:id', (req,res,next) => {
-  res.json('deleted')
+ router.delete('/:id', mw.validateID, async (req,res,next) => {
+  try {
+    await deleteBy(req.params.id)
+    res.status(200).json(`${req.user.name} deleted >:)`)
+  } catch (err) {
+    next(err)
+  }
 })
 
 

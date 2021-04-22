@@ -1,7 +1,7 @@
 const db = require('../../data/db-config');
 
 function findBy(id){
-  return db('momento').where({id}).first()
+  return db('momento').where({id}).first();
 }
 
 async function insert(user){
@@ -9,7 +9,13 @@ async function insert(user){
   return findBy(id);
 }
 
+function deleteBy(id){
+  return db('momento').where({id}).del();
+}
+
 
 module.exports = {
-  insert
+  insert,
+  findBy,
+  deleteBy
 }
