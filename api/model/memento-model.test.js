@@ -1,4 +1,4 @@
-const Momento = require('../model/memento-model');
+const Momento = require('./memento-model');
 const db = require('../../data/db-config');
 
 
