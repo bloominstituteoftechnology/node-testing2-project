@@ -46,10 +46,34 @@ describe("Momento model", () => {
 
   })
 
-  describe("delete function", () => {
+  describe("delete function",  () => {
+
+      test('remove from database', async () => {
+        await Momento.insert(angelina);
+
+        let data = await db('momento');
+        expect(data).toHaveLength(1);
+
+        await Momento.deleteBy(1);
+        data = await db('momento');
+        expect(data).toHaveLength(0);
+      })
 
 
+      test('database does not contain delete data?', async () => {
 
+        await Momento.insert(angelina)
+        await Momento.insert(lyub)
+
+        let data = await db('momento')
+        expect(data).toContainEqual({id: 1, ...angelina})
+
+        await Momento.deleteBy(1)
+        data = await db('momento')
+        expect(data).not.toContainEqual({id: 1, ...angelina})
+
+
+      })
 
   })
 
