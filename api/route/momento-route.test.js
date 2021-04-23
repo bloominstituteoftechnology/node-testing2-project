@@ -20,6 +20,21 @@ describe("server", () => {
           return done()
         })
     })
+
+
+    it('responds with status 200', function(done){
+      request(server)
+        .post('/api/mori')
+        .send({name: 'john12'})
+        .set('Accept', 'application/json')
+        .expect(res => {
+          res.status = 200
+        })
+        .expect(200, done)
+
+
+    })
+
   })
 
 })
