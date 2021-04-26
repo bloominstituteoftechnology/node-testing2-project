@@ -52,4 +52,29 @@ router.post('/:id/', async (req, res, next) => {
     }
 })
 
+router.post('/:id/info/', async (req, res, next) => {
+    const { id } = req.params;
+    const info = req.body;
+    const response = await Tokens.updateTokenInfo(id, info);
+    try {
+        if (response) {
+            res.status(204).json(await Tokens.findInfo());
+        } else {
+            next();
+        }
+        
+    } catch (err) {
+        next(err)
+    }
+})
+
+router.delete('/:id/info', async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        res.status(204).json(await Tokens.deleteInfo(id))
+    } catch (err) {
+        next(err);
+    }
+})
+
 module.exports = router;

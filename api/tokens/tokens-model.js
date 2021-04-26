@@ -44,8 +44,8 @@ async function addInfo(id, info) {
 }
 
 async function updateTokenInfo(id, info) {
-    const response = await db('token_info').where({ token_id: id }).update({ token_description: info }, ['token_description', 'token_id']);
-
+    const response = await db('token_info').where({ token_id: id }).update(info, ['token_description', 'token_id']);
+    console.log(`token-model.js: updateTokenInfo(): response:`, response)
     if (response) {
         console.log(`info with id: ${id} updated`)
     } else {
@@ -53,6 +53,17 @@ async function updateTokenInfo(id, info) {
     }
 
     return response;
+}
+
+async function deleteInfo(id) {
+    const delInfo = await findInfo(id);
+    const del = db('token_info').where('token_id', id).del();
+    const obj = {
+        delInfo: delInfo,
+        del: del
+    };
+
+    return obj;
 }
 
 
@@ -64,4 +75,5 @@ module.exports = {
     add,
     addInfo,
     updateTokenInfo,
+    deleteInfo,
 }
