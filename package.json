@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch"
+    "test": "cross-env NODE_ENV=testing jest --runInBand",
+    "test:watch": "cross-env NODE_ENV=testing jest --verbose --watch --runInBand",
+    "server": "cross-env NODE_ENV=development nodemon index.js",
+    "start": "node index.js"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+			"./jest.setup.js"
+		]
   },
   "repository": {
     "type": "git",
@@ -14,11 +20,15 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^7.13.0",
     "jest": "^26.6.3",
-    "supertest": "^6.0.1"
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.95.5",
+    "sqlite3": "^5.0.2"
   }
 }
