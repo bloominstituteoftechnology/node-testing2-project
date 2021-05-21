@@ -5,6 +5,9 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
     "test": "jest --watch"
   },
   "jest": {
