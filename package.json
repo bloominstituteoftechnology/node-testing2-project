@@ -6,6 +6,7 @@
     "server": "nodemon index.js",
     "start": "node index.js",
     "migrate": "knex migrate:latest",
+    "rollback":"knex migrate:rollback",
     "seed": "knex seed:run",
     "ketchup": "git fetch && git reset --hard origin/lecture",
     "test": "cross-env DB_ENV=testing jest --watchAll --verbose --runInBand"
