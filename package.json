@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest"
+    "server": "nodemon index.js",
+    "start": "node index.js",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "ketchup": "git fetch && git reset --hard origin/lecture",
+    "test": "cross-env DB_ENV=testing jest --watchAll --verbose --runInBand"
   },
   "repository": {
     "type": "git",
