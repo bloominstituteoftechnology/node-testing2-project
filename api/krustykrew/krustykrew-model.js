@@ -2,7 +2,7 @@ const db = require('../../data/dbConfig.js')
 
 module.exports = {
     insert,
-    update,
+    // update,
     remove,
     getAll,
     getById,
@@ -24,10 +24,12 @@ async function insert(krustykrew){
     })
 }
 
-async function update(id, changes){
-    return null
-}
+// async function update(id, changes){
+//     return null
+// }
 
-function remove(id){
-    return null
+async function remove(id){
+    const removeKrewMember = await db("krustykrew").where("id",id).first()
+    await db("krustykrew").where("id",id).delete()
+    return removeKrewMember
 }
