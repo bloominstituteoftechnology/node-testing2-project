@@ -35,4 +35,18 @@ describe('[GET] /', () => {
       expect(res.body).toMatchObject({ id: 5, name: 'Plankton' })
     })
   })
-  
+  describe('DELETE /krustykrew', () => {
+		
+		test('returns status 200 upon successful deletion', async () => {
+			const res = await request(server).delete(
+				'/krustykrew/1'
+			);
+			expect(res.status).toBe(200);
+		});
+		test('returns status 400 with invalid id', async () => {
+			const res = await request(server).delete(
+				'/krustykre/69'
+			);
+			expect(res.status).toBe(404);
+		});
+	});

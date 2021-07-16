@@ -71,11 +71,7 @@ describe('[REMOVE]', () =>{
        krustykrabbykrew = await db("krustykrew").where({id}).first()
        expect(krustykrabbykrew).toBeFalsy
     })
-    test('respond with removed krusty krew member', async () =>{
-        await db("krustykrew").insert(krewmember)
-        let krustykrabbykrew = await request(server).delete("krustykrew/1")
-        expect(krustykrabbykrew.body).toMatchObject(krewmember)
-    })
+    
 })
 
 

@@ -29,7 +29,7 @@ async function insert(krustykrew){
 // }
 
 async function remove(id){
-    const removeKrewMember = await db("krustykrew").where("id",id).first()
-    await db("krustykrew").where("id",id).delete()
-    return removeKrewMember
+   return db('krustykrew')
+   .where({id})
+   .del()
 }
