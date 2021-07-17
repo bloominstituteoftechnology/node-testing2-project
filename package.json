@@ -4,7 +4,7 @@
   "description": "Node Server Testing Challenge",
   "scripts": {
     "start": "node index.js",
-    "test": "cross-env DB_ENV=testing jest --watchAll verbose --runInBand",
+    "test": "cross-env DB_ENV=testing jest --watchAll --verbose --runInBand",
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
