@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
     try {
-        const games = await Games.getById()
+        const games = await Games.getById(req.params.id)
         res.json(games)
       } catch (err) {
         next(err)

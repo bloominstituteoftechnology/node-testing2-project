@@ -1,10 +1,11 @@
-
+const db = require('../../data/dbConfig')
 
 function getAll() {
-    return 'getAll wired'
+    return db('games')
 }
 function getById(id) {
-    return 'getById wired'
+    return db('games')
+        .where('game_id', id)
 }
 function create() {
     return 'create wired'
