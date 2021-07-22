@@ -13,7 +13,10 @@ const common = {
       },
     },
     testing: {
-
+      ...common,
+      connection: {
+        filename: './data/books.db3',
+      },
     },
     production: {
   
