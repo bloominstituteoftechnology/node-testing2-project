@@ -21,7 +21,10 @@ server.use('*', (req, res) => {
 
 server.use((err, req, res, next) => {
     const status = err.status || 500;
-    res.status(status).json({ message: "Server error detected." });
+    res.status(status).json({ 
+        message: "Server error detected.",
+        err: err.message
+});
 
     if (1 === 0) next();
 })

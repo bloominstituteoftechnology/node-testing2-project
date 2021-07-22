@@ -32,19 +32,34 @@ describe("ipholder-router tests", () => {
             expect(res).toBeTruthy();
             expect(res.status).not.toBe(404);
         })
-        // it("[3] create ip actually adds a record to the database", async () => {
-        //     const start = await response(server).get("/api/ipholder");
-        //     await response(server).post("/api/ipholder")
-        //         .send(input);
-        //     const result = await response(server).get('/api/ipholder');
+        it("[3] create ip actually adds a record to the database", async () => {
+            const start = await response(server).get("/api/ipholder");
+            await response(server).post("/api/ipholder")
+                .send(input);
+            const result = await response(server).get('/api/ipholder');
 
-        //     expect(result.length).toBe(start.length + 1);
-        // })
-        // it("[4] create responds with created ipholder", async () => {
-        //     const res = await response(server).post('/api/ipholder')
-        //         .send(input);
+            expect(result.length).toBe(start.length + 1);
+        })
+        it("[4] create responds with created ipholder", async () => {
+            const res = await response(server).post('/api/ipholder')
+                .send(input);
             
-        //     expect(res.body).toMatchObject(input);    
-        // })
+            expect(res.body).toMatchObject(input);    
+        })
+    })
+    describe("remove ipHolder", () => {
+        it("[5] delete endpoint is defined", async () => {
+            const res = await response(server).delete('/api/ipholder/4');
+            
+            expect(res).toBeTruthy();
+            expect(res.status).not.toBe(404);
+        })
+        it("[6] delete endpoint removes record", async () => {
+            const start = await response(server).get("/api/ipholder");
+            await response(server).delete("/api/ipholder/4");
+            const result = await response(server).get('/api/ipholder');
+
+            expect(result.length).toBe(start.length - 1);
+        })
     })
 })

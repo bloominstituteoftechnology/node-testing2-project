@@ -1,7 +1,7 @@
 const db = require('../../data/dbConfig');
 
-const find = async () => {
-    return await db("ipsource");
+const find = () => {
+    return db("ipsource");
 }
 
 const findByID = async (sourceID) => {
@@ -11,8 +11,9 @@ const findByID = async (sourceID) => {
 }
 
 const create = async (source) => {
-    return await db("ipsource")
+    const id = await db("ipsource")
         .insert(source);
+    return findByID(id);    
 }
 
 const remove = async (sourceID) => {
