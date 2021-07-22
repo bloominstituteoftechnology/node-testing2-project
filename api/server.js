@@ -23,7 +23,7 @@ server.get("/books", (req, res) => {
 server.post("/books", async (req, res) => {
   try {
       const data = await Book.create(req.body)
-      res.json(data)
+      res.status(201).json(data)
   } catch (error) {
       res.status(500).json(error)
   }
@@ -32,7 +32,7 @@ server.post("/books", async (req, res) => {
 server.delete("/books/:id", async (req, res) => {
   try {
       const data = await Book.remove(req.params.id)
-      res.json(data)
+      res.statis(204).json(data)
   } catch (error) {
       res.status(500).json(error)
   }
