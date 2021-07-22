@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch",
+    "test": "cross-env DB=testing jest --watchAll --runInBand --verbose",
     "server": "nodemon ./index.js",
     "start": "node ./index.js",
     "migrate": "knex migrate:latest",
@@ -24,6 +24,7 @@
     "supertest": "^6.0.1"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "knex": "^0.95.7",
     "sqlite3": "^5.0.2"
