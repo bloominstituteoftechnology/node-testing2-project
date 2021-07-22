@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
+const ipRouter = require('./ipholder/ipholder-router');
+
 const server = express();
 server.use(helmet() );
 server.use(express.json() );
@@ -10,6 +12,8 @@ server.use(cors() );
 server.get("/", (req,res) => {
     res.json({message: "Yip, yip, Appa!"});
 })
+
+server.use("/api/ipholder", ipRouter);
 
 server.use('*', (req, res) => {
     res.status(404).json({ message: "No such endpoint" })
