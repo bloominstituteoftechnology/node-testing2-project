@@ -6,11 +6,13 @@ function getAll() {
 function getById(id) {
     return db('games')
         .where('game_id', id)
+        .first()
 }
-function create() {
-    return 'create wired'
+async function create(newGame) {
+    const [id] = await db('games').insert(newGame)
+    return getById(id)
 }
-function remove(id) {
+async function remove(id) {
     return 'remove wired'
 }
 

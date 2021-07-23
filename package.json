@@ -7,7 +7,7 @@
     "start": "node index.js",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
-    "test": "jest --watchAll --runInBand"
+    "test": "cross-env DB_ENV=testing jest --watchAll --runInBand"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^26.0.24",
     "cross-env": "^7.0.3",
     "eslint": "^7.31.0",
     "jest": "^26.6.3",
