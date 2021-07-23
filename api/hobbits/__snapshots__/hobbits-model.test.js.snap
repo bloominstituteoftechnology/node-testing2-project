@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hobbits model remove matches the snapshot 1`] = `
+Array [
+  Object {
+    "id": 1,
+    "name": "sam",
+  },
+  Object {
+    "id": 2,
+    "name": "frodo",
+  },
+  Object {
+    "id": 4,
+    "name": "merry",
+  },
+]
+`;
