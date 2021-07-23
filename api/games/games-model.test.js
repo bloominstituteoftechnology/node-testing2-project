@@ -42,18 +42,16 @@ describe('insert game tests', () => {
     })
 })
 
-describe('remove game tests', () => {
-    test('it deletes a new game in the db', async () => {
-        // grab gameToBeDeleted
-        const gameToBeDeleted = await db('games')
-            .where('game_id', 1).first()
-        // remove gameToBeDeleted
-        Games.remove(gameToBeDeleted)
-        const remainingGames = await Games.getAll()
-        // check that the length of the games db is now 5
-        expect(remainingGames).toHaveLength(5)
-    })
-    test('it resolves to the recently deleted game', async () => {
+// describe('remove game tests', () => {
+//     test('it deletes a new game in the db', async () => {
+//         // remove game
+//         Games.remove({ game_id: 1})
+//         // get all games
+//         const remainingGames = await Games.getAll()
+//         // check that the length of the games db is now 4
+//         expect(remainingGames).toHaveLength(4)
+//     })
+//     test('it resolves to the recently deleted game', async () => {
 
-    })
-})
+//     })
+// })

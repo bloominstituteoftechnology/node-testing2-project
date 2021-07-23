@@ -9,11 +9,16 @@ function getById(id) {
         .first()
 }
 async function create(newGame) {
-    const [id] = await db('games').insert(newGame)
+    const [id] = await db('games')
+        .insert(newGame)
     return getById(id)
 }
 async function remove(id) {
-    return 'remove wired'
+    const gameToBeDeleted =  await getById(id)
+    await db('games')
+        .where('game_id', id)
+        .del()
+    return gameToBeDeleted
 }
 
 module.exports = {

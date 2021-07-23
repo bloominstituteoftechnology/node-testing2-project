@@ -31,8 +31,8 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
     try {
-        const games = await Games.remove()
-        res.json(games)
+        const gameToBeDeleted = await Games.remove(req.params.id)
+        res.json(gameToBeDeleted)
       } catch (err) {
         next(err)
     }
