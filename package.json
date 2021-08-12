@@ -4,7 +4,12 @@
   "description": "Node Server Testing Challenge",
   "scripts": {
     "test": "cross-env NODE_ENV=testing jest --watch --verbose",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "reset": "npm run rollback && npm run migrate && npm run seed",
+    "cleanup": "knex seed:run --specific=00-cleanup.js",
+    "seed": "knex seed:run"
   },
   "jest": {
     "testEnvironment": "node"

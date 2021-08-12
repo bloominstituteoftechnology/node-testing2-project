@@ -14,17 +14,19 @@ function getAll() {
 }
 
 function getById(id) {
-  return null;
+  return db("users").where({ id }).first();
 }
 
-function insert(user) {
-  return null;
+async function insert(user) {
+  const [id] = await db("users").insert(user);
+  return getById(id);
 }
 
-function update(id, changes) {
-  return null;
+async function update(id, changes) {
+  await db("users").where({ id }).update(changes);
+  return getById(id);
 }
 
 function remove(id) {
-  return null;
+  return db("users").where({ id }).del();
 }
