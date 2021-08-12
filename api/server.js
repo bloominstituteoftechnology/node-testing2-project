@@ -20,3 +20,5 @@ server.get("/users", (req, res) => {
       res.status(500).json(error);
     });
 });
+
+module.exports = server;
