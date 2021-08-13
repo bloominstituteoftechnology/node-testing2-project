@@ -22,18 +22,18 @@ describe("server.js", () => {
     await db.destroy();
   });
 
-  test("Proper database env variable is set", () => {
-    expect(process.env.DB_ENV).toEqual("testing");
-  });
+  // test("Proper database env variable is set", () => {
+  //   expect(process.env.DB_ENV).toEqual("testing");
+  // });
 
-  describe("[GET] /", () => {
-    test("returns in valid response", () => {
-      return request(server)
-        .get("/")
-        .expect("Content-Type", /application\/json/)
-        .expect(200, { api: "running" });
-    });
-  });
+  // describe("[GET] /", () => {
+  //   test("returns in valid response", () => {
+  //     return request(server)
+  //       .get("/")
+  //       .expect("Content-Type", /application\/json/)
+  //       .expect(200, { api: "running" });
+  //   });
+  // });
 
   describe("[GET] /users", () => {
     test("returns an array of users", async () => {

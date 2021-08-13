@@ -1,5 +1,4 @@
 const utils = require("./index");
-
 const db = require("../data/dbConfig");
 const User = require("./users/users-model");
 
@@ -40,9 +39,22 @@ describe("User model", () => {
     });
   });
 
+  describe("insert()", () => {
+    test("creates a new user", async () => {
+      const user = await User.insert({ name: "stan" });
+      expect(user).toMatchObject({ name: "Stan" });
+    });
+  });
+
   describe("getById()", () => {
     test("returns the user if it exists", async () => {
-      //   expect(user);
+      const { id } = await User.insert({ name: "Stannn" });
+      const user = await User.getById(id);
+      expect(user).toMatchObject({ name: "Stan" });
+    });
+    test("returns undefined when the user doesn't exist", async () => {
+      const result = await User.getById("12345");
+      expect(result).toBeUndefined();
     });
   });
 
