@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --watchAll --verbose --runInBand"
   },
   "jest": {
     "testEnvironment": "node"
@@ -19,6 +21,11 @@
     "supertest": "^6.0.1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "knex": "^0.21.21",
+    "nodemon": "^2.0.12",
+    "sqlite3": "^5.0.2"
   }
 }
