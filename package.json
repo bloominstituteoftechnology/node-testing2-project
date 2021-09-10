@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch"
+    "test":"cross-env DB_ENV=testing jest --watchAll --verbose --runInBand"
   },
   "jest": {
     "testEnvironment": "node"
@@ -19,6 +19,8 @@
     "supertest": "^6.0.1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.95.11",
+    "sqlite3": "^5.0.2"
   }
 }
