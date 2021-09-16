@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch"
+    "server": "nodemon index.js",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose -runInBand",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "jest": {
     "testEnvironment": "node"
@@ -14,11 +17,20 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.13.0",
     "jest": "^26.6.3",
+    "nodemon": "^2.0.12",
     "supertest": "^6.0.1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.11",
+    "sqlite3": "^5.0.2"
   }
 }
