@@ -11,9 +11,10 @@ module.exports = {
     connection: { filename: './data/flowers.db3' },
     seeds: { directory: './data/seeds' },
   },
-  // testing: {
-  //   ...sharedConfig,
-  //   connection: { filename: './data/test.db3' },
-  // },
+  testing: {
+    ...sharedConfig,
+    connection: { filename: './data/test.db3' },
+    seeds: { directory: './data/seeds' }
+  },
 };
 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
-    "test": "jest --watch",
+    "test": "cross-env DB_ENV=testing jest --watchAll --verbose --runInBand",
     "server": "nodemon index.js"
   },
   "jest": {
