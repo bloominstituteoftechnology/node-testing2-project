@@ -2,6 +2,7 @@ const db = require('../../data/db-config');
 
 async function get() {
     return await db('flowers')
+    .orderby
 }
 
 async function add(object) {
