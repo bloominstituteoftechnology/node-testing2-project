@@ -1,10 +1,11 @@
 const express = require('express');
-const router = express.Router();
-const Pet = require('./pets-model');
 const {
     validatePet,
     checkPetId
 } = require('./pets-middleware');
+
+const router = express.Router();
+const Pet = require('./pets-model');
 
 router.get('/', async (req, res, next) => {
     try {
@@ -28,17 +29,16 @@ router.post('/', validatePet, async (req, res, next) => {
     }
 });
 
-router.put(
-    '/:id',
-    checkPetId,
-    validatePet,
-    async (req, res, next) => {
-        try {
-            res.json('editing a new pet');
-        } catch (error) {
-            next(error);
-        }
-    });
+router.put('/:id', checkPetId, validatePet,  (req, res, next) => {
+    Pet.update(req.params.id, { name: req.body.name })
+        .then(() => {
+            return Pet.getById(req.params.id);
+        })
+        .then(user => {
+            res.status(200).json(user);
+        })
+        .catch(next);
+});
 
 router.delete('/:id', async (req, res, next) => {
     try {

@@ -4,6 +4,7 @@ module.exports = {
     getAll,
     getById,
     insert,
+    update,
     remove
 };
 
@@ -12,13 +13,26 @@ function getAll() {
 }
 
 function getById(id) {
-    return db('pets').where('pet_id', id).first();
+    return db('pets')
+        .where('pet_id', id)
+        .first();
 }
 
 async function insert(pet) {
-    return await db('pets').insert(pet).then(([id]) => {
-        return getById(id);
-    });
+    return await db('pets')
+        .insert(pet)
+        .then(([id]) => {
+            return getById(id);
+        });
+}
+
+function update(id, changes) {
+    return db('pets')
+        .where({ pet_id: id })
+        .update(changes)
+        .then(rows => {
+            return getById(id);
+        });
 }
 
 async function remove(id) {
