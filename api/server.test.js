@@ -83,7 +83,7 @@ describe('[POST] /cars', () => {
         expect(res.status).toBe(201)
     })
 
-    test('cause car to be added to the db ', async () => {
+    test('causes car to be added to the db ', async () => {
         const cars = await db('cars')
         expect(cars).toHaveLength(4)
     })

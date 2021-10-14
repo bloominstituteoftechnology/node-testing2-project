@@ -15,9 +15,9 @@ server.get('/cars/id', async (req, res) => {
     res.status(200).json(req.car)
 })
 
-server.post('/cars', async (req, res) => {
+server.post('/cars', async (req, res, next) => {
     const inserted = await Cars.create(req.body)
-    res.status(201).json({ ...inserted })
+    res.status(201).json(inserted)
 })
 
 module.exports = server
