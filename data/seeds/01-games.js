@@ -9,9 +9,6 @@ exports.seed = async function (knex) {
       max_players: 2,
     },
     {
-      game_name: "solitaire",
-    },
-    {
       game_name: "small world",
       max_players: 5,
     },

@@ -19,11 +19,55 @@ test("runs in correct env", () => {
 });
 
 describe("Game.getAll()", () => {
-  let games
+  let games;
   beforeEach(async () => {
-    games = await Game.getAll()
-  })
+    games = await Game.getAll();
+  });
   it("gets all games", async () => {
+    expect(games).toHaveLength(4);
+  });
+  it("gets games in correct shape", async () => {
+    expect(games).toMatchObject([
+      {
+        game_id: 1,
+        game_name: "betrayal at house on the hill",
+        max_players: 6,
+      },
+      { 
+        game_id: 2, 
+        game_name: "chess", 
+        max_players: 2 
+      },
+      { 
+        game_id: 3, 
+        game_name: "small world", max_players: 5 
+      },
+      { 
+        game_id: 4, 
+        game_name: "bang", 
+        max_players: 8 
+      },
+    ]);
+  });
+});
+
+describe("Game.getById()", () => {
+  let bang;
+  beforeEach(async () => {
+    bang = await Game.getById(4);
+  });
+  it("gets correct id", async () => {
+    expect(bang.game_id).toBe(4)
+  })
+  it("gets correct name", async () => {
+    expect(bang).toMatchObject({ game_name: "bang"})
+  })
+});
+
+describe("Game.add()", () => {
+  let input = { game_name: "uno" };
+  it("adds new game", async () => {
+    await Game.add(input)
     expect(games).toHaveLength(5)
   })
 })
