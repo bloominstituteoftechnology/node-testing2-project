@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async(req, res, next) => {
-  try {const newGame = await Game.insert(req.body)
+  try {const newGame = await Game.add(req.body)
   res.status(201).json({ newGame })
 } catch {
   next()

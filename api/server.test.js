@@ -58,6 +58,10 @@ describe("[POST] /api/games", () => {
     res = await request(server).post("/api/games").send({ game_name: "uno" });
   });
   it("[13]adding game increases length of table", async () => {
-    expect(res.body).toHaveLength(5)
+    const games = await db("games")
+    expect(games).toHaveLength(5)
   })
+  it("[14]responds with 201 CREATED", async () => {
+    expect(res.status).toBe(201);
+  });
 })
