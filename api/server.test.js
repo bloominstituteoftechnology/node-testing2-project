@@ -23,4 +23,7 @@ describe("[GET] /games", () => {
   it("[10]gets a 200", async () => {
     expect(res.status).toBe(200)
   })
+  it("[11]gets correct number", async () => {
+    expect(res.body).toHaveLength(4)
+  })
 })
