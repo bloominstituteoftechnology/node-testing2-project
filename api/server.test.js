@@ -87,6 +87,4 @@ describe('[POST] /cars', () => {
         const cars = await db('cars')
         expect(cars).toHaveLength(4)
     })
-
-
 })
