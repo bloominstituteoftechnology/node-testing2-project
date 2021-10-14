@@ -10,11 +10,9 @@ const getById = (id) => {
         .first()
 }
 
-const create = (car) => {
-    return db('cars').insert(car)
-        .then(([id]) => {
-            return getById(id)
-        })
+const create = async (car) => {
+    const [id] = await db('cars').insert(car)
+    return getById(id)
 }
 
 module.exports = {
