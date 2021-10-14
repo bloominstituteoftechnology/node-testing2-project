@@ -73,11 +73,15 @@ describe("Game.add()", () => {
     const games = await db("games")
     expect(games).toHaveLength(5)
   })
-  it("[7]added game has correct name", async () => {
+  it("[7]added game has correct id & name", async () => {
     expect(input).toMatchObject({game_id: 5, game_name: "uno"})
   })
 })
 
 describe("Game.delete()", () => {
-  
+  it("[8]deleting a game decreases length of games table", async () => {
+    await Game.delete(2)
+    const games = await db("games");
+    expect(games).toHaveLength(4)
+  })
 })
