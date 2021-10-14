@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/:id', checkPetId, async (req, res) => {
-    res.json(req.car);
+    res.json(req.pet);
 });
 
 router.post('/', validatePet, async (req, res, next) => {

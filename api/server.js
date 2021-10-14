@@ -4,9 +4,9 @@ const server = express();
 
 const PetsRouter = require('../api/endPoints/pets/pets-router');
 
-server.use(express.json())
+server.use(express.json());
 
-server.use('/pets', PetsRouter)
+server.use('/api/pets', PetsRouter);
 
 server.get('/', (req, res) => {
     res.json({ message: 'Pets Api is working add a route to see more' });
