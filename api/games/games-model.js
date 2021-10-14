@@ -9,7 +9,8 @@ function getById(id) {
 }
 
 async function add(game) {
-  await db("games").insert(game);
+  const [id] = await db("games").insert(game);
+  return getById(id);
 }
 
 

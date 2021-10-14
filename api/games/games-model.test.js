@@ -65,10 +65,19 @@ describe("Game.getById()", () => {
 });
 
 describe("Game.add()", () => {
-  let input = { game_name: "uno" };
-  it("[6]adds new game", async () => {
-    await Game.add(input)
+  let input
+  beforeEach(async () => {
+    input = await Game.add({ game_name: "uno" });
+  });
+  it("[6]adds new game to games table", async () => {
     const games = await db("games")
     expect(games).toHaveLength(5)
   })
+  it("[7]added game has correct name", async () => {
+    expect(input).toMatchObject({game_id: 5, game_name: "uno"})
+  })
+})
+
+describe("Game.delete()", () => {
+  
 })
