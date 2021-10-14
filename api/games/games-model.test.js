@@ -78,10 +78,13 @@ describe("Game.add()", () => {
   })
 })
 
-describe("Game.delete()", () => {
-  it("[8]deleting a game decreases length of games table", async () => {
-    await Game.delete(2)
-    const games = await db("games");
-    expect(games).toHaveLength(4)
+describe("Game.deleteById()", () => {
+  beforeEach(async () => {
+    await Game.deleteById(2);
   })
-})
+  it("[8]deleting a game decreases length of games table", async () => {
+    const games = await db("games");
+    expect(games).toHaveLength(3);
+  });
+  it
+});
