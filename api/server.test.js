@@ -14,3 +14,13 @@ beforeEach(async () => {
 afterAll(async () => {
   await db.destroy();
 });
+
+describe("[GET] /games", () => {
+  let res
+  beforeEach(async () => {
+    res = await request(server).get("/api/games")
+  })
+  it("[10]gets a 200", async () => {
+    expect(res.status).toBe(200)
+  })
+})
