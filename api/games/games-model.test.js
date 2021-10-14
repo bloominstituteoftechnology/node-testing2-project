@@ -14,7 +14,7 @@ afterAll(async () => {
   await db.destroy();
 });
 
-test("runs in correct env", () => {
+test("[1]runs in correct env", () => {
   expect(process.env.NODE_ENV).toBe("testing");
 });
 
@@ -23,10 +23,10 @@ describe("Game.getAll()", () => {
   beforeEach(async () => {
     games = await Game.getAll();
   });
-  it("gets all games", async () => {
+  it("[2]gets all games", async () => {
     expect(games).toHaveLength(4);
   });
-  it("gets games in correct shape", async () => {
+  it("[3]gets games in correct shape", async () => {
     expect(games).toMatchObject([
       {
         game_id: 1,
@@ -56,18 +56,19 @@ describe("Game.getById()", () => {
   beforeEach(async () => {
     bang = await Game.getById(4);
   });
-  it("gets correct id", async () => {
+  it("[4]gets correct id", async () => {
     expect(bang.game_id).toBe(4)
   })
-  it("gets correct name", async () => {
+  it("[5]gets correct name", async () => {
     expect(bang).toMatchObject({ game_name: "bang"})
   })
 });
 
 describe("Game.add()", () => {
   let input = { game_name: "uno" };
-  it("adds new game", async () => {
+  it("[6]adds new game", async () => {
     await Game.add(input)
+    const games = await db("games")
     expect(games).toHaveLength(5)
   })
 })
