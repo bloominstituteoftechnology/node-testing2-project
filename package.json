@@ -4,7 +4,10 @@
   "description": "Node Server Testing Challenge",
   "scripts": {
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run"
   },
   "jest": {
     "testEnvironment": "node"
