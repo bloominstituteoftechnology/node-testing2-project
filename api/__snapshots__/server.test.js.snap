@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[DELETE] /api/users/:id responds with the deleted user 1`] = `1`;
+
+exports[`[POST] /api/users responds with the newly created user 1`] = `
+Object {
+  "id": 4,
+  "name": "boris",
+}
+`;
