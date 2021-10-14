@@ -1,9 +1,11 @@
 const router = require("express").Router();
-const Game = require("./games-model")
+const Game = require("./games-model");
 
 router.get("/", (req, res, next) => {
-   res.json("router");
- });
+  Game.getAll().then(games => {
+    res.json(games)
+  })
+});
 
 // router.get("*", (req, res, next) => {
 //   res.json("router");

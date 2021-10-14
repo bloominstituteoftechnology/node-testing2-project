@@ -15,7 +15,7 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe("[GET] /games", () => {
+describe("[GET] /api/games", () => {
   let res
   beforeEach(async () => {
     res = await request(server).get("/api/games")
@@ -25,5 +25,39 @@ describe("[GET] /games", () => {
   })
   it("[11]gets correct number", async () => {
     expect(res.body).toHaveLength(4)
+  })
+  it("[12]gets data in the correct shape", async () => {
+    expect(res.body).toMatchObject([
+      {
+        game_id: 1,
+        game_name: "betrayal at house on the hill",
+        max_players: 6,
+      },
+      {
+        game_id: 2,
+        game_name: "chess",
+        max_players: 2,
+      },
+      {
+        game_id: 3,
+        game_name: "small world",
+        max_players: 5,
+      },
+      {
+        game_id: 4,
+        game_name: "bang",
+        max_players: 8,
+      },
+    ]);
+  });
+})
+
+describe("[POST] /api/games", () => {
+  let res 
+  beforeEach(async () => {
+    res = await request(server).post("/api/games").send({ game_name: "uno" });
+  });
+  it("[13]adding game increases length of table", async () => {
+    expect(res.body).toHaveLength(5)
   })
 })
