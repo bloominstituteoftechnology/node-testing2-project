@@ -13,7 +13,7 @@
     "reset": "npm run rollback && npm run migrate && npm run seed",
     "cleanup": "knex seed:run --specific=01-cleanup.js",
     "seed": "knex seed:run",
-    "test": "cross-env NODE_ENV=testing jest --watch --verbose --runInBand"
+    "test": "cross-env DB_ENV=testing jest --watch --verbose --runInBand"
   },
   "jest": {
     "testEnvironment": "node"
