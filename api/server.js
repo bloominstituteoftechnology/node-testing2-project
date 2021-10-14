@@ -1,8 +1,8 @@
-const express = require('express')
+const express = require('express');
 
-const server = express()
+const server = express();
 
-const PetsRouter = require('./pets-router')
+const PetsRouter = require('../api/endPoints/pets/pets-router');
 
 server.use(express.json())
 
