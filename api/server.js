@@ -1,12 +1,12 @@
 const express = require('express');
 
-
+const UserRouter = require('./users/user-router');
 
 const server = express();
 server.use(express.json());
 
 
-
+server.use('/api/users', UserRouter);
 
 server.get('/', (req, res) => {
     res.status(200).send('hello world');
