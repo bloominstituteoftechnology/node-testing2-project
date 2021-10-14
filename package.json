@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Node Server Testing Challenge",
   "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate: latest",
+    "rollback": "knex migrate: rollback",
+    "reset": "npm run rollback && npm run migrate && npm run seed",
+    "seed": "knex seed:run",
     "test": "jest --watch"
   },
   "jest": {
@@ -14,11 +20,13 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.13.0",
-    "jest": "^26.6.3",
-    "supertest": "^6.0.1"
+    "eslint": "^8.0.1",
+    "jest": "^27.2.5",
+    "nodemon": "^2.0.13",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   }
 }
