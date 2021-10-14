@@ -49,5 +49,6 @@ describe('[DELETE]', () => {
     beforeEach(async () => {
         res = await request(server).get('/api/users');
     });
-    it.todo('write test here');
+    it('we remove the user', () => {
+    });
 });

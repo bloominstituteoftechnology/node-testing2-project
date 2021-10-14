@@ -9,15 +9,19 @@ const getByName = (name) => {
     const user = db('users').where('name', name).first();
     return user
 }
-const insert = () => {
+const insert = async (user) => {
+    const [id] = await db('users').insert(user)
 
+    return await db('users').where('id', id).first()
 }
 const update = () => {
 
 }
 
-const remove = () => {
-
+const remove = async (id) => {
+    const user = db('users').where('id', id)
+    await db('users').where('id', id).del()
+    return user
 }
 
 module.exports = {
