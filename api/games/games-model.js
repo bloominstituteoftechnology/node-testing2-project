@@ -13,9 +13,14 @@ async function add(game) {
   return getById(id);
 }
 
+function deleteById(id) {
+  return db("games").where("game_id", id).del();
+}
+
 
 module.exports = {
   getAll,
   getById,
   add,
+  deleteById,
 };

@@ -86,5 +86,24 @@ describe("Game.deleteById()", () => {
     const games = await db("games");
     expect(games).toHaveLength(3);
   });
-  it
+  it("[9]compleatly remove deleted game", async () => {
+    const games = await db("games");
+    expect(games).toMatchObject([
+      {
+        game_id: 1,
+        game_name: "betrayal at house on the hill",
+        max_players: 6,
+      },
+      {
+        game_id: 3,
+        game_name: "small world",
+        max_players: 5,
+      },
+      {
+        game_id: 4,
+        game_name: "bang",
+        max_players: 8,
+      },
+    ]);
+  })
 });
