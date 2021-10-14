@@ -18,5 +18,4 @@ module.exports = {
       filename: "./data/test.db3",
     },
   },
-  production: {},
 };
