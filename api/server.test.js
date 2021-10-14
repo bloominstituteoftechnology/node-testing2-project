@@ -45,10 +45,13 @@ describe('[PUT]', () => {
     it.todo('write test here');
 });
 describe('[DELETE]', () => {
-    let res;
-    beforeEach(async () => {
-        res = await request(server).get('/api/users');
-    });
-    it('we remove the user', () => {
+
+    it('we remove the user', async () => {
+        const [id] = await db('users').insert({ name: 'tomo', age: 31 })
+        let user = await db('users').where('id', id).first();
+        expect(user).toBeTruthy()
+        await request(server).delete(`/api/users/${id}`)
+        user = await db('users').where('id', id).first();
+        expect(user).toBeFalsy()
     });
 });
