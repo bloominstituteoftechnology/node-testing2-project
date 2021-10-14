@@ -74,3 +74,30 @@ describe('car.getById(id)', () => {
         expect(honda).toMatchObject({ make: 'Honda' })
     })
 })
+
+describe('Cars.create(car)', () => {
+    test('should return 5 cars after creating', async () => {
+        await Cars.create({
+            vin: '1FTZX1722XKA76091',
+            make: 'Dodge',
+            model: 'Ram',
+            mileage: 1,
+            title: 'idk',
+            transmission: 'automatic'
+        })
+        const car = await db('cars')
+        expect(car).toHaveLength(5)
+    })
+    test('inserting a car resolves to the new car', async () => {
+        const newCar = await Cars.create({
+            vin: '1FTZX1722XKA76091',
+            make: 'Dodge',
+            model: 'Ram',
+            mileage: 1,
+            title: 'idk',
+            transmission: 'automatic'
+        })
+        expect(newCar).toMatchObject({ id: 5, make: 'Dodge' })
+    })
+
+})
