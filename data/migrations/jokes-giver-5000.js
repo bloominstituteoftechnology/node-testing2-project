@@ -12,5 +12,5 @@ exports.up = function (knex, Promise) {
   // eslint-disable-next-line no-unused-vars
   exports.down = function (knex, Promise) {
     return knex.schema
-      .dropTableIfExists("projects");
+      .dropTableIfExists("jokes");
   };
