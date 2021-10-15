@@ -10,6 +10,7 @@ beforeAll(async () => {
     await db.migrate.rollback();
     await db.migrate.latest();
 });
+
 beforeEach(async () => {
     await db.seed.run();
 });
@@ -50,13 +51,13 @@ describe('[DELETE] /pets/:id', () => {
         const res = await request(server).delete('/api/pets/1');
         expect(res.status).toBe(202);
     });
-    // it('deletes an item from the database', async () => {
-    //     await request(server).delete('api/pets/7');
-    //     const currentPets = await db('pets');
-    //     expect(currentPets).toHaveLength(3);
-    // });
-    // it('deletes the CORERCT item from the database', async () => {
-    //     const res = await request(server).delete('api/pets/2');
-    //     expect(res.body).toMatchObject({ pet_id: 2, name: 'Ella' });
-    // });
+    it('deletes an item from the database', async () => {
+        await request(server).delete('/api/pets/2');
+        const currentPets = await db('pets');
+        expect(currentPets).toHaveLength(3);
+    });
+    it('deletes the CORERCT item from the database', async () => {
+        const res = await request(server).delete('/api/pets/2');
+        expect(res.body).toMatchObject({ pet_id: 2, name: 'Ella' });
+    });
 });
