@@ -46,18 +46,8 @@ describe('[DELETE] Testing the delete route', () => {
         await db('pokemon').insert({ name: 'pikachu' })
     })
     test('Deleted Item is returned when deleted', async () => {
-        // response = await request(server).post('/').send(blastoids)
         const pikachu = await db('pokemon').where('id', 1)
         deleted = await request(server).delete(`/${pikachu.id}`)
-        // Model.create(charizard)
-        //     .then(response => {
-        //         pokemonToDelete = response
-        //     })
-        //     .catch(err => {
-        //         res.status(500).json({ message: err.message })
-        //     })
-        // let test
-        // test = await Model.remove(pokemonToDelete)
         expect(deleted).toMatchObject({ id: 1, ...pikachu })
     })
 })
