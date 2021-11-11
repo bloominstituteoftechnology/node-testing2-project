@@ -8,7 +8,7 @@ For this project you will create a RESTful API using Node and Express, containin
 
 ## Requirements
 
-- Write a minimum of ten tests using `supertest`.
+- Write a minimum of ten tests using supertest.
 
 ## Checklist
 
