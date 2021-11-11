@@ -2,22 +2,35 @@ const express = require('express');
 const router = express.Router();
 const User = require('./users-model');
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
     User.getAll()
         .then(users => {
             res.status(200).json(users)
         })
-        .catch(error => {
-            res.status(500).json(error);
-        });
+        .catch(next);
 })
 
-router.get("/:id", (req, res) => {
-    return null
+router.get("/:id", (req, res, next) => {
+    User.getById(req.params.id)
+        .then(user => {
+            if(!user){
+                next({ status: 404, message: 'user not found' })
+            }else {
+                res.status(200).json(user)
+            }
+        })
 })
 
-router.post("/", (req, res) => {
-    return null
+router.post("/", (req, res, next) => {
+    User.insert(req.body)
+        .then(user => {
+            if(!user.name.trim()){
+                next({ status: 401, message: "name field required" })
+            } else {
+                const newUser = {id: user.id, name: user.name.trim()}
+                res.status(201).json(newUser)
+            }
+        })
 })
 
 module.exports = router;
