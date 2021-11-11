@@ -26,6 +26,8 @@ router.post("/", (req, res, next) => {
         .then(user => {
             if(!user.name.trim()){
                 next({ status: 401, message: "name field required" })
+            } else if(user.name.length < 3) {
+                next({ status: 401, message: "name needs to be at least 3 chars long"})
             } else {
                 const newUser = {id: user.id, name: user.name.trim()}
                 res.status(201).json(newUser)

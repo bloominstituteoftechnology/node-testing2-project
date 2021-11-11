@@ -40,7 +40,7 @@ describe('[POST] /users', () => {
         expect(res.status).toBe(201)
         expect(res.body).toMatchObject({id:4, name: "Anatoli"})
     })
-    test('responds with correct error and message', async () => {
+    test('responds with correct error and message for no name', async () => {
         const res = await request(server)
             .post('/users').send({ name: "         " })
         expect(res.status).toBe(401)
@@ -50,5 +50,11 @@ describe('[POST] /users', () => {
         const res = await request(server)
         .post('/users').send({ name: "   Booooiii     " })
         expect(res.body.name).toBe("Booooiii")
+    })
+    test("responds with correct error and message if name is to short", async () => {
+        const res = await request(server)
+        .post('/users').send({ name: "Q" })
+        expect(res.status).toBe(401)
+        expect(res.body.message).toBe('name needs to be at least 3 chars long')
     })
 })
