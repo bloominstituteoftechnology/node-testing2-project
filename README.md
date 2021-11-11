@@ -4,19 +4,25 @@
 
 ### Minimum Viable Product
 
-For this project you will use `Test Driven Development` to create a RESTful API using `Node.js` and `Express` that publishes a set of endpoints to manage a _resource_ of your choosing. Data can be stored in memory, adding a **test database is optional**.
+For this project you will create a RESTful API using Node and Express, containing endpoints to perform some CRUD operations on a resource of your choosing. Data should be persisted in a SQLite database.
 
 ## Requirements
 
-- use `jest` and `supertest` to write the tests.
-- Your API must be able to **create** and **delete** a _resource_ of your choosing.
-- Write a minimum of two tests per route handler.
+- Write a minimum of ten passing tests using `supertest`.
 
-### Task 3: Stretch Goals
+## Checklist
 
-The following goals are designed to stretch your knowledge and may require additional research beyond what was learned in class today.
+Here is a checklist of tasks to help you put your project together:
 
-- [ ] Add endpoints for viewing the details of the resource. Write tests for it.
-- [ ] Add a testing database to the project and configure the testing script inside `package.json` to use the testing database. Hint: use `cross-env` npm package.
-- [ ] Complete the rest of the CRUD operations and write tests for them.
-- [ ] Add tests for your data access files (models).
+- Generate a `.gitignore` file.
+- Install express, knex, sqlite3 as plain dependencies.
+- Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
+- Configure jest and eslint using `npx <libname> --init`.
+- Create a `knexfile.js` with "development" and "testing" configurations.
+- Create a `db-config.js` file that selects the correct configuration using on the value of `process.env.NODE_ENV`.
+- Create migration and seed files.
+- Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
+- Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing".
+- Create a basic express application with a few endpoints.
+- Test your endpoints manually using Postman, HTTPie or similar.
+- Test your endpoints with supertest.
