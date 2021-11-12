@@ -1,6 +1,8 @@
 const db = require('../../dbConfig')
 
 module.exports = {
+    getAll,
+    getById,
     insert,
     remove
 }
