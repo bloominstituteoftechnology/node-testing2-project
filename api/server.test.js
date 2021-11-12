@@ -23,10 +23,17 @@ describe('[GET] /starks', () => {
   })
 })
 
-describe('', () => {
-  
+describe('[GET] /starks/:id', () => {
+  test('responds with Jon Snow', async () => {
+    const res = await request(server).get('/starks/1')
+    expect(res.body).toMatchObject({ id: 1, name: 'Jon Snow' })
+  })
 })
 
-describe('', () => {
-  
+describe('[POST] /starks', () => {
+  test('responds with new Stark', async () => {
+    const res = await request(server)
+      .post('/starks').send({name: 'Ned'})
+    expect(res.body).toMatchObject({id: 7, name: 'Ned'})
+  })
 })
