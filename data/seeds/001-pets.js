@@ -14,4 +14,4 @@ exports.seed = function(knex, Promise) {
     });
 };
 
-exports.pets = hobbits
+exports.pets = pets
