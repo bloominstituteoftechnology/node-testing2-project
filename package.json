@@ -8,7 +8,7 @@
     "rollback": "knex migrate:rollback",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
-    "test": "jest"
+    "test": "cross-env NODE_ENV=testing jest --runInBand"
   },
   "repository": {
     "type": "git",
