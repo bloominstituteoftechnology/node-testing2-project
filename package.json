@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "rollabck": "knex migrate:rollback",
+    "rollback": "knex migrate:rollback",
     "migrate": "knex migrate:latest",
-    "seed": "",
+    "seed": "knex seed:run",
     "test": "jest"
   },
   "repository": {
