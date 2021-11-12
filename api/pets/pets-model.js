@@ -15,7 +15,6 @@ function getById(id) {
 }
 
 async function insert(pet) {
-  // return db('pets').insert(pet, ['id', 'name']) // postgres
   return db('pets').insert(pet)
     .then(([id]) => {
       return getById(id)
