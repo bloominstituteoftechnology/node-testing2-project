@@ -1,41 +1,27 @@
-const express = require("express");
-
-const Hobbits = require("./hobbits/hobbits-model.js");
+const express = require('express');
 
 const server = express();
 
-server.use(express.json()); // this
+const studentsRouter = require('./students-router');
 
-server.get("/", (req, res) => {
-  res.status(200).json({ api: "up" });
+server.use(express.json());
+
+server.use('/api/students', studentsRouter);
+
+server.get('/', (req, res) => {
+    res.json({ message: 'up' });
+    console.log('api is up');
 });
 
-server.get("/hobbits", (req, res) => {
-  Hobbits.getAll()
-    .then(hobbits => {
-      res.status(200).json(hobbits);
-    })
-    .catch(error => {
-      res.status(500).json(error);
+server.use('*', (req, res, next) => {
+    next({status: 404, message: 'Something went wrong with the Route '});
+});
+
+server.use((err, req, res, next) => { // eslint-disable-line
+    res.status(err.status || 500).json({
+        message: err.message,
+        stack: err.stack,
     });
-});
-
-server.get("/hobbits/:id", async (req, res) => {
-  res.json(await Hobbits.getById(req.params.id))
-});
-
-server.post("/hobbits", async (req, res) => {
-  res
-  .status(201)
-  .json(await Hobbits.insert(req.body))
-});
-
-server.delete("/hobbits/:id", (req, res) => {
-  res.end()
-});
-
-server.put("/hobbits/:id", (req, res) => {
-  res.end()
 });
 
 module.exports = server;
