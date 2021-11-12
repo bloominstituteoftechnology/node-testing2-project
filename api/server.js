@@ -25,9 +25,7 @@ server.get("/houses/:id", async (req, res) => {
 });
 
 server.post("/houses", async (req, res) => {
-	res
-		.status(201)
-		.json(await Houses.insert(req.body))
+	res.status(201).json(await Houses.insert(req.body))
 });
 
 server.delete("/houses/:id", (req, res) => {

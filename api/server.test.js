@@ -27,3 +27,16 @@ describe('[GET] /houses/:id', () => {
 		expect(res.body).toMatchObject({ id: 1, name: 'sam' })
 	})
 })
+
+describe('[POST] /houses', () => {
+	test('responds with new house', async () => {
+		const res = await request(server)
+			.post('/houses').send({ name: 'bilbo' })
+		expect(res.body).toMatchObject({ id: 5, name: "bilbo" })
+	})
+	test('responds with status 201', async () => {
+		const res = await request(server)
+			.post('/houses').send({ name: 'bilbo' })
+		expect(res.status).toBe(201)
+	})
+})
