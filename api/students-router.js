@@ -19,7 +19,7 @@ const router = express.Router()
 router.get('/', async (req, res, next) => {
   try {
     const students = await Student.getAll()
-    res.json(data)
+    res.json(students)
   } catch (err) {
     next(err)
   }
