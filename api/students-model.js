@@ -3,7 +3,9 @@ const db = require('../data/dbConfig')
 module.exports = {
   getAll,
   getById,
-  create
+  create,
+  update,
+  remove,
 }
 
 async function getAll () {
@@ -27,4 +29,19 @@ async function create(student) {
     .then(([id]) => {
       return getById(id)
     })
+}
+
+function update(id, changes) {
+    return db('students')
+        .where({ student_id: id })
+        .update(changes)
+        .then(rows => {
+            return getById(id);
+        });
+}
+
+async function remove(id) {
+    const removed = await db('students').where('student_id', id).first();
+    await db('students').del().where('student_id', id);
+    return removed;
 }
