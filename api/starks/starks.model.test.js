@@ -18,3 +18,16 @@ beforeEach(async () => {
 afterAll(async () => {
   await db.destroy()
 })
+
+describe('Stark Model', () => {
+  describe('getAll()', () => {
+    let data
+    beforeEach(async () => {
+      data = await Stark.getAll()
+    })
+    test('gets all Starks from db', async () => {
+      expect(data.length).toBe(6)
+      expect(data).toHaveLength(6)
+    })
+  })
+})
