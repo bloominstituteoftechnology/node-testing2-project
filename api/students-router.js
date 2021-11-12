@@ -46,13 +46,6 @@ router.put('/:id', checkStudentId, checkValidStudent,  (req, res, next) => {
         .catch(next);
 });
 
-// router.delete('/:id', async (req, res, next) => {
-//     try {
-//         res.status(202).json(await Student.remove(req.params.id));
-//     } catch (err) {
-//         next();
-//     }
-// });
 
 router.delete('/:id', checkStudentId, async (req, res, next) => {
   try {
