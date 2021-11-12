@@ -3,9 +3,7 @@ const db = require('../../data/db-config')
 module.exports = {
   getAll,
   getById,
-  insert,
-  update,
-  remove
+  insert
 }
 
 function getAll() {
@@ -16,14 +14,9 @@ function getById(id) {
   return db('starks').where('id', id).first()
 }
 
-function insert() {
-
-}
-
-function update() {
-
-}
-
-function remove() {
-
+async function insert(stark) {
+  return db('starks').insert(stark)
+    .then(([id]) => {
+      return getById(id)
+    })
 }

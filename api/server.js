@@ -20,16 +20,10 @@ server.get('/starks/:id', async (req, res) => {
   res.json(await Starks.getById(req.params.id))
 })
 
-server.post('/starks', (req, res, next) => {
-
-})
-
-server.delete('/starks', (req, res, next) => {
-
-})
-
-server.put('/starks', (req, res, next) => {
-
+server.post('/starks', async (req, res, next) => {
+  res
+    .status(201)
+    .json(await Starks.insert(req.body))
 })
 
 server.use((err, req, res, next) => {
