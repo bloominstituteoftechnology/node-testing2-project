@@ -30,4 +30,10 @@ describe('Stark Model', () => {
       expect(data).toHaveLength(6)
     })
   })
+  describe('getById()', () => {
+    test('returns the correct Stark', async () => {
+      const data = await Stark.getById('1')
+      expect(data).toMatchObject({id: 1, name: 'Jon Snow'})
+    })
+  })
 })
