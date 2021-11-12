@@ -14,3 +14,19 @@ beforeEach(async () => {
 afterAll(async () => {
   await db.destroy()
 })
+
+describe('[GET] /starks', () => {
+  test('responds with all starks', async () => {
+    const res = await request(server).get('/starks')
+    expect(res.status).toBe(200)
+    expect(res.body).toHaveLength(6)
+  })
+})
+
+describe('', () => {
+  
+})
+
+describe('', () => {
+  
+})
