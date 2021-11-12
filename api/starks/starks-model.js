@@ -9,17 +9,21 @@ module.exports = {
 }
 
 function getAll() {
-
+  return db('starks')
 }
+
 function getById() {
 
 }
+
 function insert() {
 
 }
+
 function update() {
 
 }
+
 function remove() {
 
 }
