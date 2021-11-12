@@ -3,10 +3,29 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "cross-env NODE_ENV=testing jest --watchAll",
+    "rollback": "knex migrate:rollback",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LambdaSchool/node-testing2-project.git"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.14",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
