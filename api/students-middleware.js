@@ -1,4 +1,4 @@
-const Car = require('../api/students-model');
+const Student = require('../api/students-model');
 
 function handleError(err, req, res, next) { //eslint-disable-line
   res.status(err.status || 500).json({
@@ -8,58 +8,31 @@ function handleError(err, req, res, next) { //eslint-disable-line
   });
 }
 
-// const checkCarId = (req, res, next) => {
-//   const { id } = req.params;
-//   Car.getById(id)
-//   .then(possibleCar => {
-//     if (possibleCar) {
-//       res.status(200).json(possibleCar);
-//       next()
-//     } else {
-//       next({ status: 404, message: `car with id ${id} is not found`})
-//     }
-//   })
-//   .catch(next)
-//   // DO YOUR MAGIC
-// }
+const checkStudentId = async (req, res, next) => {
+    try {
+        const student = await Student.getById(req.params.id);
+        if (!student) {
+            next({ status: 404, message: 'not found' });
+        } else {
+            req.student = student;
+            next();
+        }
+    } catch (error) {
+        next(error);
+    }
+};
 
-// const checkCarPayload = (req, res, next) => {
-//   // console.log("payload----", res)
-//   next()
-// }
 
-// async function checkVinNumberValid (req, res, next) {
-//   const { vin } = req.body;
-//   try {
-//     const validVinNumber = await Car.getById(vin);
-//     if (!validVinNumber) {
-//       next({ status: 400, message: `vin ${vin} is invalid` });
-//     } else {
-//       next();
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// }
-
-// async function checkVinNumberUnique (req, res, next) {
-//   const { vin } = req.body;
-//   try {
-//     const uniqueVinNumber = await Car.getById(vin);
-//     if (!uniqueVinNumber) {
-//       next({ status: 400, message: `vin ${vin} already exists` });
-//     } else {
-//       next();
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// }
+function checkValidStudent (req, res, next) {
+  if (!req.body.student_name || !req.body.student_name .trim()) {
+    res.status(422).json({ message: "Provide a name"})
+  } else {
+    next();
+  }
+}
 
 module.exports = {
   handleError,
-  // checkCarId,
-  // checkCarPayload,
-  // checkVinNumberValid,
-  // checkVinNumberUnique,
+  checkStudentId,
+  checkValidStudent,
 }

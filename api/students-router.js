@@ -2,8 +2,8 @@ const express = require('express')
 
 const {
   handleError,
-  // checkStudentId,
-  // checkValidStudent,
+  checkStudentId,
+  checkValidStudent,
 } = require('../api/students-middleware')
 
 const Student = require('./students-model') 
@@ -25,23 +25,22 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// router.get('/:id', checkStudentId, async (req, res, next) => {
-//   try {
-//     const data = await Car.getById(req.params.id)
-//     res.json(data)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+router.get('/:id', checkStudentId, async (req, res) => {
+    res.json(req.student);
+});
 
-// router.post('/', checkCarPayload, async (req, res, next) => {
-//   try {
-//     const newCar = await Car.create(req.body)
-//     res.status(201).json(newCar)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+
+router.post('/', checkValidStudent, async (req, res, next) => {
+    try {
+        res.status(201)
+            .json(await Student.create(req.body));
+  // try {
+  //   const newStudent = await Student.create(req.body)
+  //   res.status(201).json(newStudent)
+  } catch (err) {
+    next(err)
+  }
+})
 
 
 

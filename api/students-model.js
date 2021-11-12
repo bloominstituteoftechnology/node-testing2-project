@@ -12,14 +12,19 @@ async function getAll () {
   return result
 }
 
-async function getById(id) {
-  const result = await db('students').where('student_id', id).first()
-  console.log("getById---", result)
-  return result
+
+function getById(id) {
+    return db('students')
+        .where('student_id', id)
+        .first();
 }
 
-async function create(newStudent) {
-  const [id] = await db('students').insert(newStudent)
-  const student = await getById(id) // 
-  return student
+
+
+async function create(student) {
+  return await db('students')
+    .insert(student)
+    .then(([id]) => {
+      return getById(id)
+    })
 }
