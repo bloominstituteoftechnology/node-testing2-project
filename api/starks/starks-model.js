@@ -12,8 +12,8 @@ function getAll() {
   return db('starks')
 }
 
-function getById() {
-
+function getById(id) {
+  return db('starks').where('id', id).first()
 }
 
 function insert() {

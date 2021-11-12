@@ -16,8 +16,8 @@ server.get('/starks', (req, res, next) => {
     .catch(next)
 })
 
-server.get('/starks', (req, res, next) => {
-
+server.get('/starks/:id', async (req, res) => {
+  res.json(await Starks.getById(req.params.id))
 })
 
 server.post('/starks', (req, res, next) => {
