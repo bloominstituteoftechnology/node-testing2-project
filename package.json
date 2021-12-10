@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "",
-    "server": "",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "rollabck": "",
     "migrate": "",
     "seed": "",
@@ -15,6 +15,7 @@
     "url": "git+https://github.com/LambdaSchool/node-testing2-project.git"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "knex": "^0.95.14",
     "sqlite3": "^5.0.2"
