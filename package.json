@@ -9,7 +9,8 @@
     "down": "knex migrate:down",
     "seed": "knex seed:run",
     "latest": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
+    "rollback": "knex migrate:rollback",
+    "resetdb": "npm run rollback && npm run latest && npm run seed"
   },
   "repository": {
     "type": "git",
