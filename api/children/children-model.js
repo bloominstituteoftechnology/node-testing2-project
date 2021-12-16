@@ -10,10 +10,16 @@ function getAll(){
     return db('children')
 }
 
-function getByID(){
-
+function getByID(id){
+    return db('children')
+        .where('child_id', id)
+        .first()
 }
 
-async function make(){
-
+async function make(child){
+    return db('children')
+        .insert(child)
+        .then(id => {
+            return getByID(id)
+        })
 }

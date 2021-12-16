@@ -17,11 +17,21 @@ server.get('/children', (req, res, next)=>{
         .catch(next)
 })
 
-server.get('/children/:id', (req,res)=>{
-    res.status(200).json({message: `fetching child w/id: ${req.params.id}`})
+server.get('/children/:id', (req, res, next)=>{
+    // res.status(200).json({message: `fetching child w/id: ${req.params.id}`})
+    Children.getByID(req.params.id)
+        .then(child => {
+            res.status(200).json(child)
+        })
+        .catch(next)
 })
-server.post('/children', (req,res)=>{
-    res.status(201).json({message: `add child: ${req.body}`})
+server.post('/children', (req, res, next)=>{
+    // res.status(201).json({message: `add child: ${req.body}`})
+    Children.make(req.body)
+        .then(child => {
+            res.status(201).json(child)
+        })
+        .catch(next)
 })
 
 server.use((err, req, res, next) => { // eslint-disable-line
