@@ -14,11 +14,11 @@ For this project you will create a RESTful API using Node and Express, containin
 
 Here is a checklist of tasks to help you put your project together:
 
-- Generate a `.gitignore` file.
-- Install express, knex, sqlite3 as plain dependencies.
-- Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
-- Configure jest and eslint using `npx <libname> --init`.
-- Create a `knexfile.js` with "development" and "testing" configurations.
+X Generate a `.gitignore` file.
+X Install express, knex, sqlite3 as plain dependencies.
+X Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
+X Configure jest and eslint using `npx <libname> --init`.
+X Create a `knexfile.js` with "development" and "testing" configurations.
 - Create a `db-config.js` file that selects the correct configuration using the value of `process.env.NODE_ENV`.
 - Create migration and seed files.
 - Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
