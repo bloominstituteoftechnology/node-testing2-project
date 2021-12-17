@@ -14,6 +14,8 @@ For this project you will create a RESTful API using Node and Express, containin
 
 Here is a checklist of tasks to help you put your project together:
 
+
+
 - Generate a `.gitignore` file.
 - Install express, knex, sqlite3 as plain dependencies.
 - Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
