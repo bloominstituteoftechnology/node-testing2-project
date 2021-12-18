@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "resetdb": "npm run rollback && npm run migrate && npm run seed",
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand", 
     "start": "node index.js",
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
