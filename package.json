@@ -3,10 +3,31 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "resetdb": "npm run rollback && npm run migrate && npm run seed",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand", 
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "reset": "npm run rollback && npm run migrate && npm run seed",
+    "seed": "knex seed:run",
+    "cleanup": "knex seed:run --specific=01-cleanup.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.95.14",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^8.4.1",
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
   }
 }
