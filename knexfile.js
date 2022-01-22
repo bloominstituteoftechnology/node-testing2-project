@@ -1,9 +1,3 @@
-// Update with your config settings.
-
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-
 const common = {
   client: 'sqlite3',
   useNullAsDefault: true,
@@ -15,7 +9,7 @@ module.exports = {
   development: {
     ...common,
     connection: {
-      filename: './data/developent.db3'
+      filename: './data/development.db3'
     }
   },
 
@@ -25,5 +19,9 @@ module.exports = {
         filename: './data/test.db3'
     }
   },
+
+  production: {
+    
+  }
 
 };
