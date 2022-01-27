@@ -1,30 +1,24 @@
+const information = {
+  client: 'sqlite3',
+  useNullAsDefault: true,
+  migrations: { directory: './data/migrations' },
+  seeds: { directory: './data/seeds' },
+}
+
 module.exports = {
-
   development: {
-    client: 'sqlite3',
-    // connection: {
-    //   // filename: './data',
-    // },
-    useNullAsDefault: null,
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: {
-      directory: './data/seeds'
-    }
-  },
-
-  staging: {
-    
+    ...information,
+    connection: {
+      filename: './data/profile.db3',
     },
   },
-
+  testing: {
+    ...information,
+    connection: {
+      filename: './data/test.db3',
+    },
+  },
   production: {
 
-  },
-
-};
+  }
+}
