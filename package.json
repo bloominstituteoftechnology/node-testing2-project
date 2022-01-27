@@ -8,5 +8,18 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^8.7.0",
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.2.2"
+  },
+  "devDependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "express": "^4.17.2",
+    "knex": "^1.0.1"
   }
 }
