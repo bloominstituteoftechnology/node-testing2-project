@@ -22,9 +22,9 @@ Here is a checklist of tasks to help you put your project together:
 
 [X] Configure jest and eslint using `npx <libname> --init`.
 
-[ ] Create a `knexfile.js` with "development" and "testing" configurations.
+[X] Create a `knexfile.js` with "development" and "testing" configurations.
 
-[ ] Create a `db-config.js` file that selects the correct configuration using the value of `process.env.NODE_ENV`.
+[X] Create a `db-config.js` file that selects the correct configuration using the value of `process.env.NODE_ENV`.
 
 [ ] Create migration and seed files.
 
