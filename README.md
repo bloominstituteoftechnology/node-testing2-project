@@ -36,4 +36,4 @@ Here is a checklist of tasks to help you put your project together:
 
 [X] Test your endpoints manually using Postman, HTTPie or similar.
 
-[ ] Test your endpoints with supertest.
+[X] Test your endpoints with supertest.
