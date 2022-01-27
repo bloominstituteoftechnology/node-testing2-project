@@ -8,5 +8,17 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  },
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "bcryptjs": "^2.4.3",
+    "connect-session-knex": "^2.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^1.0.1"
   }
 }
