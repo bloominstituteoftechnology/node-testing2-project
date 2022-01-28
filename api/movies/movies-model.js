@@ -13,12 +13,16 @@ function getAll() {
 }
 
 function getById(id) {
-  return null
-}
-
-async function insert(hobbit) {
-  return null
-}
+    return db('movies')
+      .where({ id })
+      .first()
+  }
+  
+  async function insert(movie) {
+    const [id] = await db('movies').insert(movie)
+    return getById(id)
+  }
+  
 
 async function update(id, changes) {
   return null

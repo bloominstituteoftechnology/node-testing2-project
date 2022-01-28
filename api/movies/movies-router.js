@@ -20,8 +20,8 @@ router.get("/", (req, res) => {
     res.end()
   });
   
-  router.post("/", (req, res) => {
-    res.end()
+  router.post("/", async (req, res) => {
+    res.status(201).json(await Movies.insert(req.body))
   });
   
   router.delete("/:id", (req, res) => {
