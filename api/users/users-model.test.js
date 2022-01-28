@@ -43,7 +43,19 @@ test('[1] NODE_ENV is correct', () => {
     })
 
     describe('User.add(User)', () => { 
-      test.todo('[5] db updates with the new user')
+      let julie = { name: 'Julie H' }
+      let result
+      beforeEach( async () => {
+        result = await User.add(julie)
+      })  
+
+      test('[5] db updates with the new user', async () => {
+        const theNewThing = await db('users')
+          .where('user_id', 3)
+          .first()
+        expect(theNewThing).toMatchObject({ user_id: 3, name: 'Julie H' })
+      })
+
       test.todo('[6] resolves the newly created user')
     })
   })
