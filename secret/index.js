@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 module.exports = {
     BCRYPT_ROUNDS: process.env.BCRYPT_ROUNDS || 8,
     NODE_ENV: process.env.NODE_ENV || 'development',
