@@ -43,19 +43,22 @@ test('[1] NODE_ENV is correct', () => {
     })
 
     describe('User.add(User)', () => { 
-      let julie = { name: 'Julie H' }
+      let home = { name: 'home H' }
       let result
       beforeEach( async () => {
-        result = await User.add(julie)
+        result = await User.add(home)
       })  
 
       test('[5] db updates with the new user', async () => {
         const theNewThing = await db('users')
-          .where('user_id', 3)
+          .where('user_id', 4)
           .first()
-        expect(theNewThing).toMatchObject({ user_id: 3, name: 'Julie H' })
+
+        expect(theNewThing).toMatchObject({ user_id: 4, name: 'home H' })
       })
 
-      test.todo('[6] resolves the newly created user')
+      test('[6] resolves the newly created user', async () => {
+        expect(result).toMatchObject({ user_id: 5, name: 'home H' })
+      })
     })
   })
