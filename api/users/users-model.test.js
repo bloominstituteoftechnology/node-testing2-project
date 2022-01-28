@@ -18,8 +18,16 @@ test('[1] NODE_ENV is correct', () => {
 
   describe('User model', () => {
     describe('User.find()', () => { 
-      test.todo('[2] returns all users in table')
-      test.todo('[3] returned users have id and name')
+        let users
+        beforeEach(async () => {
+          users = await User.find()
+        })
+        test('[2] returns all users in table',  () => {        
+          expect(users).toHaveLength(3)
+        })
+        test('[3] returned Users have id and name', () => {
+          expect(users[0]).toMatchObject({ user_id: 1, name: 'Rober F' })
+        })
     })
 
     describe('User.findById(id)', () => { 
