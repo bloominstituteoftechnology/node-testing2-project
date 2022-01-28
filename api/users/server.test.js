@@ -14,6 +14,9 @@ afterAll(async () => {
 })
 
 describe('GET /users', () => {
-  test.todo('[7] returns a status 200 OK')
+    test('[7] returns a status 200 OK', async () => {
+        const res = await request(server).get('/users')
+        expect(res.status).toBe(200)
+      })
 
 })
