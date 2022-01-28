@@ -12,8 +12,10 @@ function find() {
   return db("users")    
 }
 
-function findById(id) {
-    return null
+function findById(user_id) {
+    return db('users')
+    .where({ user_id })
+    .first()
 }
   
 async function add(user) {

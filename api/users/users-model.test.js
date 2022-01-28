@@ -31,7 +31,15 @@ test('[1] NODE_ENV is correct', () => {
     })
 
     describe('User.findById(id)', () => { 
-      test.todo('[4] returns the correct user')
+        let rober, Cian
+        beforeEach(async () => {
+          rober = await User.findById(1)
+          Cian = await User.findById(2)
+        })
+        test('[4] returns the correct User', () => {
+          expect(rober).toMatchObject({ user_id: 1, name: 'Rober F', address: '123 Rd, CA 12345'})
+          expect(Cian).toMatchObject({ user_id: 2, name: 'Cian G', address: '456 Rd, NY 12345'})
+        })
     })
 
     describe('User.add(User)', () => { 
