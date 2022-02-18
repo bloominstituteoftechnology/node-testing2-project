@@ -7,11 +7,11 @@ beforeAll(async () => {
     await db.migrate.latest()
 })
 
-beforeEach(async => {
+beforeEach(async () => {
     await db.seed.run()
 })
 
-afterAll(async => {
+afterAll(async () => {
     await db.destroy()
 })
 
