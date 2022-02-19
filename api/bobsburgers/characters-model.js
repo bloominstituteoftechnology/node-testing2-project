@@ -6,7 +6,7 @@ function getAll(){
 
 function getById(id){
     return db('characters')
-    .where({ id })
+    .where({ id: Number(id) })
     .first()
 }
 

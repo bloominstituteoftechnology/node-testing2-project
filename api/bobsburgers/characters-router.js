@@ -11,19 +11,19 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', async(req, res) => {
     try{
-    const character = Characters.getById(req.params.id)
-    if(!character){
-        res.status(404).json({
-            message: 'Character with specified id does not exist'
-        })
-    }else{
-        res.json(character)
-    }
+        const character = await Characters.getById(req.params.id)
+        if(!character){
+            res.status(404).json({
+                message: 'The character with the specified ID does not exist'
+            })
+        }else{
+            res.json(character)
+        }
     }catch(err){
         res.status(500).json({
-            message: 'Could not get character information'
+            message: 'The character information could not be retrieved'
         })
     }
 })
