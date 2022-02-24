@@ -111,6 +111,9 @@ describe('testing server calls', () => {
 		// DELETE Request ****SPOILER ALERT****
 		let fallenHero = await request(server).delete('/avengers/' + id);
 		expect(fallenHero.body).toEqual({ id, secret_identity: 'Black Widow' });
+		// Check Lineup
+		const lineup = await db('avengers');
+		expect(lineup).toHaveLength(0);
 	});
 
 });

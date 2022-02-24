@@ -20,7 +20,6 @@ server.get('/avengers', (req, res, next) => {
 server.get('/avengers/:id', (req, res, next) => {
 	Avengers.call(req.params.id)
 		.then(avenger => {
-			console.log(avenger);
 			res.json(avenger);
 		})
 		.catch(err => {
