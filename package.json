@@ -1,12 +1,35 @@
 {
-  "name": "node-testing2-project",
+  "name": "testing2-project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  },
+  "description": "For this project you will create a RESTful API using Node and Express, containing endpoints to perform some CRUD operations on a resource of your choosing. Two or three endpoints are enough. Data should be persisted in a SQLite database.",
+  "bugs": {
+    "url": "https://github.com/bloominstituteoftechnology/node-testing2-project/issues"
+  },
+  "homepage": "https://github.com/bloominstituteoftechnology/node-testing2-project#readme",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^27.4.1",
+    "express": "^4.17.3",
+    "knex": "^1.0.3",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }
