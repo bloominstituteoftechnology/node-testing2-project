@@ -27,14 +27,22 @@ describe('Logic Test', () => {
 describe('Testing Model.js Functions', () => {
 
 
-    test('Test 1: Database table is initially empty ', () => {
-
-        expect(1+1).toEqual(0);
+    test('Test 1: Database table is initially empty ', async () => {
+        const dogs = await db('dogs');
+        expect(dogs).toHaveLength(0);
     })
 
-    test('Test 2: Dogs get created with insert function', () => {
+    test('Test 2: Dogs get created with insert function', async () => {
 
-        expect(1+1).toEqual(0);
+        let result = await Dogs.insert({ name: 'Lulu' });
+        expect(result).toEqual({ name: 'Lulu', id: 1 });
+        let dogs = await db('dogs');
+        expect(dogs).toHaveLength(1);
+
+        await Dogs.insert({ name: 'Cooper' });
+        dogs = await db('dogs');
+        expect(dogs).toHaveLength(2);
+
     })
 
     test('Test 3: Can fetch Dogs', () => {
