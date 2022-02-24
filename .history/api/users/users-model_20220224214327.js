@@ -15,15 +15,14 @@ function findById(user_id) {
 		.first();
 }
 
-async function createUser(user) {
+async function cr(user) {
 	const [id] = await db('users').insert(user);
-	//return findById(id);
-    return db('users').where('user_id', id).first()
+	return findById(id);
 }
 
 module.exports = {
 	find,
 	findBy,
 	findById,
-	createUser,
+	add,
 };

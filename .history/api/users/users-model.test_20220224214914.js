@@ -51,9 +51,9 @@ describe('user model functions', () =>{
 			users = await db('users')
 			expect(users).toHaveLength(2)
 
-			await User.createUser(user3)
+			await User.createUser(user2)
 			users = await db('users')
-			expect(users).toHaveLength(3)
+			expect(users).toHaveLength(2)
 		})
 	})
 })

@@ -25,7 +25,7 @@ test('correct environment variable for test', () => {
 
 describe('user model functions', () =>{
 	describe('create  user(s)', ()=>{
-		test('adds 1 user to db', async () => {
+		test('adds user to db', async () => {
 			let users 
 			await User.createUser(user1)
 			users = await db('users')
@@ -37,23 +37,10 @@ describe('user model functions', () =>{
 			users = await db('users')
 			expect(users).toHaveLength(1)
 
-			await User.createUser(user2)
-			users = await db('users')
-			expect(users).toHaveLength(2)
-		})
-		test('adds 3 users to db', async () => {
 			let users 
-			await User.createUser(user1)
-			users = await db('users')
-			expect(users).toHaveLength(1)
-
 			await User.createUser(user2)
 			users = await db('users')
 			expect(users).toHaveLength(2)
-
-			await User.createUser(user3)
-			users = await db('users')
-			expect(users).toHaveLength(3)
 		})
 	})
 })
