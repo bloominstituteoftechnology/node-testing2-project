@@ -61,18 +61,28 @@ describe('Testing Model.js Functions', () => {
         const {id} = await Dogs.insert({ name: 'Buddy Bear' });
         const result = await Dogs.getById(id);
         expect(result).toHaveProperty('name', 'Buddy Bear');
-    })
-
-    test('Test 5: Can update Dogs', () => {
-
-        expect(1+1).toEqual(0);
 
     })
 
-    test('Test 6: Can remove Dogs', () => {
+    test('Test 5: Can update Dogs', async () => {
 
-        expect(1+1).toEqual(0);
+        const [id] = await db('dogs').insert({ name: 'Smiley' });
+        let result = await Dogs.update(id, { name: 'Danny' });
+        expect(result).toEqual({ id, name: 'Danny' });
+        result = await Dogs.getById(id);
+        expect(result).toEqual({ id, name: 'Danny' });
 
+    })
+
+    test('Test 6: Can remove Dogs', async () => {
+
+        let result = await Dogs.insert({ name: 'Murph' });
+        result = await Dogs.getById(result.id);
+        expect(result).toHaveProperty('name', 'Murph');
+        result = await Dogs.remove(result.id);
+        expect(result).toEqual({ id: 1, name: 'Murph' });
+        result = await Dogs.getById(result.id);
+        expect(result).not.toBeDefined();
     })
 
     test('Test 7: API call to root /', () => {
