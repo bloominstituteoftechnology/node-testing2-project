@@ -24,6 +24,11 @@ Here is a checklist of tasks to help you put your project together:
 [X] Create migration and seed files.
 [X] Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
 [X] Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing".
-- Create a basic express application with a few database access functions and a few endpoints.
-- Test your endpoints manually using Postman, HTTPie or similar.
-- Test your endpoints with supertest.
+
+[] Create a basic express application with a few database access functions and a few endpoints.
+[] Test your endpoints manually using Postman, HTTPie or similar.
+[] Test your endpoints with supertest.
+
+[x] type `npm run migrate` to run migrations.
+[x] type `npm run seed` to seed the db.
+[x] type `npm run server` to start the API.
