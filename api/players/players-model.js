@@ -12,10 +12,13 @@ async function addPlayer(player) {
   return getById(id);
 }
 async function update(id, player) {
-  return null;
+  await db("players").where("id", id).update(player);
+  return getById(id);
 }
 async function remove(id) {
-  return null;
+  let result = getById(id);
+  await db("players").where("id", id).del();
+  return result;
 }
 
 module.exports = {

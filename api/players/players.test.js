@@ -38,4 +38,23 @@ describe("test the models", () => {
     result = await model.getById(3);
     expect(result).toEqual({ id: 3, name: "lebron", age: 37 });
   });
+
+  test("able to update a player", async () => {
+    await model.addPlayer({ name: "lebron", age: 37 });
+
+    let result = await model.update(1, { age: 35 });
+    expect(result).toHaveProperty("age", 35);
+  });
+
+  test("able to delete", async () => {
+    await model.addPlayer({ name: "lebron", age: 37 });
+    await model.addPlayer({ name: "curry", age: 35 });
+    await model.addPlayer({ name: "kevin", age: 34 });
+    let result = await model.get();
+    expect(result).toHaveLength(3);
+    result = await model.remove(2);
+    expect(result).toEqual({ id: 2, name: "curry", age: 35 });
+    result = await model.get();
+    expect(result).toHaveLength(2);
+  });
 });
