@@ -1,13 +1,16 @@
+const cars = [
+  { name: "Toyota" },
+  { name: "Yaris" },
+  { name: "Lexus" },
+  { name: "IS350" },
+];
 
-exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
+exports.seed = function (knex, Promise) {
+  return knex("cars")
+    .truncate()
     .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
+      return knex("cars").insert(cars);
     });
 };
+
+exports.cars = cars;
