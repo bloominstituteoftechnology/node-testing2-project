@@ -7,13 +7,19 @@ router.get("/", (req, res, next) => {
   });
 });
 router.get("/:id", (req, res, next) => {
-  console.log("router is working");
+  model.getById(req.params.id).then((player) => {
+    res.status(201).json(player);
+  });
 });
 router.post("/", (req, res, next) => {
-  console.log("router is working");
+  model.addPlayer(req.body).then((player) => {
+    res.status(201).json(player);
+  });
 });
 router.put("/:id", (req, res, next) => {
-  console.log("router is working");
+  model.update(req.params.id, req.body).then((player) => {
+    res.status(201).json(player);
+  });
 });
 router.delete("/", (req, res, next) => {
   console.log("router is working");

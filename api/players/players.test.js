@@ -1,7 +1,7 @@
 const model = require("./players-model");
 const db = require("../../data/dbConfig");
 const request = require("supertest");
-const server = require("./players-router");
+const server = require("../server");
 
 beforeAll(async () => {
   await db.migrate.rollback();
@@ -57,4 +57,51 @@ describe("test the models", () => {
     result = await model.get();
     expect(result).toHaveLength(2);
   });
+});
+
+describe("testing endpoints", () => {
+  test("[GET] /players", async () => {
+    let result = await request(server).get("/players");
+    expect(result.status).toBe(200);
+    expect(result.body).toHaveLength(0);
+
+    await model.addPlayer({ name: "lebron", age: 37 });
+    await model.addPlayer({ name: "curry", age: 35 });
+    await model.addPlayer({ name: "kevin", age: 34 });
+    result = await request(server).get("/players");
+    expect(result.body).toHaveLength(3);
+  });
+
+  test("[GET] /players:id", async () => {
+    let result = await model.addPlayer({ name: "lebron", age: 37 });
+    result = await request(server).get("/players/" + result.id);
+    expect(result.body.name).toBe("lebron");
+    expect(result.body.age).toBe(37);
+  });
+  test("[post] /players", async () => {
+    let result = await request(server)
+      .post("/players")
+      .send({ name: "stephen curry", age: 33 });
+    expect(result.body).toEqual({ name: "stephen curry", age: 33, id: 1 });
+    result = await request(server).get("/players");
+    expect(result.body).toHaveLength(1);
+    result = await request(server)
+      .post("/players")
+      .send({ name: "morant", age: 21 });
+    result = await request(server).get("/players");
+    expect(result.body).toHaveLength(2);
+  });
+  test("[put] /players:id", async () => {
+    let { id } = await model.addPlayer({ name: "Stephen curry", age: 33 });
+    //expect(result).toEqual({ id: 1, name: "Stephen curry", age: 33 });
+    let test = await model.getById(id);
+    expect(test).toEqual({ id: 1, name: "Stephen curry", age: 33 });
+    let result = await request(server)
+      .put("/players/" + id)
+      .send({ age: 23 });
+    expect(result.body.age).toBe(23);
+  });
+  //  test('[delete] /players:id', async () => {
+
+  //  })
 });
