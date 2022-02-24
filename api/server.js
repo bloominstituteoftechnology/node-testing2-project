@@ -1,6 +1,6 @@
 const express = require("express");
 
-//const Dogs = require("");
+const Dogs = require("./dogs/dogs-model");
 
 const server = express();
 
@@ -12,13 +12,13 @@ server.get("/", (req, res) => {
 
 server.get("/dogs", (req, res) => {
 
-//   Hobbits.getAll()
-//     .then(hobbits => {
-//       res.status(200).json(hobbits);
-//     })
-//     .catch(error => {
-//       res.status(500).json(error);
-//     });
+  Dogs.getAll()
+    .then(dogs => {
+      res.status(200).json(dogs);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 
 });
 
