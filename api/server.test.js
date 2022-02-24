@@ -24,3 +24,69 @@ describe('Logic Test', () => {
     })
 })
 
+describe('Testing Model.js Functions', () => {
+
+
+    test('Test 1: Database table is initially empty ', () => {
+
+        expect(1+1).toEqual(0);
+    })
+
+    test('Test 2: Dogs get created with insert function', () => {
+
+        expect(1+1).toEqual(0);
+    })
+
+    test('Test 3: Can fetch Dogs', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 4: Can fetch Dogs by ID', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 5: Can update Dogs', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 6: Can remove Dogs', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 7: API call to root /', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 8: API call to [GET] /dogs', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 9: API call to [GET] /dogs/:id', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+    test('Test 10: API call to [POST] /dogs', () => {
+
+        expect(1+1).toEqual(0);
+
+    })
+
+
+
+
+})
+
