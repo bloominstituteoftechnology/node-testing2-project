@@ -24,10 +24,10 @@ server.get("/dogs", (req, res) => {
 
 server.get("/dogs/:id", (req, res) => {
 
-//   Hobbits.getById(req.params.id)
-//     .then(hobbit => {
-//       res.status(200).json(hobbit)
-//     });
+  Dogs.getById(req.params.id)
+    .then(dog => {
+      res.status(200).json(dog)
+    });
 
 });
 
