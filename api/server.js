@@ -33,19 +33,19 @@ server.get("/dogs/:id", (req, res) => {
 
 server.post("/dogs", (req, res) => {
 
-//   Hobbits.insert(req.body)
-//     .then(hobbit => {
-//       res.status(201).json(hobbit)
-//     });
+  Dogs.insert(req.body)
+    .then(dog => {
+      res.status(201).json(dog)
+    });
 
 });
 
-server.delete("/dogss/:id", (req, res) => {
+server.delete("/dogs/:id", (req, res) => {
 
-//   Hobbits.remove(req.params.id)
-//     .then(hobbit => {
-//       res.json(hobbit)
-//     });
+  Dogs.remove(req.params.id)
+    .then(dog => {
+      res.json(dog)
+    });
 
 });
 
