@@ -45,16 +45,22 @@ describe('Testing Model.js Functions', () => {
 
     })
 
-    test('Test 3: Can fetch Dogs', () => {
+    test('Test 3: Can fetch Dogs', async () => {
 
-        expect(1+1).toEqual(0);
+        await Dogs.insert({ name: 'Lulu' });
+        await Dogs.insert({ name: 'Mumu' });
+        await Dogs.insert({ name: 'Cooper' });
+        await Dogs.insert({ name: 'Sally' });
+        const dogs = await Dogs.getAll()
+        expect(dogs).toHaveLength(4)
 
     })
 
-    test('Test 4: Can fetch Dogs by ID', () => {
+    test('Test 4: Can fetch Dogs by ID', async () => {
 
-        expect(1+1).toEqual(0);
-
+        const {id} = await Dogs.insert({ name: 'Buddy Bear' });
+        const result = await Dogs.getById(id);
+        expect(result).toHaveProperty('name', 'Buddy Bear');
     })
 
     test('Test 5: Can update Dogs', () => {
