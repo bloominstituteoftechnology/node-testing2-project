@@ -12,9 +12,15 @@ beforeEach(async () => {
     await db('dogs').truncate();
 });
 
-describe('Basic Test', () => {
-    
+describe('Testing ENV', () => {
+    test('Verifying Correct Environment', ()  => {
+        expect(process.env.NODE_ENV).toBe('testing');
+    });
+})
+
+describe('Logic Test', () => {
     test('Sanity Check', () => {
         expect(1+1).toEqual(2);
     })
 })
+

@@ -27,7 +27,7 @@ Here is a checklist of tasks to help you put your project together:
 
 [X] Create a basic express application with a few database access functions and a few endpoints.
 [X] Test your endpoints manually using Postman, HTTPie or similar.
-[  ] Test your endpoints with supertest.
+[ ] Test your endpoints with supertest.
 
 [x] type `npm run migrate` to run migrations.
 [x] type `npm run seed` to seed the db.
