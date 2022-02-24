@@ -3,8 +3,8 @@ exports.up = function(knex) {
   return knex.schema
   .createTable('shoungs', tbl => {
       tbl.increments();
-      tbl.string('shoung_name', 128).notNullable().unique();
-      tbl.integer('shoung_age');
+      tbl.string('name', 128).notNullable().unique();
+      tbl.integer('age');
   })
 };
 
