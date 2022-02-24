@@ -1,5 +1,4 @@
 const express = require('express');
-const Shoungs = require('./shoungs/shoung-model');
 const shoungRouter = require('./shoungs/shoung-router');
 
 const server = express();
@@ -11,7 +10,7 @@ server.use('*', (req, res) => {
     res.json({ api: 'up' })
 })
 
-server.use((err, req, res, next) => {
+server.use((err, req, res, next) => { //eslint-disable-line
     res.status(500).json({
         customMessage: 'something went wrong inside the router',
         message: err.message,

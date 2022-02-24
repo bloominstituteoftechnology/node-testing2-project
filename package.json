@@ -19,6 +19,7 @@
   "dependencies": {
     "@vscode/sqlite3": "^5.0.7",
     "dotenv": "^14.3.2",
+    "eslint-plugin-jest": "^26.1.1",
     "express": "^4.17.3",
     "knex": "^0.95.15",
     "knex-cleaner": "^1.3.1",
