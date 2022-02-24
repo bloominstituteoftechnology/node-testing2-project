@@ -81,10 +81,10 @@ describe('testing server calls', () => {
 	
 	test('[GET] /avengers/:id', async () => {
 		// Forge Avenger
-		let hero = await Avengers.forge({ secret_identity: 'Black Widow' });
+		let hero = await Avengers.forge({ secret_identity: 'Groot' });
 		// GET request
 		hero = await request(server).get('/avengers/' + hero.id);
-		expect(hero.body).toEqual({ id: 1, secret_identity: 'Black Widow' });
+		expect(hero.body).toEqual({ id: 1, secret_identity: 'Groot' });
 	});
 
 	test('[POST] /avengers', async () => {
@@ -105,8 +105,12 @@ describe('testing server calls', () => {
 		expect(hero.body).toEqual({ id, secret_identity: 'Smart Hulk' });
 	});
 
-	// test('[DELETE] /avengers/:id', async () => {
-
-	// });
+	test('[DELETE] /avengers/:id', async () => {
+		// Forge Avenger
+		let {id} = await Avengers.forge({ secret_identity: 'Black Widow' });
+		// DELETE Request ****SPOILER ALERT****
+		let fallenHero = await request(server).delete('/avengers/' + id);
+		expect(fallenHero.body).toEqual({ id, secret_identity: 'Black Widow' });
+	});
 
 });
