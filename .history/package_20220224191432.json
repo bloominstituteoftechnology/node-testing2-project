@@ -1,0 +1,14 @@
+{
+  "name": "node-testing2-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "migrate": "knex migrate:latest",
+    "rollback"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  }
+}
