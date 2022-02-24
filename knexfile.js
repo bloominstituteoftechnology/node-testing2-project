@@ -1,77 +1,24 @@
-// Update with your config settings.
-
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-// module.exports = {
-
-//   development: {
-//     client: 'sqlite3',
-//     connection: {
-//       filename: './dev.sqlite3'
-//     }
-//   },
-  
-
-//   staging: {
-//     client: 'postgresql',
-//     connection: {
-//       database: 'my_db',
-//       user:     'username',
-//       password: 'password'
-//     },
-//     pool: {
-//       min: 2,
-//       max: 10
-//     },
-//     migrations: {
-//       tableName: 'knex_migrations'
-//     }
-//   },
-
-//   production: {
-//     client: 'postgresql',
-//     connection: {
-//       database: 'my_db',
-//       user:     'username',
-//       password: 'password'
-//     },
-//     pool: {
-//       min: 2,
-//       max: 10
-//     },
-//     migrations: {
-//       tableName: 'knex_migrations'
-//     }
-//   }
-
-// };
-
-
-const sharedConfig = {
+const common = {
   client: 'sqlite3',
   useNullAsDefault: true,
-  migrations: {
-    directory: './data/migrations',
-  },
-  seeds: {
-    directory: './data/seeds',
-  },
-  // this enables foreign keys in SQLite
-  pool: {
-    afterCreate: (conn, done) => {
-      conn.run('PRAGMA foreign_keys = ON', done)
-    },
-  },
+  migrations: { directory: './data/migrations' },
+  seeds: { directory: './data/seeds' },
 }
 
 module.exports = {
   development: {
-    ...sharedConfig,
-    connection: { filename: './data/auth.db3' },
+    ...common,
+    connection: {
+      filename: './data/users.db3',
+    },
   },
   testing: {
-    ...sharedConfig,
-    connection: { filename: './data/testing.db3' },
+    ...common,
+    connection: {
+      filename: './data/test.db3',
+    },
   },
-}
+  production: {
+
+  },
+};
