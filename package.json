@@ -9,7 +9,7 @@
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "ketchup": "git fetch && git reset --hard origin/lecture",
-    "test": "cross-env NODE_ENV=testing jest --verbose --watch --runInBand"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "eslint": "^8.9.0",
+    "eslint-plugin-react": "^7.28.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
