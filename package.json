@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "server": "nodemon index.js",
+    "start": "node index.js",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "test": "cross-env NODE_ENV=testing jest --runInBand"
   },
   "repository": {
     "type": "git",
@@ -16,6 +20,7 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.9.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
