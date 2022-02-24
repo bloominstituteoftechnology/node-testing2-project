@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
+    "latest": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand"
   },
   "repository": {
@@ -16,6 +19,7 @@
     "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.3",
     "knex": "^1.0.3",
+    "knex-cleaner": "^1.3.1",
     "nodemon": "^2.0.15",
     "sqlite3": "^5.0.2"
   },
