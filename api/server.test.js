@@ -85,32 +85,47 @@ describe('Testing Model.js Functions', () => {
         expect(result).not.toBeDefined();
     })
 
-    test('Test 7: API call to root /', () => {
+    test('Test 7: API call to root /', async () => {
 
-        expect(1+1).toEqual(0);
-
-    })
-
-    test('Test 8: API call to [GET] /dogs', () => {
-
-        expect(1+1).toEqual(0);
+        const result = await request(server).get('/');
+        expect(result.status).toBe(200);
+        expect(result.body).toEqual({ api: "up" });
 
     })
 
-    test('Test 9: API call to [GET] /dogs/:id', () => {
+    test('Test 8: API call to [GET] /dogs', async () => {
 
-        expect(1+1).toEqual(0);
+        let result = await request(server).get('/dogs');
+        expect(result.status).toBe(200);
+        expect(result.body).toBeInstanceOf(Array);
+        expect(result.body).toHaveLength(0);
+
+        await Dogs.insert({ name: 'Mimi' });
+
+        result = await request(server).get('/dogs');
+        expect(result.body).toHaveLength(1);
+    })
+
+    test('Test 9: API call to [GET] /dogs/:id', async () => {
+
+        let result = await Dogs.insert({ name: 'Buddy' });
+        result = await request(server).get('/dogs/' + result.id);
+        expect(result.body.name).toBe('Buddy');
 
     })
 
-    test('Test 10: API call to [POST] /dogs', () => {
+    test('Test 10: API call to [POST] /dogs', async () => {
 
-        expect(1+1).toEqual(0);
+        let result = await request(server)
+            .post('/dogs')
+            .send({ name: 'Doge' });
+
+        expect(result.status).toBe(201);
+
+        result = await Dogs.getById(1);
+        expect(result.name).toBe('Doge');
 
     })
-
-
-
 
 })
 
