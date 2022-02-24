@@ -4,10 +4,12 @@ async function get() {
   return db("players");
 }
 async function getById(id) {
-  return null;
+  return db("players").where("id", id).first();
 }
 async function addPlayer(player) {
-  return null;
+  const [id] = await db("players").insert(player);
+
+  return getById(id);
 }
 async function update(id, player) {
   return null;
