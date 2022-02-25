@@ -1,7 +1,6 @@
 const request = require('supertest');
-const server = require('./server');
+const server = require('../api/server');
 const db = require('../data/db-config');
-const users = require('./users/users-model');
 
 beforeAll(async () => {
     await db.migrate.rollback();
@@ -10,6 +9,12 @@ beforeAll(async () => {
 
 beforeEach(async () => {
     await db('users').truncate();
+});
+
+afterAll(async () => {
+    await db.migrate.rollback();
+    await db.migrate.latest();
+    await db('Users').truncate();
 });
 
 test('sanity check', () => {

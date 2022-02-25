@@ -1,9 +1,14 @@
 const request = require('supertest');
-const server = require('../server');
-const db = require('../../data/db-config');
-const Users = require('../users/users-model');
+const server = require('../api/server');
+const db = require('../data/db-config');
 
 beforeAll(async () => {
+    await db.migrate.rollback();
+    await db.migrate.latest();
+    await db('Users').truncate();
+});
+
+afterAll(async () => {
     await db.migrate.rollback();
     await db.migrate.latest();
     await db('Users').truncate();

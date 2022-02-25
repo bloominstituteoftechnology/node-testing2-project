@@ -24,13 +24,13 @@ server.use(
   session({
     name: "chocolatechip",
     secret: "The secret of life.",
+    saveUnitialized: true,
+    resave: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       secure: false,
       httpOnly: true,
     },
-    resave: false,
-    saveUnitialized: false,
   })
 );
 
