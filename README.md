@@ -10,7 +10,7 @@ For this project you will create a RESTful API using Node and Express, containin
 
 - Write a minimum of ten tests using supertest.
 
-## Checklist
+## Checklist checking
 
 Here is a checklist of tasks to help you put your project together:
 
