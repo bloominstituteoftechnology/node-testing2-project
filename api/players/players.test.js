@@ -101,7 +101,13 @@ describe("testing endpoints", () => {
       .send({ age: 23 });
     expect(result.body.age).toBe(23);
   });
-  //  test('[delete] /players:id', async () => {
+  test("[delete] /players:id", async () => {
+    let { id } = await model.addPlayer({ name: "Stephen curry", age: 33 });
+    result = await request(server).get("/players");
+    expect(result.body).toHaveLength(1);
 
-  //  })
+    await request(server).delete("/players/" + id);
+    result = await model.get();
+    expect(result).toHaveLength(0);
+  });
 });

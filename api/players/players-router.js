@@ -21,8 +21,10 @@ router.put("/:id", (req, res, next) => {
     res.status(201).json(player);
   });
 });
-router.delete("/", (req, res, next) => {
-  console.log("router is working");
+router.delete("/:id", (req, res, next) => {
+  model.remove(req.params.id).then((player) => {
+    res.status(201).json(player);
+  });
 });
 
 module.exports = router;
