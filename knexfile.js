@@ -11,7 +11,7 @@ module.exports = {
   development: {
     ...knexfile,
     connection: {
-      filename: './data/f1teams.db3'
+      filename: './data/streamers.db3'
     }
   },
 
