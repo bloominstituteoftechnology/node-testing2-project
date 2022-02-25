@@ -33,14 +33,14 @@ const users = require("../users/users-model");
  */
 router.post(
   "/register",
-  checkUsernameFree,
+  // checkUsernameFree,
   checkPasswordLength,
   async (req, res, next) => {
-    const user = req.user;
-    const hash = bcrypt.hashSync(user.password, 13);
-    user.password = hash;
+    const newUser = req.body;
+    const hash = bcrypt.hashSync(newUser.password, 13);
+    newUser.password = hash;
     await users
-      .add(user)
+      .add(newUser)
       .then((resp) => {
         res.json(resp);
       })

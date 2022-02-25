@@ -24,7 +24,7 @@ function restricted(req, res, next) {
   }
 */
 function checkUsernameFree(req, res, next) {
-  users.findBy({ username: req.user.username }).first() != null
+  users.findBy({ username: req.body.username }).first() != null
     ? next({ status: 422, message: "Username taken" })
     : next();
 }
@@ -38,7 +38,7 @@ function checkUsernameFree(req, res, next) {
   }
 */
 async function checkUsernameExists(req, res, next) {
-  const user = await users.findBy({ username: req.user.username }).first();
+  const user = await users.findBy({ username: req.body.username }).first();
   user === null
     ? next({ status: 401, message: "Invalid credentials" })
     : (req.user = user);
