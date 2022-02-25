@@ -10,15 +10,15 @@ server.get('/', (req, res) => {
     res.status(200).json({ api: 'up'});
 })
 
-server.get('/snacks', (req, res, next) => {
+server.get('/api/snacks', (req, res, next) => {
     res.json('snacks get linked');
 })
 
-server.get('/snacks/:id', (req, res, next) => {
+server.get('/api/snacks/:id', (req, res, next) => {
     res.json(' snack getById linked');
 })
 
-server.post('/snacks', (req, res, next) => {
+server.post('/api/snacks', (req, res, next) => {
     res.json('snack post linked');
 })
 
