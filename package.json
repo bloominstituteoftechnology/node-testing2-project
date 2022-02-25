@@ -8,5 +8,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "knex": "^0.95.15",
+    "sqlite3": "^5.0.2"
   }
 }
