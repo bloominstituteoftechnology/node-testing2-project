@@ -1,5 +1,5 @@
 
-const knexfile = {
+const sharedConfig = {
   client: 'sqlite3',
   useNullAsDefault: true,
   migrations: { directory: './data/migrations' },
@@ -9,14 +9,17 @@ const knexfile = {
 module.exports = {
 
   development: {
-    ...knexfile,
+    ...sharedConfig,
     connection: {
       filename: './data/streamers.db3'
-    }
+    },
+    seeds:
+     { directory: './data/seeds' }
+    
   },
 
   testing: {
-    ...knexfile,
+    ...sharedConfig,
     connection: {
       filename: './data/test.db3'
     }
