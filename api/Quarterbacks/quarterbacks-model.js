@@ -4,8 +4,8 @@ function getAll() {
   return db("Quarterbacks");
 }
 
-function getById(quarterbacks_id) {
-  return db("Quarterbacks").where("quarterbacks_id", quarterbacks_id);
+function getById(quarterback_id) {
+  return db("Quarterbacks").where("quarterback_id", quarterback_id);
 }
 
 async function add(quarterback) {
