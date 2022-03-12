@@ -1,7 +1,6 @@
 const request = require('supertest')
 const server = require('./server')
 const db = require('../data/db.Config')
-const Teams = require('../api/f1teams/teams-model')
 
 beforeAll(async () => {
     await db.migrate.rollback()
@@ -16,7 +15,7 @@ afterAll(async () => {
     await db.destroy()
 })
 
-describe('GET /hobbits', () => {
+describe('GET /f1teams', () => {
     test('returns status 200 ok', async () => {
         const res = await request(server).get('/f1teams')
         expect(res.status).toBe(200)
