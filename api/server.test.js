@@ -20,7 +20,7 @@ describe('GET /f1teams', () => {
         const res = await request(server).get('/f1teams')
         expect(res.status).toBe(200)
     })
-    test('returns array lenght', async () => {
+    test('returns array length', async () => {
         const res = await request(server).get('/f1teams')
         expect(res.body).toHaveLength(4)
     })
