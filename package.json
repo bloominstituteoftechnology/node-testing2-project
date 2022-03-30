@@ -3,10 +3,30 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
+  },
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.8",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "knex": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.12.0",
+    "jest": "^27.5.1",
+    "knex-cleaner": "^1.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }
