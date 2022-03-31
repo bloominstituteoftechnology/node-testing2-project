@@ -9,6 +9,9 @@
     "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.3",
     "knex": "^1.0.3"
+  },"devDependencies": {
+    "eslint": "^8.11.0",
+    "nodemon": "^2.0.15"
   },
   "repository": {
     "type": "git",
