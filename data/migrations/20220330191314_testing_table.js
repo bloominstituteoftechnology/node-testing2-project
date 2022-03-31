@@ -1,21 +1,21 @@
 exports.up = function (knex) {
   return knex.schema
-    .createTable("roles", (tbl) => {
-      tbl.increments();
-      tbl.string("name", 128).notNullable();
+    .createTable("roles", (roles) => {
+      roles.increments("role_id");
+      roles.string("role_name", 32).notNullable().unique();
     })
-    .createTable("users", (tbl) => {
-      tbl.increments();
-      tbl.string("username", 128).notNullable().unique();
-      tbl.string("password", 256).notNullable();
-      tbl.integer("logged_out_time");
-      tbl
-        .integer("role")
+    .createTable("users", (users) => {
+      users.increments("user_id");
+      users.string("username", 128).notNullable().unique();
+      users.string("password", 128).notNullable();
+      users
+        .integer("role_id")
         .unsigned()
-        .references("roles.id")
-        .onDelete("RESTRICT")
-        .onUpdate("CASCADE")
-        .defaultTo(2);
+        .notNullable()
+        .references("role_id")
+        .inTable("roles")
+        .onUpdate("RESTRICT")
+        .onDelete("RESTRICT");
     });
 };
 

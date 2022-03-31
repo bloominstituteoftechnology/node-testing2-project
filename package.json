@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --detectOpenHandles",
     "start": "node index.js",
+    "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
@@ -18,6 +19,8 @@
     "@vscode/sqlite3": "^5.0.8",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "knex": "^1.0.4"
   },
   "devDependencies": {
