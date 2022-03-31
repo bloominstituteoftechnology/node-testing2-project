@@ -1,6 +1,6 @@
 # Server Testing Module Project
 
-## Instructions
+## Instruction
 
 ### Minimum Viable Product
 
