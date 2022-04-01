@@ -16,5 +16,15 @@ afterAll(async () => {
 })
 
 test('sanity check', () => {
-    expect(1).toBe(2);
+    expect(1).toBe(1);
+})
+
+test('[GET] /babynames', async () => {
+    let result = await Model.findAll();
+    expect(result).toHaveLength(0);
+
+    await Model.addName({ name: 'Baker', gender: 'Male'})
+
+    result = await Model.findAll();
+    expect(result).toHaveLength(1);
 })
