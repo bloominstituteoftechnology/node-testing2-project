@@ -17,4 +17,10 @@ module.exports = {
     }
   },
 
+  test: {
+    ...common,
+    connection: {
+      filename: './data/test_baby_names.db3'
+    }
+  }
 };

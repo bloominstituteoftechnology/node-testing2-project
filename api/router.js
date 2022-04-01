@@ -23,5 +23,15 @@ router.get('/:gender', (req, res, next) => {
     })
 })
 
+router.post('/', (req, res, next) => {
+    Model.addName(req.body)
+    .then(resp => {
+        res.status(201).json(resp);
+    })
+    .catch(error => {
+        next(error);
+    })
+})
+
 
 module.exports = router;

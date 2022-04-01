@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose --runInBand --watch",
     "server": "nodemon index.js",
     "start": "node index.js",
     "migrate": "npx knex migrate:latest",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@vscode/sqlite3": "^5.0.8",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jest": "^27.5.1",
