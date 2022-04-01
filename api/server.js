@@ -1,10 +1,10 @@
 const express = require('express');
+const BabyNameRouter = require('./router');
 
 const server = express();
 
 server.use(express.json());
-
-
+server.use('/api/babynames', BabyNameRouter);
 
 
 

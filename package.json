@@ -14,6 +14,7 @@
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
   },
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.8",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jest": "^27.5.1",
