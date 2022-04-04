@@ -13,6 +13,12 @@ const findByGender = (gender) => {
     )
 }
 
+const findBy = (filter) => {
+    return(
+        db('babyNames').where(filter)
+    )
+}
+
 const addName = async (nameObject) => {
         await db('babyNames').insert(nameObject)
 
@@ -22,5 +28,6 @@ const addName = async (nameObject) => {
 module.exports = {
     findAll,
     findByGender,
-    addName
+    addName,
+    findBy
 }

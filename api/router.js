@@ -14,6 +14,11 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:gender', (req, res, next) => {
+
+    if(req.params.gender !== 'male' || req.params.gender !== 'female'){
+        next({status: 201, message: 'There are only 2 genders please enter male or female'})
+    }
+
     Model.findByGender(req.params.gender)
     .then(resp => {
         res.status(200).json(resp)
