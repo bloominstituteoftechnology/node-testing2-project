@@ -28,6 +28,8 @@ function update (id, changes) {
     return null
 }
 
-function remove (id) {
-    return null
+async function remove (id) {
+    const res = await getById(id)
+    await db('crossfitters').del().where('id', id)
+    return res
 }
