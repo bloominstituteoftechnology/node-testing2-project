@@ -43,9 +43,9 @@ describe('endpoint tests', () => {
     })
     test('can get by id', async() => {
         let res = await CF.getById(0)
-        expect(res).not.toBeDefined()
+        expect(res).not.toBeDefined();
          res = await CF.getById(2)
-         expect(res.name).toHaveProperty('name', 'Ethan Miles')
+         expect(res.name).toBe('Ethan Miles')
     })
 })
 

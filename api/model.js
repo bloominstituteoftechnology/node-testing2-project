@@ -13,7 +13,9 @@ function getAll () {
 }
 
 function getById (id) {
-    return null
+    return db('crossfitters')
+    .where('id', id)
+    .first()
 }
 
 function insert (crossfitter) {
