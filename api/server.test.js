@@ -35,4 +35,12 @@ test('server is up', async () => {
 })
 
 
+describe('endpoint tests', () => {
+    test('can get all', async() => {
+        const res = await CF.getAll()
+        expect(res.length).toBe(3)
+        expect(res[0].name).toBe('Amon')
+    })
+})
+
 
