@@ -17,11 +17,11 @@ beforeAll(async () => {
 beforeEach(async () => {
     await db('crossfitters').truncate()
     await db('crossfitters')
-        .insert({
-            name: 'Amon Terrant',
-            name: 'Ethan Miles',
-            name: 'Chris Jones'
-        })
+        .insert([
+            {name: 'Amon Trant'},
+            {name: 'Ethan Miles'},
+            {name: 'Chris Jones'}
+        ])
 })
 
 afterAll(async () => {
@@ -39,7 +39,7 @@ describe('endpoint tests', () => {
     test('can get all', async() => {
         const res = await CF.getAll()
         expect(res.length).toBe(3)
-        expect(res[0].name).toBe('Amon')
+        expect(res[0].name).toBe('Amon Trant')
     })
 })
 

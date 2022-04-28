@@ -1,3 +1,5 @@
+const db = require('../data/db-config')
+
 module.exports = {
     insert,
     update,
@@ -7,7 +9,7 @@ module.exports = {
 }
 
 function getAll () {
-    return null
+    return db('crossfitters')
 }
 
 function getById (id) {
