@@ -18,8 +18,14 @@ server.get('/crossfitters', (req,res) => {
     })
 })
 
-server.get('/crossfitters/:id', (req,res) => {
-    res.json('you found me again!')
+server.get('/crossfitters/:id', (req,res, next) => {
+    model.getById(req.params.id)
+    .then(cfr => {
+        res.json(cfr)
+    })
+    .catch(err => {
+        next(err)
+    })
 })
 
 server.post('/crossfitters', (req,res) => {
@@ -33,5 +39,12 @@ server.route('/crossfitters/:id', (req,res) => {
 server.delete('/crossfitters/:id', (req,res) => {
     res.json('you mastered it')
 })
+
+server.use((err, req, res, next) => { // eslint-disable-line
+    res.status(err.status || 500).json({
+      message: err.message,
+      stack: err.stack,
+    })
+  })
 
 module.exports = server
