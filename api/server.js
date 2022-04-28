@@ -49,7 +49,13 @@ server.put('/crossfitters/:id', (req,res,next) => {
 })
 
 server.delete('/crossfitters/:id', (req,res) => {
-    res.json('you mastered it')
+    model.remove(req.params.id)
+    .then(cfr => {
+        res.status(200).json(cfr)
+    })
+    .catch(err => {
+        next(err)
+    })
 })
 
 server.use((err, req, res, next) => { // eslint-disable-line
