@@ -12,7 +12,10 @@ server.get("/", (req,res) => {
 })
 
 server.get('/crossfitters', (req,res) => {
-    res.json('you found me')
+    model.getAll()
+    .then(cfr => {
+        res.json(cfr)
+    })
 })
 
 server.get('/crossfitters/:id', (req,res) => {
