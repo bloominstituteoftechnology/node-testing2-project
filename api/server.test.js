@@ -41,6 +41,12 @@ describe('endpoint tests', () => {
         expect(res.length).toBe(3)
         expect(res[0].name).toBe('Amon Trant')
     })
+    test('can get by id', async() => {
+        let res = await CF.getById(0)
+        expect(res).not.toBeDefined()
+         res = await CF.getById(2)
+         expect(res.name).toHaveProperty('name', 'Ethan Miles')
+    })
 })
 
 
