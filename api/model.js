@@ -19,7 +19,9 @@ function getById (id) {
 }
 
 function insert (crossfitter) {
-    return null
+    return db('crossfitters')
+    .insert(crossfitter)
+    .then(([id]) => getById(id))
 }
 
 function update (id, changes) {

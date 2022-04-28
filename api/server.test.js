@@ -47,6 +47,13 @@ describe('endpoint tests', () => {
          res = await CF.getById(2)
          expect(res.name).toBe('Ethan Miles')
     })
+    test('can insert', async () => {
+        let res = await CF.insert({ name: 'Nikki Spina'})
+        expect(res).toHaveProperty('name', 'Nikki Spina')
+        expect(res.id).toBe(4)
+        res = await CF.getAll()
+        expect(res.length).toBe(4)
+    })
 })
 
 
