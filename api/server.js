@@ -28,8 +28,14 @@ server.get('/crossfitters/:id', (req,res, next) => {
     })
 })
 
-server.post('/crossfitters', (req,res) => {
-    res.json('you are getting good at this')
+server.post('/crossfitters', (req,res, next) => {
+    model.insert(req.body)
+    .then(cfr => {
+        res.json(cfr)
+    })
+    .catch(err => {
+        next(err)
+    })
 })
 
 server.route('/crossfitters/:id', (req,res) => {
