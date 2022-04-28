@@ -23,6 +23,10 @@ server.post('/crossfitters', (req,res) => {
     res.json('you are getting good at this')
 })
 
+server.route('/crossfitters/:id', (req,res) => {
+    res.json('hey you updated me')
+})
+
 server.delete('/crossfitters/:id', (req,res) => {
     res.json('you mastered it')
 })
