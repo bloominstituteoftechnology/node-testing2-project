@@ -9,13 +9,13 @@ const common = {
     development: {
       ...common,
       connection: {
-        filename: './data/hobbits.db3',
+        filename: './data/crossfitters.db3',
       },
     },
     testing: {
       ...common,
       connection: {
-        filename: './data/test.db3',
+        filename: './data/crossfitters.db3',
       },
     },
     production: {
