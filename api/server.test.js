@@ -60,6 +60,12 @@ describe('endpoint tests', () => {
         res = await CF.getAll()
         expect(res.length).toBe(2)
     })
+    test('can update', async() => {
+        let res = await CF.update(3, { name: 'Joseph Dappen'})
+        expect(res).toEqual({ id: 3, name: 'Joseph Dappen'})
+        res = await CF.getAll()
+        expect(res.length).toBe(3)
+    })
 })
 
 

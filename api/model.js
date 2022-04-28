@@ -25,7 +25,10 @@ function insert (crossfitter) {
 }
 
 function update (id, changes) {
-    return null
+    return db('crossfitters')
+    .update(changes)
+    .where('id', id)
+    .then(() => getById(id))
 }
 
 async function remove (id) {
