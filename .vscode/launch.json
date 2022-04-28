@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node", 
+            "request": "launch",
+            "name": "jest",
+            "runtimeExecutable": "jest",
+            "args": ["--watch", "--verbose", "--runInBand"],
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "env": {
+                "debug": "app:*",
+                "NODE_ENV": "testing"
+            }
+        }
+    ]
+}

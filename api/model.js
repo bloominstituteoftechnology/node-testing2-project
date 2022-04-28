@@ -3,7 +3,7 @@ module.exports = {
     update,
     remove,
     getAll,
-    getByID,
+    getById,
 }
 
 function getAll () {
