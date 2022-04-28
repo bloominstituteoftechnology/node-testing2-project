@@ -54,6 +54,12 @@ describe('endpoint tests', () => {
         res = await CF.getAll()
         expect(res.length).toBe(4)
     })
+    test('can delete', async () => {
+        let res = await CF.remove(1)
+        expect(res).toHaveProperty('name', 'Amon Trant')
+        res = await CF.getAll()
+        expect(res.length).toBe(2)
+    })
 })
 
 
