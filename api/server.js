@@ -14,14 +14,14 @@ server.get("/", (req,res) => {
 server.get('/crossfitters', (req,res) => {
     model.getAll()
     .then(cfr => {
-        res.json(cfr)
+        res.status(200).json(cfr)
     })
 })
 
 server.get('/crossfitters/:id', (req,res, next) => {
     model.getById(req.params.id)
     .then(cfr => {
-        res.json(cfr)
+        res.status(200).json(cfr)
     })
     .catch(err => {
         next(err)
@@ -31,15 +31,21 @@ server.get('/crossfitters/:id', (req,res, next) => {
 server.post('/crossfitters', (req,res, next) => {
     model.insert(req.body)
     .then(cfr => {
-        res.json(cfr)
+        res.status(201).json(cfr)
     })
     .catch(err => {
         next(err)
     })
 })
 
-server.route('/crossfitters/:id', (req,res) => {
-    res.json('hey you updated me')
+server.put('/crossfitters/:id', (req,res,next) => {
+    model.update(req.params.id, req.body)
+    .then(cfr => {
+        res.json(cfr)
+    })
+    .catch(err => {
+        next(err)
+    })
 })
 
 server.delete('/crossfitters/:id', (req,res) => {
