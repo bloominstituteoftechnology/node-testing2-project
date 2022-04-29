@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
     "start": "node index.js",
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
