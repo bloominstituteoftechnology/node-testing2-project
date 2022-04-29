@@ -67,13 +67,43 @@ describe('Model Tests', () => {
     });
 });
 
-describe('', () => {
+describe('API Tests', () => {
     test('[7] GET /smash', async () => {
         const res = await request(server).get('/smash');
         expect(res.status).toBe(200);
         expect(res.body).toHaveLength(3);
     });
-    // test('[8] GET /smash/:id', async () => {});
-    // test('[9] POST /smash', async () => {});
-    // test('[10] DELETE /smash', async () => {});
+    test('[8] GET /smash/:id', async () => {
+        let res = await request(server).get('/smash/3');
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual({ id: 3, name: 'Sora', series: 'Kingdom Hearts' });
+        
+        res = await request(server).get('/smash/200');
+        expect(res.status).toBe(404);
+        expect(res.body).toHaveProperty('message', 'character not found');
+    });
+    test('[9] POST /smash', async () => {
+        let res = await request(server).post('/smash').send({ name: 'Falco', series: 'StarFox' });
+        expect(res.status).toBe(201);
+        expect(res.body).toEqual({ id: 4, name: 'Falco', series: 'StarFox' });
+
+        res = await request(server).post('/smash').send({ name: null, series: null });
+        expect(res.status).toBe(500);
+        expect(res.body).toHaveProperty('message', 'character could not be added');
+    });
+    test('[10] DELETE /smash', async () => {
+        let res = await request(server).delete('/smash/1');
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual({ id: 1, name: 'Kirby', series: 'Kirby' });
+
+        let result = await Smash.getAll();
+        expect(result).toHaveLength(2);
+
+        res = await request(server).delete('/smash/100');
+        expect(res.status).toBe(404);
+        expect(res.body).toHaveProperty('message', 'no character found at id');
+
+        result = await Smash.getAll();
+        expect(result).toHaveLength(2); 
+    });
 })
