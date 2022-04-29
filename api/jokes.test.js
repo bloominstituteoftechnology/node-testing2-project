@@ -61,4 +61,47 @@ describe('Jokes model functions', () => {
             expect(joke.body).toMatchObject(joke1)
         })
     })
+    describe('update joke', () => {
+        it('updates joke in database', async () => {
+            const [joke_id] = await db("jokes").insert(joke1)
+            let joke = await db("jokes").where({ joke_id }).first()
+            expect(joke).toMatchObject(joke1)
+            await request(server).patch(`/jokes/${joke_id}`).send({
+                joke: "What do you call a bear with no teeth?",
+                punchline: "A gummy bear!",
+            })
+            joke = await db("jokes").where({ joke_id }).first()
+            expect(joke).toMatchObject({ joke_id, ...joke1 })
+        })
+        it("responds with the updated joke", async () => {
+            await db("jokes").insert(joke1)
+            let joke = await request(server).patch(`/jokes/1`).send({
+                joke: "What do you call a bear with no teeth?",
+                punchline: "A gummy bear!",
+            })
+            expect(joke.body).toMatchObject(joke1)
+        })
+    })
+    describe('read jokes', () => {
+        it('reads jokes from database', async () => {
+            await db("jokes").insert(joke1)
+            await db("jokes").insert(joke2)
+            let jokes = await request(server).get("/jokes")
+            expect(jokes.body).toHaveLength(2)
+        })
+    })
+    describe('read joke by id', () => {
+        it('reads joke from database', async () => {
+            await db("jokes").insert(joke1)
+            await db("jokes").insert(joke2)
+            let joke = await request(server).get("/jokes/1")
+            expect(joke.body).toMatchObject(joke1)
+        })
+    })
+    describe('is empty', () => {
+        it('checks db starts empty', async () => {
+            let jokes = await request(server).get("/jokes")
+            expect(jokes.body).toHaveLength(0)
+        })
+    })
 })

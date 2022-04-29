@@ -18,8 +18,16 @@ async function updateJoke(joke_id, changes) {
         return db('jokes').where({ joke_id }).first();
     }
 }
+async function readJokes() {
+    return await db('jokes');
+}
+async function readJokesById(joke_id) {
+    return await db('jokes').where({ joke_id }).first();
+}
 module.exports = {
     createJoke,
     deleteJoke,
-    updateJoke
+    updateJoke,
+    readJokes,
+    readJokesById
 }
