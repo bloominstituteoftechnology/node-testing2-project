@@ -1,6 +1,5 @@
 const express = require('express');
 
-
 const Smash = require('./Smash/smash-model');
 
 const server = express();
