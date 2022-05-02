@@ -120,4 +120,5 @@ dist
 
 # VSCode settings
 .vscode/
+testing.db3
 

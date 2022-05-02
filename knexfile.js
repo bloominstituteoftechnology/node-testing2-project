@@ -1,10 +1,16 @@
+
 module.exports = {
-    development: {
-      ...sharedConfig,
-      connection: { filename: './data/auth.db3' },
+  development: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: './data/cars.db3'
     },
-    testing: {
-      ...sharedConfig,
-      connection: { filename: './data/testing.db3' },
+    migrations: {
+      directory: './data/migrations'
     },
+    seeds: {
+      directory: './data/seeds'
+    }
   }
+}
