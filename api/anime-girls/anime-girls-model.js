@@ -26,5 +26,6 @@ module.exports = {
   getAll,
   getById,
   add,
-
+  update,
+  remove
 }

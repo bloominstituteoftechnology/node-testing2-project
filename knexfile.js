@@ -17,4 +17,10 @@ module.exports = {
       filename: './data/anime_girls.sqlite3'
     }
   },
+  testing: {
+    ...common,
+    connection: {
+      filename: './data/test.db3',
+    },
+  },
 };
