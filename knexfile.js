@@ -21,6 +21,6 @@ const sharedConfig = {
     },
     testing: {
       ...sharedConfig,
-      connection: { filename: './data/testing.db3' },
+      connection: { filename: './data/test.db3' },
     },
   }
