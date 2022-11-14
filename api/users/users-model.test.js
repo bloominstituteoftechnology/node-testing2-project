@@ -17,5 +17,12 @@ test('eviroment is testing', () => {
 describe('getAll', () => {
   test('resolves all the users in the table', async () => {
     const result = await User.getAll()
+    expect(result).toHaveLength(3)
+  })
+  test('resolves the correct user', async () => {
+    const result = await User.getAll()
+    expect(result[0]).toMatchObject({ name: 'sara' })
+    expect(result[1]).toMatchObject({ name: 'john' })
+    expect(result[2]).toMatchObject({ name: 'andy' })
   })
 })
