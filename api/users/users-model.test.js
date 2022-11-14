@@ -26,3 +26,9 @@ describe('getAll', () => {
     expect(result[2]).toMatchObject({ name: 'andy' })
   })
 })
+describe('getById', () => {
+  test('resolves the user by the given id', async () => {
+    let result = await User.getById(1)
+    expect(result).toMatchObject({ name: 'sara' })
+  })
+})
