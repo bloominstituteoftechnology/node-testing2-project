@@ -30,4 +30,8 @@ server.get('/users/:id', (req, res) => {
     })
 })
 
+server.post('/users', async (req, res) => {
+  res.status(201).json(await User.insert(req.body))
+})
+
 module.exports = server
