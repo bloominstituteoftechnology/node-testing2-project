@@ -24,6 +24,22 @@ describe('[GET] /', () => {
 
 describe('[GET] /users', () => {
     test('responds with 200 ok', async () => {
+        const res = await request(server).get('/users')
+        expect(res.status).toBe(200)
+    })
+    test('responds with all the users', async () => {
+        const res = await request(server).get('/users')
+        expect(res.body).toHaveLength(3)
+    })
+})
 
+describe('[GET] /users/:id', () => {
+    test('responds with 200 ok', async () => {
+        const res = await request(server).get('/users/1')
+        expect(res.status).toBe(200)
+    })
+    test('resolves with the user at that id', async () => {
+        const res = await request(server).get('/users/1')
+        expect(res.body).toMatchObject({ name: 'sara' })
     })
 })
