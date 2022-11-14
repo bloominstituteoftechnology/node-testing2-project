@@ -30,5 +30,16 @@ describe('getById', () => {
   test('resolves the user by the given id', async () => {
     let result = await User.getById(1)
     expect(result).toMatchObject({ name: 'sara' })
+    result = await User.getById(2)
+    expect(result).toMatchObject({ name: 'john' })
+    result = await User.getById(3)
+    expect(result).toMatchObject({ name: 'andy' })
+  })
+})
+describe('insert', () => {
+  const jessica = { name: 'jessica' }
+  test('resolves the newly created user', async () => {
+    const result = await User.insert(jessica)
+    expect(result).toMatchObject(jessica)
   })
 })
