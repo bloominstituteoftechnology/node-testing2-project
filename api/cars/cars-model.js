@@ -1,4 +1,4 @@
-const db = require('../../data/db-config');
+// const db = require('../../data/db-config');
 
 function findById(id) {
     return `findById(${id}) db operation under construction`
