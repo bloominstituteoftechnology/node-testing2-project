@@ -78,8 +78,30 @@ describe('[POST] /', () => {
     })
 })
 describe('[PUT] /:id', () => {
-    test.todo('should update indicated car in the db')
-    test.todo('should return object containing updated car')
+    const updates = {
+        make: 'chevrolet',
+        model: 'colorado',
+        trim: 'zr2',
+        price: 51885,
+        link: 'https://www.chevrolet.com/trucks/colorado/build-and-price/summary?styleId=431445&rpo=L3B,MFC,GU6,R1U,GBA,A50,HFD,URL,PDD,CWM,B26,CAC,KU9,A45,VAV,KI3,KSG,K4C,E90,DA5,UV2,UD7,UKI,UFB,UKK,&ss=H4sIAAAAAAAAAH1Su07EMBAcYukKehAlUnp0d3kppR9JLvLlhBKciPS0fAYlHQVfC3bOZwew2ML2jGa9s14DuAXe77D5UIheXhGpAYb7ga/ePudJbzBxA5LOPcgxYSBdzUEalYPUVQnS75SGdAah2RbkMCYgqj9q7vikF0ZBhu7Z6pZlFvqWQy2smFN9nxwakJGOXzpwjnuQOI5x8bA4cICmmd4iSzRYDosDJ2H73Gy/JGwq9GFj2YdzqcWDS+RT54GgoUJVuQ2w5j1councA5V7YFr/m2zewhtrrDGZ8oBWtkmIHZoV215YVQa0ZpLOkJmoAydWrnxE1seJFwH2UQifaGbrgBJFoKqqWYiVbZCVgW7Mz/JFxn1Aon+RkwDXiLFDBgoGjgq11kmsBP/FN18/c74rAwAA&postalCode=84005'
+    };
+    test('should update indicated car in the db', async () => {
+        const initialCar = await Car.findById(3);
+        const updatedCar = await Car.updateCar(3, updates);
+        expect(updatedCar.id).toEqual(initialCar.id);
+        expect(updatedCar.make).not.toEqual(initialCar.make);
+        expect(updatedCar.model).not.toEqual(initialCar.model);
+        expect(updatedCar.trim).not.toEqual(initialCar.trim);
+        expect(updatedCar.price).not.toEqual(initialCar.price);
+        expect(updatedCar.link).not.toEqual(initialCar.link);
+    });
+    test('should return object containing updated car', async () => {
+        const updatedCar = await Car.updateCar(3, updates);
+        expect(updatedCar.make).toEqual(updates.make);
+        expect(updatedCar.model).toEqual(updates.model);
+        expect(updatedCar.trim).toEqual(updates.trim);
+        expect(updatedCar.price).toEqual(updates.price);
+    })
 })
 describe('[DELETE] /:id', () => {
     test.todo('should remove indicated car from the db')

@@ -26,8 +26,9 @@ async function insertCar(car) {
     return findById(newCarId);
 }
 
-function updateCar(id, updates) {
-    return `updateCar (${id}, ${updates}) db operation under construction)`
+async function updateCar(id, updates) {
+    await db('cars').where('id', id).update(updates)
+    return findById(id)
 }
 
 function deleteCar(id) {
