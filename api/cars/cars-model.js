@@ -31,6 +31,8 @@ async function updateCar(id, updates) {
     return findById(id)
 }
 
-function deleteCar(id) {
-    return`deleteCar(${id}) db operation under construction`
+async function deleteCar(id) {
+    const deletedCar = await findById(id)
+    await db('cars').where('id', id).del()
+    return deletedCar;
 }

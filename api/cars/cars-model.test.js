@@ -104,6 +104,16 @@ describe('[PUT] /:id', () => {
     })
 })
 describe('[DELETE] /:id', () => {
-    test.todo('should remove indicated car from the db')
-    test.todo('should return object containing deleted car')
+    test('should make Car.findAll.length 1 shorter', async () => {
+        const initialList = await Car.findAll();
+        await Car.deleteCar(1);
+        const resultList = await Car.findAll();        
+        expect(resultList.length).toEqual(initialList.length - 1)
+    })
+    test('should return object containing deleted car', async () => {
+        const initialCar = await Car.findById(1);
+        const result = await Car.deleteCar(1);
+
+        expect(result).toEqual(initialCar);
+    })
 })
