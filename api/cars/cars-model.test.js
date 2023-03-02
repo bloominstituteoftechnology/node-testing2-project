@@ -54,8 +54,28 @@ describe('[GET] /make', () => {
     }) // this one is kinda redundant because I loop through each item in the prev test
 })
 describe('[POST] /', () => {
-    test.todo('should add new car to the db')
-    test.todo('should return object containing new car')
+    const amg = {
+        make: 'mercedes-amg',
+        model: 'cla',
+        trim: '45',
+        price: 78035,
+        link: 'https://www.mbusa.com/en/share/build/A3UKMY'
+    };
+    test('should add new car to the db', async () => {
+        const result = await Car.insertCar(amg);
+        const newData = await Car.findAll();
+        expect(result.id).toBe(6);
+        expect(newData.length).toBe(6)
+    })
+    test('should return object containing new car', async () => {
+        const result = await Car.insertCar(amg);
+        expect(result).toMatchObject(amg);
+        expect(result.make).toBe('mercedes-amg');
+        expect(result.model).toBe('cla');
+        expect(result.trim).toBe('45');
+        expect(result.price).toBe(78035);
+        expect(result.link).toBe('https://www.mbusa.com/en/share/build/A3UKMY');
+    })
 })
 describe('[PUT] /:id', () => {
     test.todo('should update indicated car in the db')

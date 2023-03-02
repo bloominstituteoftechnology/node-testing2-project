@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findById(id) {
-    return `findById(${id}) db operation under construction`
+    return db('cars').where('id', id).first()
 }
 
 function findAll() {
@@ -21,8 +21,9 @@ function findByMake(carMake) {
     return db('cars').where('make', carMake)
 }
 
-function insertCar(car) {
-    return `insertCar(${car}) db operation under construction`
+async function insertCar(car) {
+    const newCarId = await db('cars').insert(car)
+    return findById(newCarId);
 }
 
 function updateCar(id, updates) {
