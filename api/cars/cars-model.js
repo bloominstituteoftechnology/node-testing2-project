@@ -1,16 +1,29 @@
 const db = require('../../data/db-config');
 
-function find() {
-    console.log('find db operation under construction');
-    return 'find db operation under construction'
-};
+function findById(id) {
+    return `findById(${id}) db operation under construction`
+}
 
-function findByMake(make) {
-    console.log('findByMake db operation under construction');
-    return 'findByMake db operation under construction'
-};
+function findAll() {
+    return 'findAll db operation under construction'
+}
+
+function findByMake(carMake) {
+    return `findByMake(${carMake}) db operation under construction`
+}
+
+function insertCar(car) {
+    return `insertCar(${car}) db operation under construction`
+}
+
+function deleteCar(id) {
+    return`deleteCar(${id}) db operation under construction`
+}
 
 module.exports = {
-    find,
+    findById,
+    findAll,
     findByMake,
+    insertCar,
+    deleteCar,
 }

@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.string('make').notNullable();
         table.string('model').notNullable();
         table.string('trim').notNullable();
-        table.integer('price').notNullable();
+        table.integer('price');
         table.string('link');
     })
 };
