@@ -16,6 +16,10 @@ function insertCar(car) {
     return `insertCar(${car}) db operation under construction`
 }
 
+function updateCar(id, updates) {
+    return `updateCar (${id}, ${updates}) db operation under construction)`
+}
+
 function deleteCar(id) {
     return`deleteCar(${id}) db operation under construction`
 }
@@ -24,6 +28,7 @@ module.exports = {
     findById,
     findAll,
     findByMake,
+    updateCar,
     insertCar,
     deleteCar,
 }
