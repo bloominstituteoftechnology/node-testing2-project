@@ -1,4 +1,4 @@
-// const db = require('../../data/db-config');
+const db = require('../../data/db-config');
 
 module.exports = {
     findById,
@@ -14,11 +14,11 @@ function findById(id) {
 }
 
 function findAll() {
-    return 'findAll db operation under construction'
+    return db('cars')
 }
 
 function findByMake(carMake) {
-    return `findByMake(${carMake}) db operation under construction`
+    return db('cars').where('make', carMake)
 }
 
 function insertCar(car) {
