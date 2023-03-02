@@ -1,5 +1,14 @@
 // const db = require('../../data/db-config');
 
+module.exports = {
+    findById,
+    findAll,
+    findByMake,
+    updateCar,
+    insertCar,
+    deleteCar,
+}
+
 function findById(id) {
     return `findById(${id}) db operation under construction`
 }
@@ -22,13 +31,4 @@ function updateCar(id, updates) {
 
 function deleteCar(id) {
     return`deleteCar(${id}) db operation under construction`
-}
-
-module.exports = {
-    findById,
-    findAll,
-    findByMake,
-    updateCar,
-    insertCar,
-    deleteCar,
 }
