@@ -60,25 +60,27 @@ describe("getBy", () => {
 
 describe("add", () => {
 
+    const raptor = {
+        coaster_name: "Raptor",
+        height: 137,
+        speed: 57
+    }
+
+    const outlawRun = {
+        coaster_name: "Outlaw Run",
+        height: 107,
+        speed: 68,
+        abbrv: "OR"
+    }
+
+    const smiler = {
+        coaster_name: "Smiler",
+        height: 98.4,
+        speed: 52.8
+    }
+
+
     test("resolves to added coaster", async () => {
-        const raptor = {
-            coaster_name: "Raptor",
-            height: 137,
-            speed: 57
-        }
-
-        const outlawRun = {
-            coaster_name: "Outlaw Run",
-            height: 107,
-            speed: 68,
-            abbrv: "OR"
-        }
-
-        const smiler = {
-            coaster_name: "Smiler",
-            height: 98.4,
-            speed: 52.8
-        }
 
         let res = await Coasters.add(raptor);
 
@@ -91,5 +93,32 @@ describe("add", () => {
         res = await Coasters.add(smiler);
 
         expect(res).toMatchObject(smiler);
+    })
+
+    test("coasters db size increases with each add", async () => {
+
+        await Coasters.add(raptor);
+        expect(await db("coasters")).toHaveLength(7);
+
+        await Coasters.add(outlawRun);
+        expect(await db("coasters")).toHaveLength(8);
+
+        await Coasters.add(smiler);
+        expect(await db("coasters")).toHaveLength(9);
+    })
+
+    test("added coasters are in db", async () => {
+        let {coaster_id} = await Coasters.add(raptor);
+        let res = await db("coasters").where({coaster_id: coaster_id}).first();
+        expect(res).toMatchObject(raptor);
+
+        coaster_id = await Coasters.add(outlawRun);
+        res = await db("coasters").where(coaster_id).first();
+        expect(res).toMatchObject(outlawRun);
+        
+        coaster_id = await Coasters.add(smiler);
+        res = await db("coasters").where(coaster_id).first();
+        expect(res).toMatchObject(smiler);
+        
     })
 })
