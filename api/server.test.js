@@ -165,13 +165,26 @@ describe("[DELETE] /api/coasters/:coaster_id", () => {
     })
 
     test("db decreases on each deletion", async () => {
-        res = await request(server).delete("/api/coasters/1");
+        await request(server).delete("/api/coasters/1");
         expect(await db("coasters")).toHaveLength(5);
 
-        res = await request(server).delete("/api/coasters/2");
+        await request(server).delete("/api/coasters/2");
         expect(await db("coasters")).toHaveLength(4);
 
-        res = await request(server).delete("/api/coasters/6");
+        await request(server).delete("/api/coasters/6");
         expect(await db("coasters")).toHaveLength(3);
+    })
+
+    test("responds with the deleted coaster", async () => {
+        let res = await request(server).delete("/api/coasters/1");
+        expect(res.body.coaster_name).toBe("Steel Vengeance");
+
+        res = await request(server).delete("/api/coasters/2");
+        expect(res.body.coaster_name).toBe("Millennium Force");
+
+        res = await request(server).delete("/api/coasters/5");
+        expect(res.body.coaster_name).toBe("Intimidator 305");
+        
+        
     })
 })
