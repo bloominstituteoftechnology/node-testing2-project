@@ -12,32 +12,16 @@ module.exports = {
   development: {
     ...common,
     connection: {
-      filename: './data/coastersDev.db3'
+      filename: './data/coastersDev.db3',
     }
   },
   
   testing: {
     ...common,
     connection: {
-      filname: './data/coastersTest.db3'
+      filename: './data/coastersTest.db3',
     }
 
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
   }
 
 };
