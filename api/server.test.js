@@ -80,5 +80,41 @@ describe("[GET] /api/coasters/:id", () => {
         expect(res.body.coaster_name).toBe("Superman: Escape from Krypton");
 
     })
+})
 
+describe("[POST] /api/coasters/", () => {
+
+    const raptor = {
+        coaster_name: "Raptor",
+        height: 137,
+        speed: 57
+    }
+
+    const outlawRun = {
+        coaster_name: "Outlaw Run",
+        height: 107,
+        speed: 68,
+        abbrv: "OR"
+    }
+
+    const smiler = {
+        coaster_name: "Smiler",
+        height: 98.4,
+        speed: 52.8
+    }
+
+    test("responds with 201 created", async () => {
+        const res = await request(server).post("/api/coasters").send(raptor);
+        expect(res.status).toBe(201);
+    })
+
+    test("responds with new coaster", async () => {
+        const res = await request(server).post("/api/coasters").send(raptor);
+        expect(res.body).toMatchObject(raptor);
+    })
+
+    test("coasters db size increases with each add", async () => {
+        await request(server).post("/api/coasters").send(raptor);
+        expect(await db("coasters")).toHaveLength(7);
+    })
 })
