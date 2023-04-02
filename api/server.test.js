@@ -57,4 +57,15 @@ describe("[GET] /api/coasters/:id", () => {
         expect(res.body.abbrv).toBe("SEFK");
     })
 
+    test("responds with coasters matching given abbrv", async () => {
+        let res = await request(server).get("/api/coasters/SV");
+        expect(res.body.coaster_name).toBe("Steel Vengeance");
+
+        res = await request(server).get("/api/coasters/KK");
+        expect(res.body.coaster_name).toBe("Kingda Ka");
+
+        res = await request(server).get("/api/coasters/I305");
+        expect(res.body.coaster_name).toBe("Intimidator 305");
+    })
+
 })
