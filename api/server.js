@@ -6,13 +6,14 @@ server.use(express.json());
 
 const Coasters = require("./model");
 
+server.get("/api/coasters/:id", async (req, res) => {
+    const coaster = await Coasters.getBy({ coaster_id: req.params.id });
+    res.json(coaster);
+})
+
 server.get("/api/coasters", (req, res) => {
     Coasters.get()
         .then( coasters => res.json(coasters));
-})
-
-server.get("/api/coasters/:id", (req, res) => {
-    res.json({ message: `This would be all the coaster with id ${req.params.id}` });
 })
 
 server.get("/api/coasters/:abbrv", (req, res) => {
