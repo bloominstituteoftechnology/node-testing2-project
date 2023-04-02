@@ -26,6 +26,10 @@ describe("[GET] /api/coasters", () => {
         expect(res.status).toBe(200);
     })
 
+    test("responds with correct number of coasters", async () => {
+
+    })
+
     test("responds with all the coasters", async () => {
         const res = await request(server).get("/api/coasters");
 
@@ -151,8 +155,5 @@ describe("[POST] /api/coasters/", () => {
         expect(
             await db("coasters").where({coaster_id: newCoaster.coaster_id}).first()
         ).toMatchObject(smiler);
-        
-
-
     })
 })

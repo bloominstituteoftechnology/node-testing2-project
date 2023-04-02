@@ -127,5 +127,41 @@ describe("del", () => {
     test("resolves to deleted coaster", async () => {
         let coasterToBeDeleted = await Coasters.del(1);
         expect(coasterToBeDeleted.coaster_name).toBe("Steel Vengeance");
+
+        coasterToBeDeleted = await Coasters.del(2);
+        expect(coasterToBeDeleted.coaster_name).toBe("Millennium Force");
+
+        coasterToBeDeleted = await Coasters.del(6);
+        expect(coasterToBeDeleted.abbrv).toBe("SEFK");
+    })
+
+    test("coasters db decreases with each deletion", async () => {
+        await Coasters.del(1);
+        expect(await db("coasters")).toHaveLength(5);
+
+        await Coasters.del(2);
+        expect(await db("coasters")).toHaveLength(4);
+        
+        await Coasters.del(6);
+        expect(await db("coasters")).toHaveLength(3);
+    })
+
+    test("deleted coasters are removed from db", async () => {
+        await Coasters.del(1);
+        expect(
+            await db("coasters").where({abbrv: "SV"})
+        ).toHaveLength(0); //returns empty array
+
+        await Coasters.del(6);
+        expect(
+            await db("coasters").where({abbrv: "SEFK"})
+        ).toHaveLength(0); //returns empty array
+
+        await Coasters.del(2);
+        expect(
+            await db("coasters").where({abbrv: "MF"})
+        ).toHaveLength(0); //returns empty array
+
+        
     })
 })
