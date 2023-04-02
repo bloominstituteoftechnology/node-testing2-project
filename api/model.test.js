@@ -28,15 +28,24 @@ describe("get", () => {
         expect(coasters[3].coaster_name).toBe("Kingda Ka")
     })
 
+});
+
+describe("getBy", () => {
+
     test("resolves to the correct coaster when given id", async () => {
 
-        let [coaster] = await Coasters.get({ coaster_id: 1 })
+        let coaster = await Coasters.getBy({ coaster_id: 1 })
         expect(coaster.coaster_name).toBe("Steel Vengeance");
 
-        [coaster] = await Coasters.get({ coaster_id: 4 })
+        coaster = await Coasters.getBy({ coaster_id: 4 })
         expect(coaster.coaster_name).toBe("Kingda Ka");
 
-        [coaster] = await Coasters.get({ coaster_id: 5 })
+        coaster = await Coasters.getBy({ coaster_id: 5 })
         expect(coaster.abbrv).toBe("I305");
     })
+
+    // test("resolves to the correct coaster for a given abbreviation", async () => {
+
+    //     let [coaster] = await Coasters.get
+    // })
 })

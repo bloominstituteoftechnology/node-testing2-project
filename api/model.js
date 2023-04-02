@@ -1,7 +1,9 @@
 const db = require("../data/dbConfig")
 
-exports.get = (filter) => {
-    if(!filter) 
-        return db("coasters");
-    return db("coasters").where(filter);
+exports.get = () => {
+    return db("coasters");
+}
+
+exports.getBy = filter => {
+    return db("coasters").where(filter).first();
 }
