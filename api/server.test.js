@@ -109,12 +109,50 @@ describe("[POST] /api/coasters/", () => {
     })
 
     test("responds with new coaster", async () => {
-        const res = await request(server).post("/api/coasters").send(raptor);
+        let res = await request(server).post("/api/coasters").send(raptor);
         expect(res.body).toMatchObject(raptor);
+
+        res = await request(server).post("/api/coasters").send(outlawRun);
+        expect(res.body).toMatchObject(outlawRun);
+
+        res = await request(server).post("/api/coasters").send(smiler);
+        expect(res.body).toMatchObject(smiler);
     })
 
     test("coasters db size increases with each add", async () => {
         await request(server).post("/api/coasters").send(raptor);
         expect(await db("coasters")).toHaveLength(7);
+
+        await request(server).post("/api/coasters").send(outlawRun);
+        expect(await db("coasters")).toHaveLength(8);
+
+        await request(server).post("/api/coasters").send(smiler);
+        expect(await db("coasters")).toHaveLength(9);
+    })
+
+    test("added coasters are in the db", async () => {
+        let res = await request(server).post("/api/coasters").send(raptor);
+        let newCoaster = res.body;
+
+        expect(
+            await db("coasters").where({coaster_id: newCoaster.coaster_id}).first()
+        ).toMatchObject(raptor);
+        
+        res = await request(server).post("/api/coasters").send(outlawRun);
+        newCoaster = res.body;
+
+        expect(
+            await db("coasters").where({coaster_id: newCoaster.coaster_id}).first()
+        ).toMatchObject(outlawRun);
+        
+        res = await request(server).post("/api/coasters").send(smiler);
+        newCoaster = res.body;
+
+        expect(
+            await db("coasters").where({coaster_id: newCoaster.coaster_id}).first()
+        ).toMatchObject(smiler);
+        
+
+
     })
 })

@@ -108,16 +108,16 @@ describe("add", () => {
     })
 
     test("added coasters are in db", async () => {
-        let {coaster_id} = await Coasters.add(raptor);
-        let res = await db("coasters").where({coaster_id: coaster_id}).first();
+        let newCoaster = await Coasters.add(raptor);
+        let res = await db("coasters").where({coaster_id: newCoaster.coaster_id}).first();
         expect(res).toMatchObject(raptor);
 
-        coaster_id = await Coasters.add(outlawRun);
-        res = await db("coasters").where(coaster_id).first();
+        newCoaster = await Coasters.add(outlawRun);
+        res = await db("coasters").where({coaster_id: newCoaster.coaster_id}).first();
         expect(res).toMatchObject(outlawRun);
         
-        coaster_id = await Coasters.add(smiler);
-        res = await db("coasters").where(coaster_id).first();
+        newCoaster = await Coasters.add(smiler);
+        res = await db("coasters").where({coaster_id: newCoaster.coaster_id}).first();
         expect(res).toMatchObject(smiler);
         
     })
