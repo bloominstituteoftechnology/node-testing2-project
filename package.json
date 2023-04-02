@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "cross-env NODE_ENV=testing jest --verbose --watchAll --runInBand",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "rollback": "knex migrate:rollback",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "knex": "^0.95.15",
     "sqlite3": "^5.1.6"
