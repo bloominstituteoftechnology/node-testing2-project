@@ -13,8 +13,16 @@ async function add(newCoaster) {
     return getBy({coaster_id});
 } 
 
+async function del(id) {
+    const filter = { coaster_id: id };
+    const coasterToBeDeleted = await getBy(filter);
+    await db("coasters").where(filter).del();
+    return coasterToBeDeleted;
+}
+
 module.exports = {
     get,
     getBy,
-    add
+    add,
+    del
 }

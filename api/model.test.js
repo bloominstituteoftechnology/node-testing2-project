@@ -122,3 +122,10 @@ describe("add", () => {
         
     })
 })
+
+describe("del", () => {
+    test("resolves to deleted coaster", async () => {
+        let coasterToBeDeleted = await Coasters.del(1);
+        expect(coasterToBeDeleted.coaster_name).toBe("Steel Vengeance");
+    })
+})
