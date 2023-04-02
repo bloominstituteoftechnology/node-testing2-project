@@ -4,8 +4,11 @@ const server = express();
 
 server.use(express.json());
 
+const Coasters = require("./model");
+
 server.get("/api/coasters", (req, res) => {
-    res.json({ message: "This would be all the coasters"});
+    Coasters.get()
+        .then( coasters => res.json(coasters));
 })
 
 server.get("/api/coasters/:id", (req, res) => {
