@@ -44,8 +44,52 @@ describe("getBy", () => {
         expect(coaster.abbrv).toBe("I305");
     })
 
-    // test("resolves to the correct coaster for a given abbreviation", async () => {
+    test("resolves to the correct coaster for a given abbreviation", async () => {
 
-    //     let [coaster] = await Coasters.get
-    // })
+        let coaster = await Coasters.getBy({ abbrv: "MF"})
+        expect(coaster.coaster_name).toBe("Millennium Force");
+
+        coaster = await Coasters.getBy({ abbrv: "KK"})
+        expect(coaster.coaster_name).toBe("Kingda Ka");
+
+        coaster = await Coasters.getBy({ abbrv: "SV"})
+        expect(coaster.coaster_name).toBe("Steel Vengeance");
+        
+    })
+})
+
+describe("add", () => {
+
+    test("resolves to added coaster", async () => {
+        const raptor = {
+            coaster_name: "Raptor",
+            height: 137,
+            speed: 57
+        }
+
+        const outlawRun = {
+            coaster_name: "Outlaw Run",
+            height: 107,
+            speed: 68,
+            abbrv: "OR"
+        }
+
+        const smiler = {
+            coaster_name: "Smiler",
+            height: 98.4,
+            speed: 52.8
+        }
+
+        let res = await Coasters.add(raptor);
+
+        expect(res).toMatchObject(raptor);
+
+        res = await Coasters.add(outlawRun);
+
+        expect(res).toMatchObject(outlawRun);
+
+        res = await Coasters.add(smiler);
+
+        expect(res).toMatchObject(smiler);
+    })
 })
