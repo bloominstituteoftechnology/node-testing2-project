@@ -13,9 +13,11 @@ server.get("/api/coasters", (req, res) => {
 })
 
 server.get("/api/coasters/:id", async (req, res) => {
-    const field = Number(req.params.id) ? "coaster_id" : "abbrv";
+    let filter = Number(req.params.id) ?
+    {coaster_id: req.params.id}:
+    {abbrv: req.params.id.toUpperCase()};
 
-    const coaster = await Coasters.getBy({ [field]: req.params.id });
+    const coaster = await Coasters.getBy(filter);
     res.json(coaster);
 })
 

@@ -68,4 +68,17 @@ describe("[GET] /api/coasters/:id", () => {
         expect(res.body.coaster_name).toBe("Intimidator 305");
     })
 
+    test("abbrv is case insensitive", async () => {
+
+        let res = await request(server).get("/api/coasters/sV");
+        expect(res.body.coaster_name).toBe("Steel Vengeance");
+
+        res = await request(server).get("/api/coasters/mf");
+        expect(res.body.coaster_name).toBe("Millennium Force");
+
+        res = await request(server).get("/api/coasters/SefK");
+        expect(res.body.coaster_name).toBe("Superman: Escape from Krypton");
+
+    })
+
 })
