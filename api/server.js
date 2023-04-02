@@ -9,7 +9,7 @@ const Coasters = require("./model");
 
 server.get("/api/coasters", (req, res) => {
     Coasters.get()
-    .then( coasters => res.json(coasters));
+        .then( coasters => res.json(coasters));
 })
 
 server.get("/api/coasters/:id", async (req, res) => {
@@ -21,12 +21,9 @@ server.get("/api/coasters/:id", async (req, res) => {
     res.json(coaster);
 })
 
-server.get("/api/coasters/:abbrv", (req, res) => {
-    res.json({ message: `This would be all the coaster abbreviated as ${req.params.abbrv}` })
-})
-
 server.post("/api/coasters/", (req, res) => {
-    res.status(201).json(req.body);
+    Coasters.add(req.body)
+        .then( newCoaster => res.status(201).json(newCoaster));
 })
 
 server.use("*", (req, res) => {
