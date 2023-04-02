@@ -28,6 +28,13 @@ describe("[GET] /api/coasters", () => {
 
     test("responds with all the coasters", async () => {
         const res = await request(server).get("/api/coasters");
-        expect(res.body).toHaveLength(6);
+
+        const coasters = res.body;
+
+        expect(coasters).toHaveLength(6);
+        expect(coasters[0].coaster_name).toBe("Steel Vengeance")
+        expect(coasters[1].coaster_name).toBe("Millennium Force")
+        expect(coasters[3].coaster_name).toBe("Kingda Ka")
+        expect(coasters[4].abbrv).toBe("I305")
     })
 })
