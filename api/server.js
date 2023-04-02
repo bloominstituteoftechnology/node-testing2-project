@@ -26,6 +26,11 @@ server.post("/api/coasters/", (req, res) => {
         .then( newCoaster => res.status(201).json(newCoaster));
 })
 
+server.delete("/api/coasters/:coaster_id", (req, res) => {
+    Coasters.del(req.params.coaster_id)
+        .then( deletedCoaster => res.json(deletedCoaster));
+})
+
 server.use("*", (req, res) => {
     res.status(404).json({ message: "There's nothing here!"});
 })

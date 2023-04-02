@@ -157,3 +157,21 @@ describe("[POST] /api/coasters/", () => {
         ).toMatchObject(smiler);
     })
 })
+
+describe("[DELETE] /api/coasters/:coaster_id", () => {
+    test("responds with 200 OK", async () => {
+        const res = await request(server).delete("/api/coasters/1");
+        expect(res.status).toBe(200);
+    })
+
+    test("db decreases on each deletion", async () => {
+        res = await request(server).delete("/api/coasters/1");
+        expect(await db("coasters")).toHaveLength(5);
+
+        res = await request(server).delete("/api/coasters/2");
+        expect(await db("coasters")).toHaveLength(4);
+
+        res = await request(server).delete("/api/coasters/6");
+        expect(await db("coasters")).toHaveLength(3);
+    })
+})
