@@ -11,6 +11,10 @@ beforeEach(async () => {
     await db.seed.run();
 })
 
+afterAll(async ()=> {
+    await db.destroy()
+})
+
 test("environment is testing", () => {
     expect(process.env.NODE_ENV).toBe("testing");
 })

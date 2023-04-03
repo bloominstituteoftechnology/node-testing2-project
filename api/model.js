@@ -1,28 +1,23 @@
 const db = require("../data/dbConfig")
 
-function get() {
+let funcObj = {};
+
+exports.get = function() {
     return db("coasters");
 }
 
-function getBy(filter) {
+exports.getBy = function(filter) {
     return db("coasters").where(filter).first();
 }
 
-async function add(newCoaster) {
+exports.add = async function(newCoaster) {
     const [coaster_id] = await db("coasters").insert(newCoaster);
-    return getBy({coaster_id});
-} 
-
-async function del(id) {
-    const filter = { coaster_id: id };
-    const coasterToBeDeleted = await getBy(filter);
-    await db("coasters").where(filter).del();
-    return coasterToBeDeleted;
+    return exports.getBy({coaster_id});
 }
 
-module.exports = {
-    get,
-    getBy,
-    add,
-    del
+exports.del = async function(id) {
+    const filter = { coaster_id: id };
+    const coasterToBeDeleted = await exports.getBy(filter);
+    await db("coasters").where(filter).del();
+    return coasterToBeDeleted;
 }
