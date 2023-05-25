@@ -16,11 +16,11 @@ Here is a checklist of tasks to help you put your project together:
 
 - Generate a `.gitignore` file. - Done
 - Install express, knex@0.95.15, sqlite3 as plain dependencies. - Done
-- Alternatively install express, knex, @vscode/sqlite3 as plain dependencies.
-- Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
-- Configure jest and eslint using `npx <libname> --init`.
-- Create a `knexfile.js` with "development" and "testing" configurations.
-- Create a `db-config.js` file that selects the correct configuration using the value of `process.env.NODE_ENV`.
+- Alternatively install express, knex, @vscode/sqlite3 as plain dependencies. - Done
+- Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies. - done
+- Configure jest and eslint using `npx <libname> --init`. - done
+- Create a `knexfile.js` with "development" and "testing" configurations. - Done
+- Create a `db-config.js` file that selects the correct configuration using the value of `process.env.NODE_ENV`. - Done
 - Create migration and seed files.
 - Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
 - Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing".
