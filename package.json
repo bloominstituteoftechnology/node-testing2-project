@@ -5,11 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "server":"nodemon index.js",
-    "migrate":"knex migrate:latest",
-    "rollback":"knex migrate:rollback",
-    "seed":"knex seed:run",
-    "resetdb":"npm run rollback && npm run migrate && npm run seed"
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "knex": "^2.4.2",
+    "knex-cleaner": "^1.3.1",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {

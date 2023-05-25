@@ -1,5 +1,7 @@
 const router = require('express').Router()
 
+const Recipe = require('./recipes-model')
+
 // router.use('*', (req, res, next) => {
 //     res.json({api:'up'})
 // })
@@ -7,7 +9,11 @@ router.get('/', (req, res, next) => {
     res.status(200).json('hiiiii')
 })
 router.get("/:id", (req, res, next) => {
-    res.status(200).json(req.params.id)
+    Recipe.getRecipeId(req.params.id)
+        .then(resource => {
+            res.status(200).json(resource)
+        })
+        .catch(next)
 })
 router.post('/', (req,res,next) => {
     res.status(201).json('he has been made')
