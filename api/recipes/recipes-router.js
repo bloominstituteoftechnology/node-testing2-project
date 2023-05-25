@@ -6,20 +6,46 @@ const Recipe = require('./recipes-model')
 //     res.json({api:'up'})
 // })
 router.get('/', (req, res, next) => {
-    res.status(200).json('hiiiii')
+    Recipe.getAllRecipes()
+    .then(resources => {
+        res.status(200).json(resources)
+    })
+    .catch(next)
 })
-router.get("/:id", (req, res, next) => {
-    Recipe.getRecipeId(req.params.id)
+router.get("/:recipe_id", (req, res, next) => {
+    Recipe.getRecipeId(req.params.recipe_id)
         .then(resource => {
             res.status(200).json(resource)
         })
         .catch(next)
 })
-router.post('/', (req,res,next) => {
-    res.status(201).json('he has been made')
+
+router.post('/', async (req,res,next) => {
+    try {
+        const newAccount = await Recipe.create(req.body)
+        res.status(201).json(newAccount)
+    }
+    catch (err) {
+        next(err)
+    }
 })
-router.delete('/:id', (req, res, next) => {
-    res.status(200).json('person has been deleted')
+
+router.put('/:recipe_id', (req, res, next) => {
+    const {recipe_id} = req.params
+    Recipe.updateRecipe(recipe_id, req.body)
+    .then(result => {
+        res.status(200).json(result)
+    })
+    .catch(next)
+})
+
+router.delete('/:recipe_id', (req, res, next) => {
+    const {recipe_id} = req.params
+    Recipe.deleteRecipe(recipe_id)
+    .then(resource => {
+        res.json({message: 'Resource has been deleted'})
+    })
+    .catch(next)
 })
 
 router.use((err, req, res, next) => {
