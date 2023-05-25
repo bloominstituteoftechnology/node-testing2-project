@@ -1,4 +1,4 @@
-const {clean} = require('knex-clean er')
+const {clean} = require('knex-cleaner')
 
 exports.seed = function (knex){
     return clean(knex, {
