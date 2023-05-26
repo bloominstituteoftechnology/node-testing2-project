@@ -21,6 +21,10 @@ server.get('/friends', async (req, res, next) => {
 	}
 });
 
+server.post('/friends', async (req, res) => {
+	res.status(201).json(await Friends.insert(req.body));
+});
+
 //eslint-disable-next-line
 server.use((err, req, res, next) => {
 	res.status(500).json({
