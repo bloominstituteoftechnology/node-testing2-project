@@ -22,8 +22,8 @@ Here is a checklist of tasks to help you put your project together:
 - Create a `knexfile.js` with "development" and "testing" configurations. - Done
 - Create a `db-config.js` file that selects the correct configuration using the value of `process.env.NODE_ENV`. - Done
 - Create migration and seed files.
-- Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
-- Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing".
-- Create a basic express application with a few database access functions and a few endpoints.
+- Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`. - Done
+- Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing". - Done
+- Create a basic express application with a few database access functions and a few endpoints. - Done
 - Test your endpoints manually using Postman, HTTPie or similar.
 - Test your endpoints with supertest.
