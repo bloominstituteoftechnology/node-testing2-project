@@ -1,7 +1,7 @@
 const db = require('../../data/db-config')
 
 function getAllRecipes(){
-    return db('recipes')
+    return db('recipes').select('recipe_name')
 }
 
 function getRecipeId(recipe_id){

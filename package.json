@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": " cross-env NODE_ENV=testing jest --verbose --watchAll --runInBand",
     "start": "node index.js",
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
