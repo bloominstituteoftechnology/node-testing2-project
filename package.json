@@ -15,10 +15,10 @@
     "url": "git+https://github.com/bloominstituteoftechnology/node-testing2-project.git"
   },
   "dependencies": {
-    "@vscode/sqlite3": "^5.1.6-vscode",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "knex": "^2.5.1"
+    "knex": "^2.5.1",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
