@@ -20,5 +20,19 @@ server.get('/capitals', (req, res) => {
         })
 })
 
+server.get('/capitals/:id', (req, res, next) => {
+    Capitals.getById(req.params.id)
+        .then(resource => {
+            res.status(200).json(resource)
+        })
+        .catch(next)
+})
+
+server.post('/capitals', async (req, res) => {
+    res.status(201).json(await Capitals.insert(req.body))
+})
+
+
+
 
 module.exports = server;

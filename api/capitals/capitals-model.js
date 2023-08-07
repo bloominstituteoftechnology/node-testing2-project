@@ -5,6 +5,7 @@ function getAll() {
 }
 
 function getById(id) {
+   
     return db('capitals').where('id', id).first()
 }
 
