@@ -29,7 +29,8 @@ server.get('/capitals/:id', (req, res, next) => {
 })
 
 server.post('/capitals', async (req, res) => {
-    res.status(201).json(await Capitals.insert(req.body))
+    console.log(req.body.city)
+   res.status(201).json(await Capitals.addCapital(req.body))
 })
 
 
