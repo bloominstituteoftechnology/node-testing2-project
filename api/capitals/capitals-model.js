@@ -1,19 +1,20 @@
 const db = require('../../data/db-config.js')
 
-function getAll() {
+async function getAll() {
     return db('capitals')
 }
 
-function getById(id) {
-   
+async function getById(id) {
     return db('capitals').where('id', id).first()
 }
 
 async function insert(capital) {
-    return await db('capitals').insert(capital).then((id) => {
-        return db('capitals').where('id', id).first()
-    })
-}
+   return await db('capitals').insert(capital).then(id => {
+        getById(id)
+    }
+        
+    )
+  }
 
 module.exports = {
     getAll,
