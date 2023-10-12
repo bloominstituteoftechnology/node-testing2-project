@@ -9,6 +9,13 @@ router.get( '/:id', (req, res, next) => {
         .catch(next)
 })
 
-router.post('create new genere')
+router.post('/', (req, res, next) => {
+    const { genere_name } = req.body
+    Genere.add(genere_name)
+        .then(newGenere => {
+            res.json(newGenere)
+        })
+        .catch(next)
+})
 
 module.exports = router
