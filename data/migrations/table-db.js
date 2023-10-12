@@ -12,13 +12,13 @@ exports.up = function (knex) {
           .integer("make_id")
           .references("make_id")
           .inTable("makes")
-          .onDelte("Restrict")
+          .onDelete("Restrict")
           .onUpdate("Restrict")
       })
   }
   
   exports.down = function (knex) {
     return knex.schema
-      .dropTableIfExists("cars")
+      .dropTableIfExists("makes")
       .dropTableIfExists("models")
   }

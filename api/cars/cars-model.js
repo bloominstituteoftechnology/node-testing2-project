@@ -1,9 +1,7 @@
-const db = require('../../data/db-config.js');
+const db = require('../../data/dbConfig')
 
 function get() {
-
   return db('cars')
-
 }
 
 function findById(car_id) {

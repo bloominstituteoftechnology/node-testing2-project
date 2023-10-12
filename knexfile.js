@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./data/pets.sqlite3",
+      filename: "./data/cars.sqlite3",
     },
     useNullAsDefault: true,
     migrations: {
@@ -16,7 +16,7 @@ module.exports = {
   testing: {
     client: "sqlite3",
     connection: {
-      filename: "./data/pets.sqlite3",
+      filename: "./data/cars.sqlite3",
     },
     useNullAsDefault: true,
     migrations: {
