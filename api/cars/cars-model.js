@@ -18,7 +18,11 @@ async function add(car) {
 }
 
 async function modify(id, changes) {
-  return db('models').where('id', id).update(changes)
+  return db('models').where("id", id).update(changes)
+}
+
+const remove = (id) => {
+  return db('models').where("id", id).del();
 }
 
 module.exports = {
@@ -26,4 +30,5 @@ module.exports = {
   get,
   findById,
   modify,
+  remove
 };

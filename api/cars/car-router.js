@@ -13,9 +13,13 @@ router.get("/", (req, res, next) => {
 });
 
 
-router.get("/:id", (req, res, next) => {
-  Cars.findById(req.params.id)
+router.get("/:id", async (req, res, next) => {
+  const { id } = req.params
+ await  Cars.findById(id)
     .then(car => {
+      if (!car) {
+        next({status: 404, message: "Car not found"})
+      }
       res.status(200).json(car);
     })
     .catch(next);
@@ -29,13 +33,14 @@ router.post("/", (req, res, next) => {
     .catch(next)
 })
 
-router.put("/:id", async (req, res, next) => {
-  const { id } = req.params;
-  await Cars.modify(id, req.body)
-    .then((car) => {
-      res.status(200).json(car);
+router.put("/:id", (req, res, next) => {
+  Cars.modify(req.params.id, req.body)
+    .then((cars) => {
+      res.status(200).json(cars);
     })
-    .catch(next)
-})
+    .catch(next);
+});
+
+
 
 module.exports = router;

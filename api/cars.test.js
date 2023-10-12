@@ -33,6 +33,25 @@ describe("[Get]", () => {
     })
 });
 
+describe("[GET] /:id", () => {
+    test("[a] endpoint gets a single car of the given id", async () => {
+      const res = await request(server).get(`${URL}/1`);
+      expect(res.body).toMatchObject({ model_name: "Highlander", model_year: "2024" });
+    });
+    test("[b] responds with status 200 OK", async () => {
+      const res = await request(server).get(`${URL}/1`);
+      expect(res.status).toBe(200);
+    });
+    test("[c] responds with status 404 if id not found", async () => {
+      const res = await request(server).get(`${URL}/10`);
+      expect(res.status).toBe(404);
+    });
+    test("[d] responds with appropriate error message if id not found", async () => {
+      const res = await request(server).get(`${URL}/10`);
+      expect(res.body.message).toBe("Car not found");
+    });
+  });
+
 describe("[Post] ", () => {
     
     const newCar = { "model_name":"Corola", "model_year":2024, "make_id":1}
@@ -46,14 +65,15 @@ describe("[Post] ", () => {
     })
 });
 
-describe("[Put] ", () => {
+describe("[Put] /:id", () => {
     const modifiedCar = { "model_name":"Highlander", "model_year":2023}
     test("[a]Modify car in the table", async () => {
-        const res = await request(server).put(`${URL}`).send(modifiedCar);
-        expect(res.body.model_year).toBe(2023)
+        const res = await request(server).put(`${URL}/1`).send(modifiedCar);
+        expect(res.body).toBe(1)
     })
     test("[b] Expect Return status to be 201 ", async () => {
-        const res = await request(server).put(`${URL}`).send(modifiedCar);
+        const res = await request(server).put(`${URL}/1`).send(modifiedCar);
         expect(res.status).toBe(200)
     })
 });
+    
