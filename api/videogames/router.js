@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
     const { vg_name, vg_year, vg_rating, genere_name } = req.body
     Videogames.add({ vg_name, vg_year, vg_rating, genere_name })
         .then(newVideogame => {
-            res.json(newVideogame)
+            res.status(201).json(newVideogame)
         })
         .catch(next)
 })
