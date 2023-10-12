@@ -5,7 +5,7 @@ const Cars = require("./cars-model");
 
 
 router.get("/", (req, res, next) => {
-  Cars.find()
+  Cars.get()
     .then(cars => {
       res.status(200).json(cars);
     })
@@ -13,8 +13,8 @@ router.get("/", (req, res, next) => {
 });
 
 
-router.get("/:car_id", (req, res, next) => {
-  Cars.findById(req.params.user_id)
+router.get("/:id", (req, res, next) => {
+  Cars.findById(req.params.id)
     .then(user => {
       res.status(200).json(user);
     })
@@ -29,8 +29,8 @@ router.post("/", (req, res, next) => {
     .catch(next)
 })
 
-router.put("/:car_id", (req, res, next) => {
-  Cars.modify(req.params.car_id, req.body)
+router.put("/:id", (req, res, next) => {
+  Cars.modify(req.params.id, req.body)
     .then((car) => {
       res.status(200).json(car);
     })

@@ -1,24 +1,24 @@
 const db = require('../../data/dbConfig')
 
 function get() {
-  return db('cars')
+  return db('models')
 }
 
-function findById(car_id) {
-  return db('cars')
-    .where('car_id', car_id)
+function findById(id) {
+  return db('models')
+    .where('id', id)
     .first();
 
 }
 
 
 async function add(car) {
-  const [car_id] = await db('cars').insert(car);
-  return findById(car_id);
+  const [id] = await db('models').insert(car);
+  return findById(id);
 }
 
 async function modify(id, changes) {
-  return db('cars').where('car_id', id).update(changes)
+  return db('models').where('id', id).update(changes)
 }
 
 module.exports = {

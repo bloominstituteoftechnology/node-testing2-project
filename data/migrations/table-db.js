@@ -5,7 +5,7 @@ exports.up = function (knex) {
         makes.string("make_name", 32).notNullable().unique()
       })
       .createTable("models", (models) => {
-        models.increments("model_id");
+        models.increments("id");
         models.text("model_name", 128).notNullable();
         models.text("model_year", 4).notNullable();
         models

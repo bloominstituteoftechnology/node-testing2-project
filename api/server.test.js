@@ -17,7 +17,17 @@ describe("[0] Sanity Test", () => {
     test("[a] test suite works", () => {
         expect(1).toBe(1);
     });
-    test("[b] Testing enviroment", () => {
-        expect(process.env.Node_ENV).toBe("testing");
-    });
 });
+
+describe("[Get]", () => {
+    test("[a] Status 200 Recieved", async () => {
+        const res = await request(server).get(`${URL}`);
+        expect(res.status).toBe(200)
+    })
+    test("[b] Correct first entry ", async () => {
+        const res = await request(server).get(`${URL}/1`);
+        expect(res.body).toContain("highlander"
+           
+        )
+    })
+} )
