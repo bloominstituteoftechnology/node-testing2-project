@@ -3,15 +3,13 @@ const db = require('../../data/db-config.js');
 function get() {
 
   return db('cars')
-  
+
 }
 
-
-
-function findById(car_id) { 
+function findById(car_id) {
   return db('cars')
-  .where('car_id', car_id)
-  .first();
+    .where('car_id', car_id)
+    .first();
 
 }
 
@@ -22,7 +20,7 @@ async function add(car) {
 }
 
 async function modify(id, changes) {
-return db('cars').where('car_id', id).update(changes)
+  return db('cars').where('car_id', id).update(changes)
 }
 
 module.exports = {
