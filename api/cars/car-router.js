@@ -15,8 +15,8 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   Cars.findById(req.params.id)
-    .then(user => {
-      res.status(200).json(user);
+    .then(car => {
+      res.status(200).json(car);
     })
     .catch(next);
 });
@@ -24,13 +24,14 @@ router.get("/:id", (req, res, next) => {
 router.post("/", (req, res, next) => {
   Cars.add(req.body)
     .then((car) => {
-      res.status(200).json(car);
+      res.status(201).json(car);
     })
     .catch(next)
 })
 
-router.put("/:id", (req, res, next) => {
-  Cars.modify(req.params.id, req.body)
+router.put("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  await Cars.modify(id, req.body)
     .then((car) => {
       res.status(200).json(car);
     })
