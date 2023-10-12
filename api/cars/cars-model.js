@@ -21,8 +21,13 @@ async function add(car) {
   return findById(car_id);
 }
 
+async function modify(id, changes) {
+return db('cars').where('car_id', id).update(changes)
+}
+
 module.exports = {
   add,
   get,
   findById,
+  modify,
 };
