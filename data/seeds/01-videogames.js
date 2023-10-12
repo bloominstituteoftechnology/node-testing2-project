@@ -1,7 +1,7 @@
 
 exports.seed = async function (knex) {
-  await knex('genere').truncate()
   await knex('videogames').truncate()
+  await knex('genere').truncate()
   await knex('genere').insert([
     { genere_name: 'BR' },
     { genere_name: 'MMORPG' },
