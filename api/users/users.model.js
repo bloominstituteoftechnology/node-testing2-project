@@ -22,11 +22,11 @@ async function add(user) {
 }
 
 async function update(id,user) {
-    const [updated] = await db("users").update(user).where("id",id);
-    return await getById(updated); 
+    await db("users").update(user).where("id",id);
+    return await getById(id); 
 }
 
 async function remove(id) {
-    const [index] = await db("users").where("id",id).del();
-    return getById(index);
+    await db("users").where("id",id).del();
+    return await db("users");
 }
