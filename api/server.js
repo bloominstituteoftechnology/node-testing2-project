@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan")
-
+const UserRouter = require("./users/users.router");
 
 const server = express();
 
@@ -8,6 +8,7 @@ const server = express();
 server.use(express.json())
 server.use(morgan("dev"))
 
+server.use("/api/users",UserRouter)
 
 server.get("/",async(req,res,next)=> {
     try {
