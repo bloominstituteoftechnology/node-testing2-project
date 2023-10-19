@@ -20,7 +20,7 @@ const validatePut = async(req,res,next) => {
     try {
         const {name,married} = req.body;
         const {id} = req.params;
-        if (!name || !married || !id) next({status : 422, message : "need name, id, and, married status"});
+        if (!name || !married || !id) next({status : 422, message : "need name, id, and married status"});
         next(); 
     } catch (err) {next(err)}
 }
