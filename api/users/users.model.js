@@ -9,11 +9,27 @@ module.exports = {
 }
 
 async function getAll() {
-    return await db("users");
+    const result = await db("users") 
+    const result2 = result.map(n=> {
+        if (n.married) {
+            return {...n, married : true}
+        } else {
+            return {...n, married : false}
+        }
+    })
+    return result2;
 }
 
 async function getById(id) {
-    return await db("users").where("id",id).first();
+    const result = await db("users").where("id",id); 
+    const result2 = result.map(n=> {
+        if (n.married) {
+            return {...n, married : true}
+        } else {
+            return {...n, married : false}
+        }
+    })
+    return result2;
 }
 
 async function add(user) {
@@ -28,5 +44,5 @@ async function update(id,user) {
 
 async function remove(id) {
     await db("users").where("id",id).del();
-    return await db("users");
+    return await getAll();
 }
