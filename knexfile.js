@@ -18,7 +18,7 @@ module.exports = {
     testing: {
       client: 'sqlite3', // or your preferred client for testing
       connection: {
-        filename: ':memory:' // In-memory database for testing
+        filename: './testing.sqlite3' // In-memory database for testing
       },
       useNullAsDefault: true,
       migrations: {
