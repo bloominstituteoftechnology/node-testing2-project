@@ -35,7 +35,12 @@ server.get("/teams/:id", (req, res) => {
 });
 
 server.post("/teams", async (req, res) => {
-  res.status(201).json(await Teams.add(req.body));
+  try {
+    const team = await Teams.insert(req.body);
+    res.status(201).json(team);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 module.exports = server;
