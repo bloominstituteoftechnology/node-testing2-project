@@ -18,3 +18,20 @@ describe('POST /register', () => {
 });
 
 // Write similar tests for the DELETE endpoint and any other functionality
+
+
+
+describe('DELETE /delete/:username', () => {
+  it('should delete a user by username', async () => {
+    // Assuming a user with this username already exists in your test setup
+    const usernameToDelete = 'testuser';
+
+    const res = await request(app)
+      .delete(`/delete/${usernameToDelete}`);
+    
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveProperty('message', 'User deleted successfully');
+  });
+
+  // Add more tests as needed, e.g., for non-existing user, invalid username, etc.
+});
