@@ -1,6 +1,6 @@
 // server.test.js
 const request = require('supertest');
-const app = require('./server'); // Adjust the path as necessary
+const app = require('./api/server'); // Adjust the path as necessary
 
 describe('POST /register', () => {
   it('should register a new user', async () => {
@@ -36,9 +36,6 @@ describe('DELETE /delete/:username', () => {
   // Add more tests as needed, e.g., for non-existing user, invalid username, etc.
 });
 
-
-const request = require('supertest');
-const app = require('./server'); // Adjust the path as necessary
 
 describe('PUT /update-password/:username', () => {
   it('should update the password for a user', async () => {
