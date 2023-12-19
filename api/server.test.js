@@ -28,14 +28,44 @@ describe("[GET] /teams", () => {
 });
 
 describe("[GET] /teams/:id", () => {
-  test.todo("[4] responds with 200 OK");
-  test.todo("[5] returns a team by id from the db");
-  test.todo("[6] if the team does not exist it returns a 404");
+  test("[4] responds with 200 OK", async () => {
+    const id = 1;
+    const res = await request(server).get(`/teams/${id}`);
+    expect(res.status).toBe(200);
+  });
+  test("[5] returns a team by id from the db", async () => {
+    const id = 1;
+    const res = await request(server).get(`/teams/${id}`);
+    expect(res.body).toMatchObject({
+      id: 1,
+      school_name: "Alabama",
+      mascot: "Crimson Tide",
+    });
+  });
+  test("[6] if the team does not exist it returns a 404", async () => {
+    const id = 999;
+    const res = await request(server).get(`/teams/${id}`);
+    expect(res.status).toBe(404);
+  });
 });
 
 describe("[POST] /teams", () => {
-  test.todo("[7] responds with 201 CREATED");
-  test.todo("[8] returns the newly created team");
-  test.todo("[9] adds a team to the database");
-  test.todo("[10] ensures that the body is required");
+  const team = { school_name: "Wisconsin", mascot: "Badgers" };
+  test("[7] responds with 201 CREATED", async () => {
+    const res = await request(server).post("/teams").send(team);
+    expect(res.status).toBe(201);
+  });
+  test("[8] returns the newly created team", async () => {
+    const res = await request(server).post("/teams").send(team);
+    expect(res.body).toMatchObject(team);
+  });
+  test("[9] adds a team to the database", async () => {
+    await request(server).post("/teams").send(team);
+    const teams = await db("sec_teams");
+    expect(teams).toHaveLength(17);
+  });
+  test("[10] ensures that the body is required", async () => {
+    const res = await request(server).post("/teams").send({});
+    expect(res.status).toBe(500);
+  });
 });
