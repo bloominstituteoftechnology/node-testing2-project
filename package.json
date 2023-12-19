@@ -9,7 +9,7 @@
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "resetdb": "npm run rollback && npm run migrate && npm run seed",
-    "test": "cross-env NODE_ENV=testing jest --watch --verbose"
+    "test": "cross-env NODE_ENV=testing jest --watch --verbose --runInBand"
   },
   "repository": {
     "type": "git",
