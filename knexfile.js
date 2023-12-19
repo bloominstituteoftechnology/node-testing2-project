@@ -20,7 +20,7 @@ module.exports = {
   testing: {
     ...common,
     connection: {
-      filename: "./data/secteams.test.db3",
+      filename: "./data/test.db3",
     },
   },
 };
