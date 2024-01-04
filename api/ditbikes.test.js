@@ -44,17 +44,42 @@ describe("dirtbike model function", () => {
   });
 });
 
-describe("[DELETE] / delete joke", () => {
-  test("remove joke from database", async () => {
+describe("[DELETE] / delete dirtbike", () => {
+  test("remove dirtbike from database", async () => {
     const [dirtbike_id] = await db("dirtbikes").insert(dirtbike1);
     let dirtbike = await db("dirtbikes").where({ dirtbike_id }).first();
     expect(dirtbike).toBeTruthy();
     await request(server).delete("/dirtbikes/" + dirtbike_id);
     dirtbike = await db("dirtbikes").where({ dirtbike_id }).first();
+    expect(dirtbike).toBeFalsy();
   });
-  test("respond with the deleted joke", async () => {
+  test("verify dirtbike was deleted", async () => {
     await db("dirtbikes").insert(dirtbike1);
-    let dirtbike = await request(server).delete("/dirtbikes/1");
-    expect(dirtbike.body).toMatchObject(dirtbike1);
+    let response = await request(server).delete("/dirtbikes/1");
+    expect(response.status).toBe(204);
+    const dirtbike = await db("dirtbikes").where("dirtbike_id", 1).first();
+    expect(dirtbike).toBeUndefined();
+  });
+});
+
+describe("[GET] make sure its returning data", () => {
+  test("return dirtbikes that are in database", async () => {
+    await db("dirtbikes").insert(dirtbike1);
+    const response = await request(server).get("/dirtbikes");
+    expect(response.status).toBe(200);
+  });
+});
+
+describe("[GET] / get dirtbike by ID", () => {
+  test("get dirtbike by ID", async () => {
+    const [dirtbike_id] = await db("dirtbikes").insert(dirtbike1);
+    const response = await request(server).get(`/dirtbikes/${dirtbike_id}`);
+    expect(response.status).toBe(200);
+    expect(response.body).toMatchObject(dirtbike1);
+  });
+  test("get dirtbike by non-existent ID", async () => {
+    const response = await request(server).get("/dirtbikes/999");
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual({ message: "Dirtbike not found" });
   });
 });
