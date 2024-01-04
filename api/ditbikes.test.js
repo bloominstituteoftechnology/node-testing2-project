@@ -83,3 +83,37 @@ describe("[GET] / get dirtbike by ID", () => {
     expect(response.body).toEqual({ message: "Dirtbike not found" });
   });
 });
+
+describe("[PUT] / update dirtbike", () => {
+  test("update dirtbike in database", async () => {
+    const [dirtbike_id] = await db("dirtbikes").insert(dirtbike1);
+    const updates = { brand: "updatedBrand", size: 150, price: 7000 };
+    const response = await request(server)
+      .put(`/dirtbikes/${dirtbike_id}`)
+      .send(updates);
+    expect(response.status).toBe(200);
+    expect(response.body).toMatchObject(updates);
+    const updatedDirtbike = await db("dirtbikes")
+      .where("dirtbike_id", dirtbike_id)
+      .first();
+    expect(updatedDirtbike).toMatchObject(updates);
+  });
+  test("respond with the updated dirtbike", async () => {
+    const [dirtbike_id] = await db("dirtbikes").insert(dirtbike1);
+    const updates = { brand: "updatedBrand", size: 150, price: 7000 };
+    const response = await request(server)
+      .put(`/dirtbikes/${dirtbike_id}`)
+      .send(updates);
+    expect(response.body).toMatchObject(updates);
+  });
+  test("respond with 404 for non-existent dirtbike", async () => {
+    const nonExistentId = 999;
+    const updates = { brand: "updatedBrand", size: 150, price: 7000 };
+    const response = await request(server)
+      .put(`/dirtbikes/${nonExistentId}`)
+      .send(updates);
+
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual({ message: "Dirtbike not found" });
+  });
+});
